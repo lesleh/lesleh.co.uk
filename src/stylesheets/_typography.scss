@@ -1,0 +1,20 @@
+html {
+  font-family: var(--font-family);
+}
+
+body {
+  @include size-lock(font-size, 16px, 18px, px-to-rem(576px));
+}
+
+h1 {
+  margin: 0;
+  @include size-lock(font-size, 26px, 40px, px-to-rem(576px));
+}
+
+h2 {
+  @include size-lock(font-size, 24px, 34px, px-to-rem(576px));
+}
+
+h3 {
+  // TODO: Later
+}

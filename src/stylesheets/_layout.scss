@@ -1,0 +1,68 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--color-primary);
+  color: var(--color-primary-inverse);
+}
+
+body {
+  @include size-lock(padding-left, 5px, 30px);
+  @include size-lock(padding-right, 5px, 30px);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.main-grid {
+  max-width: 60em;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+
+  grid-template-areas:
+                      "header"
+                      "nav"
+                      "page-title"
+                      "main"
+                      "footer";
+
+  @media (min-width: 576px) {
+    grid-row-gap: 10px;
+    grid-column-gap: 30px;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+                        "header  page-title"
+                        "nav     main"
+                        ".       main"
+                        ".       footer";
+  }
+}
+
+.site-header {
+  grid-area: header;
+}
+
+.site-nav {
+  grid-area: nav;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.site-main {
+  grid-area: main;
+}
+
+.site-main :first-child {
+  margin-top: 0;
+}
+
+.site-footer {
+  grid-area: footer;
+}

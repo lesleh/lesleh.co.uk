@@ -1,0 +1,33 @@
+.button,
+button,
+input[type='submit'] {
+  color: var(--color-primary);
+  background-color: var(--color-primary-inverse);
+  font-size: 16px;
+  display: inline-block;
+  padding: var(--input-padding);
+  border: 0;
+  cursor: pointer;
+
+  @if $rounded-borders {
+    border-radius: var(--border-radius);
+  }
+
+  &:hover {
+    background-color: #ddd;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0px 0px 4px 4px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.button--primary {
+  background-color: #fff;
+  color: var(--color-primary);
+
+  &:hover {
+    background-color: #ddd;
+  }
+}

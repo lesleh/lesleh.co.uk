@@ -1,0 +1,36 @@
+.gallery {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-auto-flow: dense;
+}
+
+.gallery__link:focus {
+  box-shadow: 0 0 0 3px white;
+  outline: none;
+}
+
+.gallery__link, .gallery__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gallery__link--medium {
+  grid-column-end: span 2;
+  grid-row-end: span 2;
+}
+
+.gallery__link--large {
+  grid-column-end: span 2;
+  grid-row-end: span 2;
+
+  @media (min-width: 618px) {
+    grid-column-end: span 3;
+    grid-row-end: span 3;
+  }
+}
+
+.glightbox-clean .gslide-description {
+  background-color: transparent;
+}

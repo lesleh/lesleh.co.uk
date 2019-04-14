@@ -1,0 +1,13 @@
+.site-footer {
+  text-align: center;
+}
+
+.github-link {
+  color: var(--color-primary-inverse);
+  opacity: 0.5;
+  font-size: 1.5rem;
+
+  &:hover, &:focus {
+    opacity: 1;
+  }
+}

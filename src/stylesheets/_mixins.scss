@@ -1,0 +1,32 @@
+@function px-to-rem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize};
+}
+
+/**
+ * Create a CSS lock to smoothly resize text based on the viewport size.
+ *
+ * @param $property the CSS property name to set
+ * @param $min-size the minimum size the property should be set to
+ * @param $max-size the maximum size the property should be set to
+ * @param $min-width the minimum viewport size to start resizing at
+ * @parsm $max-width the maximum viewport size to start resizing at
+ */
+@mixin size-lock($property, $min-size, $max-size, $min-width: px-to-rem(320px), $max-width: px-to-rem(1000px)) {
+  @if unit($min-size) == "px" {
+    $min-size: px-to-rem($min-size);
+  }
+  @if unit($max-size) == "px" {
+    $max-size: px-to-rem($max-size);
+  }
+  
+  #{$property}: calc(#{$min-size}rem + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}rem) / (#{$max-width} - #{$min-width})));
+
+  @media (max-width: #{$min-width}rem) {
+    #{$property}: #{$min-size}rem;
+  }
+
+  @media (min-width: #{$max-width}rem) {
+    #{$property}: #{$max-size}rem;
+  }
+}

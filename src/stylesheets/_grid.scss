@@ -1,0 +1,20 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 20px;
+}
+
+.grid__column {
+  grid-column: span 12;
+}
+
+@for $i from 1 through 12 {
+  .grid__column.grid__column--#{$i} {
+    grid-column: span #{$i};
+  }
+}
+
+.box {
+  border: solid 1px var(--color-primary-inverse);
+  height: 1em;
+}

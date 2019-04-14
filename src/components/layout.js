@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import "./layout.css"
+import "../stylesheets/_style.scss"
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -25,20 +25,42 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
-          }}
-        >
-          <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <div class="main-grid">
+        <header class="site-header">
+          <h1><span>Lesleh</span>.co.uk</h1>
+          <button class="site-nav__hamburger" aria-label="Main menu"><i class="fas fa-bars"></i></button>
+        </header>
+
+        <ul class="site-nav">
+          <li>
+            <a href="#">
+              Home <i class="fas fa-fw fa-home"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              About <i class="fas fa-fw fa-user-circle"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Photos <i class="fas fa-fw fa-images"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Contact <i class="fas fa-fw fa-envelope"></i>
+            </a>
+          </li>
+        </ul>
+          <h1 class="page-title">Title</h1>
+          <main class="site-main">
+            {children}
+          </main>
+          <footer class="site-footer">
+            <a class="github-link" href="https://github.com/lesleh/lesleh.co.uk3/" title="View source on GitHub">
+              <i class="fab fa-github-alt"></i>
+            </a>
           </footer>
         </div>
       </>

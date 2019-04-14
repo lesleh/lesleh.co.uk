@@ -1,0 +1,39 @@
+.form {
+  max-width: 400px;
+}
+
+.input {
+  margin-bottom: 10px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+}
+
+input:not([type]),
+input[type='text'],
+input[type='password'],
+input[type='email'],
+textarea {
+  color: var(--color-primary);
+  background-color: var(--color-primary-inverse);
+  font-family: var(--font-family);
+  width: 100%;
+  font-size: 16px;
+  padding: var(--input-padding);
+  border: 0;
+
+  @if $rounded-borders {
+    border-radius: var(--border-radius);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0px 0px 4px 4px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.g-recaptcha {
+  margin-bottom: 10px;
+}
