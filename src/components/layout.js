@@ -6,6 +6,7 @@
  */
 
 import React from "react"
+import { config } from "@fortawesome/fontawesome-svg-core";
 import { StaticQuery, graphql } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithubAlt } from '@fortawesome/free-brands-svg-icons'
@@ -14,6 +15,8 @@ import SEO from "./seo"
 import Header from "./header"
 import Nav from "./nav"
 import "../stylesheets/_style.scss"
+
+config.autoAddCss = false
 
 const Layout = ({ title, children }) => (
   <StaticQuery
