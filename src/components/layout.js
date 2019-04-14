@@ -9,10 +9,12 @@ import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
+import SEO from "./seo"
 import Header from "./header"
+import Nav from "./nav"
 import "../stylesheets/_style.scss"
 
-const Layout = ({ children }) => (
+const Layout = ({ title, children }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -25,35 +27,12 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
+        <SEO title={title} />
         <div class="main-grid">
-        <header class="site-header">
-          <h1><span>Lesleh</span>.co.uk</h1>
-          <button class="site-nav__hamburger" aria-label="Main menu"><i class="fas fa-bars"></i></button>
-        </header>
-
-        <ul class="site-nav">
-          <li>
-            <a href="#">
-              Home <i class="fas fa-fw fa-home"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              About <i class="fas fa-fw fa-user-circle"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              Photos <i class="fas fa-fw fa-images"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              Contact <i class="fas fa-fw fa-envelope"></i>
-            </a>
-          </li>
-        </ul>
-          <h1 class="page-title">Title</h1>
+          <Header />
+          <Nav />
+        
+          <h1 class="page-title">{title}</h1>
           <main class="site-main">
             {children}
           </main>
