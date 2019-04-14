@@ -7,6 +7,8 @@
 
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithubAlt } from '@fortawesome/free-brands-svg-icons'
 
 import SEO from "./seo"
 import Header from "./header"
@@ -37,7 +39,7 @@ const Layout = ({ title, children }) => (
           </main>
           <footer className="site-footer">
             <a className="github-link" href="https://github.com/lesleh/lesleh.co.uk3/" title="View source on GitHub">
-              <i className="fab fa-github-alt"></i>
+              <FontAwesomeIcon icon={faGithubAlt} />
             </a>
           </footer>
         </div>

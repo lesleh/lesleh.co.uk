@@ -1,26 +1,34 @@
 import React from "react"
 import { Link } from "gatsby"
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faHome,
+  faUserCircle,
+  faImages,
+  faEnvelope
+} from '@fortawesome/free-solid-svg-icons'
+
 const Nav = () => (
   <ul className="site-nav">
     <li>
       <Link to="/" activeClassName='active'>
-        Home <i className="fas fa-fw fa-home"></i>
+        Home <FontAwesomeIcon icon={faHome} fixedWidth />
       </Link>
     </li>
     <li>
       <Link to="/about/" activeClassName='active'>
-        About <i className="fas fa-fw fa-user-circle"></i>
+        About <FontAwesomeIcon icon={faUserCircle} fixedWidth />
       </Link>
     </li>
     <li>
       <Link to="/photos/" activeClassName='active'>
-        Photos <i className="fas fa-fw fa-images"></i>
+        Photos <FontAwesomeIcon icon={faImages} fixedWidth />
       </Link>
     </li>
     <li>
       <Link to="/contact/" activeClassName='active'>
-        Contact <i className="fas fa-fw fa-envelope"></i>
+        Contact <FontAwesomeIcon icon={faEnvelope} fixedWidth />
       </Link>
     </li>
   </ul>
