@@ -23,7 +23,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#af1440`,
         theme_color: `#af1440`,
-        display: `browser`,
+        display: `standalone`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
@@ -34,9 +34,9 @@ module.exports = {
           families: ['Nunito:300,400,600,700']
         }
       }
-    }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    //`gatsby-plugin-offline`,
   ],
 }

@@ -6,7 +6,6 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import SEO from "./seo"
@@ -28,17 +27,17 @@ const Layout = ({ title, children }) => (
     render={data => (
       <>
         <SEO title={title} />
-        <div class="main-grid">
+        <div className="main-grid">
           <Header />
           <Nav />
         
-          <h1 class="page-title">{title}</h1>
-          <main class="site-main">
+          <h1 className="page-title">{title}</h1>
+          <main className="site-main">
             {children}
           </main>
-          <footer class="site-footer">
-            <a class="github-link" href="https://github.com/lesleh/lesleh.co.uk3/" title="View source on GitHub">
-              <i class="fab fa-github-alt"></i>
+          <footer className="site-footer">
+            <a className="github-link" href="https://github.com/lesleh/lesleh.co.uk3/" title="View source on GitHub">
+              <i className="fab fa-github-alt"></i>
             </a>
           </footer>
         </div>
@@ -46,9 +45,5 @@ const Layout = ({ title, children }) => (
     )}
   />
 )
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
 
 export default Layout
