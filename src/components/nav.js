@@ -17,7 +17,7 @@ const Nav = () => (
       </Link>
     </li>
     <li>
-      <Link to="/about/" activeClassName='active'>
+      <Link to="/about" activeClassName='active'>
         About <FontAwesomeIcon icon={faUserCircle} fixedWidth />
       </Link>
     </li>
