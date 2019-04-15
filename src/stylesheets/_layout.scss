@@ -18,6 +18,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5em;
 }
 
+a {
+  color: var(--color-primary-inverse);
+}
+
 .main-grid {
   max-width: 60em;
   margin: 0 auto;
