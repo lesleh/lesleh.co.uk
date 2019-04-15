@@ -1,19 +1,12 @@
 import React from "react"
 
 import Layout from "../components/layout"
+import BlogPost from '../components/blog_post'
 
 const IndexPage = ({ data }) => (
   <Layout title="Posts">
     {data.allMarkdownRemark.edges.map(({ node }) => (
-      <div key={node.id}>
-        <h3>
-          {node.frontmatter.title}{" "}
-          <span>
-            — {node.frontmatter.date}
-          </span>
-        </h3>
-        <p>{node.excerpt}</p>
-      </div>
+      <BlogPost key={node.id} node={node} includeTitle={true} />
     ))}
   </Layout>
 )
@@ -27,6 +20,9 @@ export const query = graphql`
       totalCount
       edges {
         node {
+          fields {
+            slug
+          }
           id
           frontmatter {
             title
