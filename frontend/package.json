@@ -42,7 +42,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "clean": "rimraf public",
+    "clean": "rimraf .cache public",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "deploy": "aws s3 sync --delete public s3://leslehcouk-gatsby",
