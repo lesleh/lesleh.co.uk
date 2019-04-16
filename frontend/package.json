@@ -34,15 +34,18 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "gatsby-plugin-eslint": "^2.0.4",
-    "prettier": "^1.17.0"
+    "prettier": "^1.17.0",
+    "rimraf": "^2.6.3"
   },
   "keywords": [
     "gatsby"
   ],
   "license": "MIT",
   "scripts": {
+    "clean": "rimraf public",
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "deploy": "aws s3 sync --delete public s3://leslehcouk-gatsby",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
