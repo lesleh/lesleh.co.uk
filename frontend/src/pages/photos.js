@@ -3,9 +3,9 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 
-const Image = ({ url }) => (
+const Image = ({ thumbnailUrl, url }) => (
   <a className="js-gallery-link gallery__link gallery__link--small" href={url}>
-    <img className="gallery__image" style={{ minWidth: '100px', minHeight: '100px' }} alt="" src={url} />
+    <img className="gallery__image" style={{ minWidth: '100px', minHeight: '100px' }} alt="" src={thumbnailUrl} />
   </a>
 );
 
@@ -13,7 +13,10 @@ const Photos = ({ data }) => (
   <Layout title="Photos">
     <div className="gallery">
       { data.allFile.edges.map(edge => (
-        <Image url={edge.node.childImageSharp.original.src} />
+        <Image
+          thumbnailUrl={edge.node.childImageSharp.resize.src}
+          url={edge.node.childImageSharp.original.src}
+        />
       )) }
     </div>
   </Layout>
@@ -28,6 +31,11 @@ export const query = graphql`
         node {
           childImageSharp {
             id
+            resize(width: 200, height: 200, quality: 80) {
+              width
+              height
+              src
+            }
             original {
               width
               height
