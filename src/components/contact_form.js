@@ -27,7 +27,8 @@ export default class ContactForm extends React.Component {
     }
     e.preventDefault();
     if (!recaptchaVerified) {
-      // window.alert('Please complete captcha verification first')
+      // eslint-disable-next-line no-alert
+      window.alert('Please complete captcha verification first');
       e.preventDefault();
     }
   }
