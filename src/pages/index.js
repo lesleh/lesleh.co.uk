@@ -1,18 +1,18 @@
-import React from "react"
-import { graphql } from 'gatsby'
+import React from 'react';
+import { graphql } from 'gatsby';
 
-import Layout from "../components/layout"
-import BlogPost from '../components/blog_post'
+import Layout from '../components/layout';
+import BlogPost from '../components/blog_post';
 
 const IndexPage = ({ data }) => (
   <Layout title="Posts">
     {data.allMarkdownRemark.edges.map(({ node }) => (
-      <BlogPost key={node.id} node={node} includeTitle={true} />
+      <BlogPost key={node.id} node={node} includeTitle />
     ))}
   </Layout>
-)
+);
 
-export default IndexPage
+export default IndexPage;
 
 
 export const query = graphql`
@@ -34,4 +34,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

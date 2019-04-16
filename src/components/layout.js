@@ -5,18 +5,18 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from "react"
-import { config } from "@fortawesome/fontawesome-svg-core";
-import { StaticQuery, graphql } from "gatsby"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithubAlt } from '@fortawesome/free-brands-svg-icons'
+import React from 'react';
+import { config } from '@fortawesome/fontawesome-svg-core';
+import { StaticQuery, graphql } from 'gatsby';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithubAlt } from '@fortawesome/free-brands-svg-icons';
 
-import SEO from "./seo"
-import Header from "./header"
-import Nav from "./nav"
-import "../stylesheets/_style.scss"
+import SEO from './seo';
+import Header from './header';
+import Nav from './nav';
+import '../stylesheets/_style.scss';
 
-config.autoAddCss = false
+config.autoAddCss = false;
 
 const Layout = ({ title, children }) => (
   <StaticQuery
@@ -29,13 +29,13 @@ const Layout = ({ title, children }) => (
         }
       }
     `}
-    render={data => (
+    render={() => (
       <>
         <SEO title={title} />
         <div className="main-grid">
           <Header />
           <Nav />
-        
+
           <h1 className="page-title">{title}</h1>
           <main className="site-main">
             {children}
@@ -49,6 +49,6 @@ const Layout = ({ title, children }) => (
       </>
     )}
   />
-)
+);
 
-export default Layout
+export default Layout;
