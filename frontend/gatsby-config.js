@@ -72,7 +72,7 @@ module.exports = {
         background_color: '#af1440',
         theme_color: '#af1440',
         display: 'standalone',
-        icon: 'src/content/images/gatsby-icon.png', // This path is relative to the root of the site.
+        icon: 'src/content/images/mustache.png', // This path is relative to the root of the site.
       },
     },
     {
