@@ -3,6 +3,8 @@ title: Test
 date: "2017-08-21"
 ---
 
+![](/../photos/2013-11-03-1173161_533360683425011_1457266329_n.jpg)
+
 ```jsx
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

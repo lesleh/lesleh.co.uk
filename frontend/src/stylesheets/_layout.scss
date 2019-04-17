@@ -7,6 +7,10 @@ html {
   color: var(--color-primary-inverse);
 }
 
+img {
+  max-width: 100%;
+}
+
 body {
   @include size-lock(padding-left, 5px, 30px);
   @include size-lock(padding-right, 5px, 30px);
