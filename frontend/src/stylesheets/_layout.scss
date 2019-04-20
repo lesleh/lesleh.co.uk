@@ -69,6 +69,7 @@ a {
 
 .site-main {
   grid-area: main;
+  overflow-x: auto;
 }
 
 .site-main :first-child {
