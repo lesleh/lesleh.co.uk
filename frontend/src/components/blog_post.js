@@ -2,15 +2,14 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 const BlogPost = ({ node, includeTitle = false }) => (
-  <div>
+  <article className="blog-post">
     { includeTitle
       && (
-        <h2>
+        <h2 className="blog-post__title">
           <Link to={node.fields.slug}>
             {node.frontmatter.title}
             {' '}
-            <span>
-              —
+            <span className="blog-post__date">
               {node.frontmatter.date}
             </span>
           </Link>
@@ -18,7 +17,7 @@ const BlogPost = ({ node, includeTitle = false }) => (
       )
     }
     <p>{node.excerpt}</p>
-  </div>
+  </article>
 );
 
 export default BlogPost;
