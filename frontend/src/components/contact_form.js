@@ -49,7 +49,7 @@ export default class ContactForm extends React.Component {
 
   form() {
     return (
-      <form ref={this.formRef} noValidate onSubmit={this.handleSubmit} className="simple_form form" id="new_contact_message" action="https://vv7mpokoyg.execute-api.eu-west-1.amazonaws.com/dev/contact" acceptCharset="UTF-8" method="post">
+      <form ref={this.formRef} onSubmit={this.handleSubmit} className="simple_form form" id="new_contact_message" action="https://vv7mpokoyg.execute-api.eu-west-1.amazonaws.com/dev/contact" acceptCharset="UTF-8" method="post">
         <div className="input string required contact_message_name">
           <label className="string required" htmlFor="contact_message_name">
             <abbr title="required">*</abbr>
