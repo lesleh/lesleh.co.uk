@@ -41,7 +41,7 @@ const Layout = ({ title, children }) => (
             {children}
           </main>
           <footer className="site-footer">
-            <a className="github-link" href="https://github.com/lesleh/lesleh.co.uk3/" title="View source on GitHub">
+            <a className="github-link" href="https://github.com/lesleh/lesleh.co.uk/" title="View source on GitHub">
               <FontAwesomeIcon icon={faGithubAlt} />
             </a>
           </footer>
