@@ -3,7 +3,7 @@ import 'source-map-support/register';
 import * as SES from 'aws-sdk/clients/ses';
 import recaptcha from 'recaptcha-promise';
 
-import { parseForm } from './util';
+import { parseForm, simpleFormat } from './util';
 
 recaptcha.init({
   secret_key: process.env.RECAPTCHA_SECRET_KEY
@@ -29,7 +29,7 @@ function createEmail(data: {[name: string]: string}): SES.SendEmailRequest {
             <p><strong>Name:</strong> ${data.name}</p>
             <p><strong>Email:</strong> ${data.email}</p>
             <p><strong>Message:</strong></p>
-            <p>${data.message}</p>
+            <p>${simpleFormat(data.message)}</p>
           `
         }
       }

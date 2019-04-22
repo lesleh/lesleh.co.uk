@@ -16,3 +16,7 @@ export const parseForm = (body: string, headers: {[name: string]: string}): Prom
 
   bb.end(body);
 });
+
+export function simpleFormat(input: string): string {
+  return input.replace(/([\n|\r\n]){2,}/g, "<br>\n");
+}
