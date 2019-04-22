@@ -1,4 +1,4 @@
-import { APIGatewayProxyHandler } from 'aws-lambda';
+import { APIGatewayProxyHandler, APIGatewayProxyResult } from 'aws-lambda';
 import 'source-map-support/register';
 import * as SES from 'aws-sdk/clients/ses';
 import recaptcha from 'recaptcha-promise';
@@ -9,7 +9,7 @@ recaptcha.init({
   secret_key: process.env.RECAPTCHA_SECRET_KEY
 });
 
-function createEmail(data): SES.SendEmailRequest {
+function createEmail(data: {[name: string]: string}): SES.SendEmailRequest {
   return {
     Source: 'iam@lesleh.co.uk',
     Destination: {
@@ -37,7 +37,7 @@ function createEmail(data): SES.SendEmailRequest {
   }
 }
 
-function wrapCors(response) {
+function wrapCors(response: APIGatewayProxyResult): APIGatewayProxyResult {
   if(!response.headers) {
     response.headers = {}
   }
@@ -46,7 +46,7 @@ function wrapCors(response) {
 }
 
 export const mailer: APIGatewayProxyHandler = async (event, _context) => {
-  let form = await parseForm(event.body, event.headers);
+  let form = await parseForm(event.body!, event.headers);
   const recaptchaResponse = await recaptcha(form['g-recaptcha-response']);
 
   if(!recaptchaResponse) {

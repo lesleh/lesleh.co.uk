@@ -1,6 +1,6 @@
 import * as busboy from 'busboy';
 
-export const parseForm = (body, headers): Promise<{[name: string]: string}> => new Promise((resolve, reject) => {
+export const parseForm = (body: string, headers: {[name: string]: string}): Promise<{[name: string]: string}> => new Promise((resolve, reject) => {
   const contentType = headers['Content-Type'] || headers['content-type'];
   const bb = new busboy({ headers: { 'content-type': contentType }});
 
@@ -10,7 +10,7 @@ export const parseForm = (body, headers): Promise<{[name: string]: string}> => n
     data[fieldname] = val;
   }).on('finish', () => {
     resolve(data);
-  }).on('error', err => {
+  }).on('error', (err: Error) => {
     reject(err);
   });
 
