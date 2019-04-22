@@ -14,7 +14,7 @@ functions:
   contactMailer:
     handler: contact.mailer
     environment:
-      RECAPTCHA_SECRET_KEY: ${ssm:recaptchaSecretKey}
+      RECAPTCHA_SECRET_KEY: ${ssm:recaptchaSecretKey~true}
     events:
       - http:
           method: post
