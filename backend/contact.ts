@@ -2,13 +2,14 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 import 'source-map-support/register';
 import * as SES from 'aws-sdk/clients/ses';
 import recaptcha from 'recaptcha-promise';
-import * as querystring from 'querystring';
+
+import { parseForm } from './util';
 
 recaptcha.init({
   secret_key: process.env.RECAPTCHA_SECRET_KEY
 });
 
-function createEmail(data: querystring.ParsedUrlQuery): SES.SendEmailRequest {
+function createEmail(data): SES.SendEmailRequest {
   return {
     Source: 'iam@lesleh.co.uk',
     Destination: {
@@ -36,36 +37,44 @@ function createEmail(data: querystring.ParsedUrlQuery): SES.SendEmailRequest {
   }
 }
 
+function wrapCors(response) {
+  if(!response.headers) {
+    response.headers = {}
+  }
+  response.headers['Access-Control-Allow-Origin'] = '*';
+  return response;
+}
+
 export const mailer: APIGatewayProxyHandler = async (event, _context) => {
-  const query = querystring.parse(event.body!);
-  const recaptchaResponse = await recaptcha(query['g-recaptcha-response']);
+  let form = await parseForm(event.body, event.headers);
+  const recaptchaResponse = await recaptcha(form['g-recaptcha-response']);
 
   if(!recaptchaResponse) {
-    return {
+    return wrapCors({
       statusCode: 403,
       body: JSON.stringify({
         message: 'Recaptcha failed',
       })
-    }
+    })
   }
   
   let response;
   try {
-      const ses = new SES();
-      response = ses.sendEmail(createEmail(query)).promise();
-    return {
+    const ses = new SES();
+    response = ses.sendEmail(createEmail(form)).promise();
+    return wrapCors({
       statusCode: 200,
       body: JSON.stringify({
         message: 'Message sent successfully!'
       }),
-    }
+    });
   } catch(e) {
-    return {
+    return wrapCors({
       statusCode: 503,
       body: JSON.stringify({
         message: 'Message failed to send!',
         response
       }),
-    }
+    });
   }
 }
