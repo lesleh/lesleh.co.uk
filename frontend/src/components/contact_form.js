@@ -66,6 +66,14 @@ export default class ContactForm extends React.Component {
           </label>
           <input required className="string email required" type="email" name="email" id="contact_message_email" />
         </div>
+        <div className="input subject required contact_message_subject">
+          <label className="subject required" htmlFor="contact_message_subject">
+            <abbr title="required">*</abbr>
+            {' '}
+            Subject
+          </label>
+          <input required className="string subject required" name="subject" id="contact_message_subject" />
+        </div>
         <div className="input text required contact_message_message">
           <label className="text required" htmlFor="contact_message_message">
             <abbr title="required">*</abbr>
