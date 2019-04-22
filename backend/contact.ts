@@ -61,7 +61,7 @@ export const mailer: APIGatewayProxyHandler = async (event, _context) => {
   let response;
   try {
     const ses = new SES();
-    response = ses.sendEmail(createEmail(form)).promise();
+    response = await ses.sendEmail(createEmail(form)).promise();
     return wrapCors({
       statusCode: 200,
       body: JSON.stringify({
@@ -73,7 +73,7 @@ export const mailer: APIGatewayProxyHandler = async (event, _context) => {
       statusCode: 503,
       body: JSON.stringify({
         message: 'Message failed to send!',
-        response
+        error: e
       }),
     });
   }
