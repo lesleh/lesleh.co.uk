@@ -51,7 +51,7 @@ export default Photos;
 
 export const query = graphql`
   {
-    allFile(sort: {order: DESC, fields: [name]}, filter: {relativePath: {regex: "/photos/"}}) {
+    allFile(sort: {order: DESC, fields: [name]}, filter: {relativePath: {regex: "/^photos\//"}}) {
       edges {
         node {
           name
