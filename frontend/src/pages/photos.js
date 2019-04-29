@@ -4,9 +4,6 @@ import classNames from 'classnames';
 
 import Layout from '../components/layout';
 
-/**
- * @param {string} name name of image
- */
 function imageSizeFromName(name) {
   if (name.endsWith('_medium')) {
     return 'medium';
@@ -15,6 +12,16 @@ function imageSizeFromName(name) {
     return 'large';
   }
   return 'small';
+}
+
+function thumbnailSrc(node, size) {
+  if (size === 'medium') {
+    return node.mediumThumbnail.src;
+  }
+  if (size === 'large') {
+    return node.largeThumbnail.src;
+  }
+  return node.smallThumbnail.src;
 }
 
 const Image = ({
@@ -31,7 +38,7 @@ const Photos = ({ data }) => (
       { data.allFile.edges.map(edge => (
         <Image
           key={edge.node.name}
-          thumbnailUrl={edge.node.childImageSharp.resize.src}
+          thumbnailUrl={thumbnailSrc(edge.node.childImageSharp, imageSizeFromName(edge.node.name))}
           url={edge.node.childImageSharp.original.src}
           size={imageSizeFromName(edge.node.name)}
         />
@@ -50,14 +57,16 @@ export const query = graphql`
           name
           childImageSharp {
             id
-            resize(width: 600, height: 600, quality: 80) {
-              width
-              height
+            smallThumbnail: resize(width: 200, height: 200, quality: 80) {
+              src
+            }
+            mediumThumbnail: resize(width: 400, height: 400, quality: 80) {
+              src
+            }
+            largeThumbnail: resize(width: 600, height: 600, quality: 80) {
               src
             }
             original {
-              width
-              height
               src
             }
           }
