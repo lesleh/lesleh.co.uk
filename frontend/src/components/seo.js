@@ -29,6 +29,14 @@ function SEO({ title }) {
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
+      meta={
+        [
+          {
+            name: 'Description',
+            content: 'Personal website of Leslie Hoare',
+          },
+        ]
+      }
     />
   );
 }
