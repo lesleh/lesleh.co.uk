@@ -38,7 +38,7 @@ function SEO({ title }) {
         ]
       }
     >
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
     </Helmet>
   );
 }
