@@ -28,7 +28,7 @@ const Image = ({
   thumbnailUrl, url, name, size,
 }) => (
   <a data-name={name} className={classNames('js-gallery-link', 'gallery__link', `gallery__link--${size}`)} href={url}>
-    <img className="gallery__image" style={{ minWidth: '100px', minHeight: '100px' }} alt="" src={thumbnailUrl} />
+    <img className="gallery__image" style={{ minWidth: '100px', minHeight: '100px' }} alt={name} src={thumbnailUrl} />
   </a>
 );
 
@@ -38,6 +38,7 @@ const Photos = ({ data }) => (
       { data.allFile.edges.map(edge => (
         <Image
           key={edge.node.name}
+          name={edge.node.name}
           thumbnailUrl={thumbnailSrc(edge.node.childImageSharp, imageSizeFromName(edge.node.name))}
           url={edge.node.childImageSharp.original.src}
           size={imageSizeFromName(edge.node.name)}
