@@ -3,9 +3,6 @@ module.exports = {
     title: 'Lesleh.co.uk',
     description: 'Personal website of Leslie Hoare',
   },
-
-
-  
   plugins: [
     'gatsby-plugin-eslint',
     'gatsby-plugin-react-helmet',
