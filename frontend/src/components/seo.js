@@ -39,7 +39,6 @@ function SEO({ title }) {
       }
     >
       <link rel="preconnect" href="https://marketingplatform.google.com" crossOrigin="anonymous" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
     </Helmet>
   );
 }
