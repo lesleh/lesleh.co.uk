@@ -5,18 +5,18 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from 'react';
-import { config } from '@fortawesome/fontawesome-svg-core';
-import { StaticQuery, graphql } from 'gatsby';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithubAlt } from '@fortawesome/free-brands-svg-icons';
+import React from "react"
+import { config } from "@fortawesome/fontawesome-svg-core"
+import { StaticQuery, graphql } from "gatsby"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faGithubAlt } from "@fortawesome/free-brands-svg-icons"
 
-import SEO from './seo';
-import Header from './header';
-import Nav from './nav';
-import '../stylesheets/_style.scss';
+import SEO from "./seo"
+import Header from "./header"
+import Nav from "./nav"
+import "../stylesheets/_style.scss"
 
-config.autoAddCss = false;
+config.autoAddCss = false
 
 const Layout = ({ title, children }) => (
   <StaticQuery
@@ -37,11 +37,13 @@ const Layout = ({ title, children }) => (
           <Nav />
 
           <h1 className="page-title">{title}</h1>
-          <main className="site-main">
-            {children}
-          </main>
+          <main className="site-main">{children}</main>
           <footer className="site-footer">
-            <a className="github-link" href="https://github.com/lesleh/lesleh.co.uk/" title="View source on GitHub">
+            <a
+              className="github-link"
+              href="https://github.com/lesleh/lesleh.co.uk/"
+              title="View source on GitHub"
+            >
               <FontAwesomeIcon icon={faGithubAlt} />
             </a>
           </footer>
@@ -49,6 +51,6 @@ const Layout = ({ title, children }) => (
       </>
     )}
   />
-);
+)
 
-export default Layout;
+export default Layout

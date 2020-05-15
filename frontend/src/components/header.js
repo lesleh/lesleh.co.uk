@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import React, { Component } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBars } from "@fortawesome/free-solid-svg-icons"
 
 const Header = class extends Component {
   handleHamburgerClicked = () => {
-    const menu = window.document.querySelector('.site-nav');
+    const menu = window.document.querySelector(".site-nav")
     if (menu) {
-      menu.classList.toggle('is-open');
+      menu.classList.toggle("is-open")
     }
   }
 
@@ -26,8 +26,8 @@ const Header = class extends Component {
           <FontAwesomeIcon icon={faBars} fixedWidth />
         </button>
       </header>
-    );
+    )
   }
-};
+}
 
-export default Header;
+export default Header

@@ -1,10 +1,10 @@
 export default class ContactMailer {
-  static ENDPOINT = 'url'
+  static ENDPOINT = "url"
 
   async send(formData) {
     return fetch(this.ENDPOINT, {
-      method: 'POST',
+      method: "POST",
       body: formData,
-    }).then(response => response.json());
+    }).then((response) => response.json())
   }
 }
