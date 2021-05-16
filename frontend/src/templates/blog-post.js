@@ -3,7 +3,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 
-export default ({ data }) => {
+const BlogPost = ({ data }) => {
   const post = data.markdownRemark
   return (
     <Layout title={post.frontmatter.title}>
@@ -14,8 +14,10 @@ export default ({ data }) => {
   )
 }
 
+export default BlogPost
+
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
