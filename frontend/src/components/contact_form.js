@@ -53,7 +53,7 @@ export default class ContactForm extends React.Component {
         onSubmit={this.handleSubmit}
         className="simple_form form"
         id="new_contact_message"
-        action="https://vv7mpokoyg.execute-api.eu-west-1.amazonaws.com/dev/contact"
+        action="https://8nori1ef5j.execute-api.eu-west-1.amazonaws.com/dev/contact"
         acceptCharset="UTF-8"
         method="post"
       >
