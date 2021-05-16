@@ -5,10 +5,13 @@ import Layout from "../components/layout"
 
 const BlogPost = ({ data }) => {
   const post = data.markdownRemark
+
+  const postHtml = () => ({ __html: post.html })
+
   return (
     <Layout title={post.frontmatter.title}>
       <div>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div dangerouslySetInnerHTML={postHtml()} />
       </div>
     </Layout>
   )
