@@ -19,7 +19,7 @@ function SEO({ title }) {
           }
         }
       }
-    `
+    `,
   )
 
   return (

@@ -30,7 +30,7 @@ const Image = ({ thumbnailUrl, url, name, size }) => (
     className={classNames(
       "js-gallery-link",
       "gallery__link",
-      `gallery__link--${size}`
+      `gallery__link--${size}`,
     )}
     href={url}
   >
@@ -52,7 +52,7 @@ const Photos = ({ data }) => (
           name={edge.node.name}
           thumbnailUrl={thumbnailSrc(
             edge.node.childImageSharp,
-            imageSizeFromName(edge.node.name)
+            imageSizeFromName(edge.node.name),
           )}
           url={edge.node.childImageSharp.original.src}
           size={imageSizeFromName(edge.node.name)}

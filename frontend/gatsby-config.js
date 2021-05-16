@@ -1,27 +1,27 @@
 module.exports = {
   siteMetadata: {
-    title: 'Lesleh.co.uk',
-    description: 'Personal website of Leslie Hoare',
+    title: "Lesleh.co.uk",
+    description: "Personal website of Leslie Hoare",
   },
   plugins: [
-    'gatsby-plugin-eslint',
-    'gatsby-plugin-react-helmet',
+    "gatsby-plugin-eslint",
+    "gatsby-plugin-react-helmet",
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: 'UA-23496576-1',
+        trackingId: "UA-23496576-1",
       },
     },
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
-          'gatsby-remark-unwrap-images',
+          "gatsby-remark-unwrap-images",
           {
-            resolve: 'gatsby-remark-picture',
+            resolve: "gatsby-remark-picture",
           },
           {
-            resolve: 'gatsby-remark-prismjs',
+            resolve: "gatsby-remark-prismjs",
             options: {
               // Class prefix for <pre> tags containing syntax highlighting;
               // defaults to 'language-' (eg <pre class="language-js">).
@@ -30,7 +30,7 @@ module.exports = {
               // you may use this to prevent Prism from re-processing syntax.
               // This is an uncommon use-case though;
               // If you're unsure, it's best to use the default value.
-              classPrefix: 'language-',
+              classPrefix: "language-",
               // This is used to allow setting a language for inline code
               // (i.e. single backticks) by creating a separator.
               // This separator is a string and will do no white-space
@@ -60,29 +60,29 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: 'content',
+        name: "content",
         path: `${__dirname}/src/content`,
       },
     },
-    'gatsby-plugin-sass',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+    "gatsby-plugin-sass",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: "gatsby-plugin-manifest",
       options: {
-        name: 'Lesleh.co.uk',
-        short_name: 'Lesleh.co.uk',
-        start_url: '/',
-        background_color: '#af1440',
-        theme_color: '#af1440',
-        display: 'standalone',
-        icon: 'src/content/images/mustache.png', // This path is relative to the root of the site.
+        name: "Lesleh.co.uk",
+        short_name: "Lesleh.co.uk",
+        start_url: "/",
+        background_color: "#af1440",
+        theme_color: "#af1440",
+        display: "standalone",
+        icon: "src/content/images/mustache.png", // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    'gatsby-plugin-offline',
+    "gatsby-plugin-offline",
   ],
-};
+}
