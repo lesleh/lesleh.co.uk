@@ -20,6 +20,13 @@ const serverlessConfiguration: Serverless = {
     name: "aws",
     runtime: "nodejs12.x",
     region: "eu-west-1",
+    iamRoleStatements: [
+      {
+        Effect: "Allow",
+        Action: ["ses:SendEmail"],
+        Resource: "*",
+      },
+    ],
     apiGateway: {
       minimumCompressionSize: 1024,
     },
