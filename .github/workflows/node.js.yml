@@ -29,6 +29,6 @@ jobs:
     - name: Build
       run: yarn run build
       working-directory: frontend
-    - name: Build
+    - name: Deploy
       run: yarn run deploy
       working-directory: frontend
