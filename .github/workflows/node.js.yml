@@ -50,5 +50,5 @@ jobs:
       run: yarn install
       working-directory: backend
     - name: Deploy
-      run: yarn run sls deploy --stage prod
+      run: yarn run deploy
       working-directory: backend
