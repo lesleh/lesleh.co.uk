@@ -13,7 +13,7 @@ const Nav = () => (
   <ul className="site-nav">
     <li>
       <Link to="/" activeClassName="active">
-        Home <FontAwesomeIcon icon={faHome} fixedWidth size="3x" />
+        Home <FontAwesomeIcon icon={faHome} fixedWidth />
       </Link>
     </li>
     <li>
