@@ -35,7 +35,7 @@ const menuItems = [
 const Nav = () => (
   <ul className="site-nav">
     {menuItems.map((menuItem) => (
-      <Link to={menuItem.link} activeClassName="active">
+      <Link key={menuItem.link} to={menuItem.link} activeClassName="active">
         {menuItem.title} <FontAwesomeIcon icon={menuItem.icon} fixedWidth />
       </Link>
     ))}
