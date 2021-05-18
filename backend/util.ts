@@ -8,7 +8,7 @@ export const parseForm = (
     const contentType = headers["Content-Type"] || headers["content-type"];
     const bb = new busboy({ headers: { "content-type": contentType } });
 
-    var data: { [name: string]: string } = {};
+    const data: Record<string, string> = {};
 
     bb.on("field", (fieldname, val) => {
       data[fieldname] = val;

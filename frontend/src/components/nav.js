@@ -9,28 +9,36 @@ import {
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons"
 
+const menuItems = [
+  {
+    title: "Home",
+    link: "/",
+    icon: faHome,
+  },
+  {
+    title: "About",
+    link: "/about/",
+    icon: faUserCircle,
+  },
+  {
+    title: "Photos",
+    link: "/photos/",
+    icon: faImages,
+  },
+  {
+    title: "Contact",
+    link: "/contact/",
+    icon: faEnvelope,
+  },
+]
+
 const Nav = () => (
   <ul className="site-nav">
-    <li>
-      <Link to="/" activeClassName="active">
-        Home <FontAwesomeIcon icon={faHome} fixedWidth />
+    {menuItems.map((menuItem) => (
+      <Link to={menuItem.link} activeClassName="active">
+        {menuItem.title} <FontAwesomeIcon icon={menuItem.icon} fixedWidth />
       </Link>
-    </li>
-    <li>
-      <Link to="/about/" activeClassName="active">
-        About <FontAwesomeIcon icon={faUserCircle} fixedWidth />
-      </Link>
-    </li>
-    <li>
-      <Link to="/photos/" activeClassName="active">
-        Photos <FontAwesomeIcon icon={faImages} fixedWidth />
-      </Link>
-    </li>
-    <li>
-      <Link to="/contact/" activeClassName="active">
-        Contact <FontAwesomeIcon icon={faEnvelope} fixedWidth />
-      </Link>
-    </li>
+    ))}
   </ul>
 )
 

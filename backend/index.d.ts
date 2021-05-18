@@ -1,7 +1,7 @@
 declare module "recaptcha-promise" {
-  var RecaptchaPromise: {
+  const RecaptchaPromise: {
     (response: string): Promise<boolean>;
-    init: (config: object) => any;
-  }
+    init: (config: Record<string, unknown>) => unknown;
+  };
   export default RecaptchaPromise;
 }

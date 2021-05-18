@@ -43,39 +43,39 @@ function wrapCors(response: APIGatewayProxyResult): APIGatewayProxyResult {
   return response;
 }
 
+const createResponse = (
+  statusCode: number,
+  message: string,
+  extraFields: Record<string, unknown> = {}
+) => {
+  return wrapCors({
+    statusCode,
+    body: JSON.stringify({
+      message,
+      ...extraFields,
+    }),
+  });
+};
+
 export const mailer: APIGatewayProxyHandler = async (event, _context) => {
-  let form = await parseForm(event.body!, event.headers);
+  if (!event.body) {
+    return createResponse(422, "Missing request body");
+  }
+
+  const form = await parseForm(event.body, event.headers);
   console.log(form);
   const recaptchaResponse = await recaptcha(form["g-recaptcha-response"]);
 
   if (!recaptchaResponse) {
-    return wrapCors({
-      statusCode: 403,
-      body: JSON.stringify({
-        message: "Recaptcha failed",
-      }),
-    });
+    return createResponse(403, "Recaptcha failed");
   }
 
-  let response;
   try {
     const ses = new SES();
     const email = createEmail(form);
-    response = await ses.sendEmail(email).promise();
-    return wrapCors({
-      statusCode: 200,
-      body: JSON.stringify({
-        message: "Message sent successfully!",
-      }),
-    });
+    await ses.sendEmail(email).promise();
+    return createResponse(200, "Message sent successfully!");
   } catch (e) {
-    console.log(e);
-    return wrapCors({
-      statusCode: 503,
-      body: JSON.stringify({
-        message: "Message failed to send!",
-        error: e,
-      }),
-    });
+    return createResponse(503, "Message failed to send!", { error: e });
   }
 };
