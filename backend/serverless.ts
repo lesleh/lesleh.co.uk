@@ -51,7 +51,7 @@ const serverlessConfiguration: Serverless = {
       handler: "contact.mailer",
       memorySize: 128,
       environment: {
-        RECAPTCHA_SECRET_KEY: "${ssm:recaptchaSecretKey~true}",
+        RECAPTCHA_SECRET_KEY: "${ssm:recaptchaSecretKey}",
       },
       events: [
         {
