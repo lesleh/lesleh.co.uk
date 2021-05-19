@@ -42,7 +42,7 @@ const serverlessConfiguration: Serverless = {
       memorySize: 128,
       events: [
         {
-          httpApi: {
+          http: {
             method: "get",
             path: "",
           },
@@ -57,9 +57,10 @@ const serverlessConfiguration: Serverless = {
       },
       events: [
         {
-          httpApi: {
+          http: {
             method: "post",
             path: "contact",
+            cors: true,
           },
         },
       ],
