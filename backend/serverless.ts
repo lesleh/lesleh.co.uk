@@ -35,6 +35,18 @@ const serverlessConfiguration: Serverless = {
     },
   },
   functions: {
+    home: {
+      handler: "home.handler",
+      memorySize: 128,
+      events: [
+        {
+          http: {
+            method: "get",
+            path: "",
+          },
+        },
+      ],
+    },
     contactMailer: {
       handler: "contact.mailer",
       memorySize: 128,
