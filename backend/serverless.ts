@@ -1,13 +1,10 @@
 import type { Serverless } from "serverless/aws";
 
 const serverlessConfiguration: Serverless = {
-  service: {
-    name: "backend",
-    // app and org for use with dashboard.serverless.com
-    // app: your-app-name,
-    // org: your-org-name,
-  },
+  service: "backend",
   frameworkVersion: "2",
+  // @ts-expect-error Type declaration only allows single value
+  variablesResolutionMode: 20210326,
   custom: {
     webpack: {
       webpackConfig: "./webpack.config.js",
@@ -20,13 +17,18 @@ const serverlessConfiguration: Serverless = {
     name: "aws",
     runtime: "nodejs12.x",
     region: "eu-west-1",
-    iamRoleStatements: [
-      {
-        Effect: "Allow",
-        Action: ["ses:SendEmail"],
-        Resource: "*",
+    lambdaHashingVersion: 20201221,
+    iam: {
+      role: {
+        statements: [
+          {
+            Effect: "Allow",
+            Action: ["ses:SendEmail"],
+            Resource: "*",
+          },
+        ],
       },
-    ],
+    },
     apiGateway: {
       minimumCompressionSize: 1024,
     },
