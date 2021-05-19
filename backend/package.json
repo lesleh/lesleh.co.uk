@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@types/busboy": "^0.2.3",
-    "aws-sdk": "^2.907.0",
+    "aws-sdk": "2.880.0",
     "busboy": "^0.3.1",
     "recaptcha-promise": "^1.0.0",
     "source-map-support": "^0.5.10"
