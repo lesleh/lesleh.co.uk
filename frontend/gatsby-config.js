@@ -6,12 +6,12 @@ module.exports = {
   plugins: [
     "gatsby-plugin-eslint",
     "gatsby-plugin-react-helmet",
-    {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId: "UA-23496576-1",
-      },
-    },
+//     {
+//       resolve: "gatsby-plugin-google-analytics",
+//       options: {
+//         trackingId: "UA-23496576-1",
+//       },
+//     },
     {
       resolve: "gatsby-transformer-remark",
       options: {
