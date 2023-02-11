@@ -3,8 +3,6 @@ title: Hacking dyndns protocol
 date: "2023-02-11"
 ---
 
-# Hacking dyndns protocol
-
 I recently discovered that my router supports the DynDNS protocol. However, I was disappointed to find out that the DynDNS service costs $55 per year just to keep a DNS record updated. Nevertheless, I discovered that it's possible to change the host that the router connects to.
 
 To achieve this, I created a basic HTTP server using Node.js to capture the incoming requests. Here's the code:
