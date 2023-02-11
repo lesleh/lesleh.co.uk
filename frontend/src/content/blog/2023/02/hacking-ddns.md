@@ -5,6 +5,10 @@ date: "2023-02-11"
 
 I recently discovered that my router supports the DynDNS protocol. However, I was disappointed to find out that the DynDNS service costs $55 per year just to keep a DNS record updated. Nevertheless, I discovered that it's possible to change the host that the router connects to.
 
+Dynamic Domain Name System (DDNS) is a service that allows users to associate a hostname with a dynamic IP address, allowing users to access a device connected to the Internet using a domain name instead of an IP address. DDNS is useful because most Internet Service Providers (ISPs) assign dynamic IP addresses to their customers, which can change over time. This makes it difficult to connect to a device using its IP address, as the address may change and cause connection issues. DDNS solves this problem by providing a way to associate a hostname with a dynamic IP address, so users can connect to their device using the hostname, which remains constant even if the IP address changes.
+
+In my specific case, I have a small web server running on a Raspberry Pi which I'd like to expose using a friendly DNS name.
+
 To achieve this, I created a basic HTTP server using Node.js to capture the incoming requests. Here's the code:
 
 ```js
