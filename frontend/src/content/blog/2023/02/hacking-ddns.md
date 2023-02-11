@@ -157,6 +157,6 @@ module.exports.handler = async (event) => {
 
 The serverless framework handles creating the Cloudformation stack necessary for running the code, including creating a user role with permission to access Route53.
 
-## Allowing access via HTTP
+## Enabling HTTP access for API Gateway
 
-AWS Lambda only supports access by HTTPS by default, but the dyndns protocol used by the router doesn't appear to support it. So to get around that, I created a Cloudfront distribution and pointed it at the API Gateway. To work correctly, you have to configure it to pass along the specific query string parameters `hostname`/`myip`, as by default Cloudfront will not pass along any query string parameters to the original server. It's also probably a good idea to disable caching, to ensure our requests actually get passed along.
+By default, API Gateway only permits access through HTTPS. However, the dyndns protocol utilized by the router does not seem to be compatible with HTTPS. To overcome this limitation, a Cloudfront distribution was set up and directed towards the API Gateway. For proper functionality, it is necessary to configure Cloudfront to transmit the hostname/myip query string parameters. This is because, by default, Cloudfront will not pass on any query string parameters to the underlying server. To guarantee that our requests are successfully transmitted, it is advisable to disable caching as well.
