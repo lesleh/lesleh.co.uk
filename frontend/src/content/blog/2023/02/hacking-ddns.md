@@ -9,7 +9,9 @@ Dynamic Domain Name System (DDNS) is a service that allows users to associate a 
 
 In my specific case, I have a small web server running on a Raspberry Pi which I'd like to expose using a friendly DNS name.
 
-To achieve this, I created a basic HTTP server using Node.js to capture the incoming requests. Here's the code:
+## Figuring out the protocol
+
+To achieve this, I created a basic HTTP server using Node.js to capture the incoming requests and find the request shape. Here's the code:
 
 ```js
 import http from "http";
