@@ -1,0 +1,26 @@
+---
+import "../stylesheets/_index.scss";
+import Layout from "../components/layout";
+
+export interface Props {
+  content: {
+    title: string;
+  };
+}
+
+const { content } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{content.title}</title>
+  </head>
+  <body>
+    <Layout title={content.title}>
+      <slot />
+    </Layout>
+  </body>
+</html>
