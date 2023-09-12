@@ -27,7 +27,7 @@ const { title } = Astro.props;
   </head>
   <body>
     <div class="main-grid">
-      <Header client:load />
+      <Header client:idle />
       <Nav />
 
       <h1 class="page-title">{title}</h1>
