@@ -1,5 +1,20 @@
 ---
+import { Image } from "astro:assets";
 import MainLayout from "../layouts/main.astro";
+
+const photos = await Astro.glob("../content/photos/*.jpg").then((photos) =>
+  photos.map((photo) => photo.default),
+);
 ---
 
-<MainLayout title="Photos">Coming soon.</MainLayout>
+<MainLayout title="Photos">
+  <div class="gallery">
+    {
+      photos.map((photo) => (
+        <a href="#" class="gallery__link">
+          <Image class="gallery__image" src={photo} alt="" />
+        </a>
+      ))
+    }
+  </div>
+</MainLayout>
