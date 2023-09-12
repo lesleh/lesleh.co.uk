@@ -10,9 +10,14 @@ const photos = await Astro.glob("../content/photos/*.jpg").then((photos) =>
 <MainLayout title="Photos">
   <div class="gallery">
     {
-      photos.map((photo) => (
+      photos.map((photo, i) => (
         <a href="#" class="gallery__link">
-          <Image class="gallery__image" src={photo} alt="" />
+          <Image
+            class="gallery__image"
+            src={photo}
+            loading={i < 8 ? "eager" : "lazy"}
+            alt=""
+          />
         </a>
       ))
     }
