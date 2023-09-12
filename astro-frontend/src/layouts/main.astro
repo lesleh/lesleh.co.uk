@@ -1,14 +1,15 @@
 ---
 import "../stylesheets/_index.scss";
-import Layout from "../components/layout";
+import Nav from "../components/nav";
+import Header from "../components/header";
+import { FontAwesomeIcon } from "@aduh95/preact-fontawesome";
+import { faGithubAlt } from "@fortawesome/free-brands-svg-icons";
 
 export interface Props {
-  content: {
-    title: string;
-  };
+  title: string;
 }
 
-const { content } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -16,7 +17,7 @@ const { content } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{content.title}</title>
+    <title>{title} - Lesleh.co.uk</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -25,8 +26,21 @@ const { content } = Astro.props;
     />
   </head>
   <body>
-    <Layout title={content.title}>
-      <slot />
-    </Layout>
+    <div class="main-grid">
+      <Header client:load />
+      <Nav />
+
+      <h1 class="page-title">{title}</h1>
+      <main class="site-main"><slot /></main>
+      <footer class="site-footer">
+        <a
+          class="github-link"
+          href="https://github.com/lesleh/lesleh.co.uk/"
+          title="View source on GitHub"
+        >
+          <FontAwesomeIcon icon={faGithubAlt} />
+        </a>
+      </footer>
+    </div>
   </body>
 </html>

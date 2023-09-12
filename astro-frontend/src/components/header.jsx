@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@aduh95/preact-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Header = class extends Component {

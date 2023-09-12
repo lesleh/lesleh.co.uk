@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@aduh95/preact-fontawesome";
 import {
   faHome,
   faUserCircle,
