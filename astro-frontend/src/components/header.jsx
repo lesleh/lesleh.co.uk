@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component } from "preact";
 import { FontAwesomeIcon } from "@aduh95/preact-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 

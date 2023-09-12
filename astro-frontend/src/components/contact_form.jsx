@@ -1,50 +1,50 @@
-import React from "react"
-import Reaptcha from "reaptcha"
+import React from "preact";
+import Reaptcha from "reaptcha";
 
 export default class ContactForm extends React.Component {
   constructor() {
-    super()
-    this.formRef = React.createRef()
+    super();
+    this.formRef = React.createRef();
     this.state = {
       recaptchaVerified: false,
       formSubmitted: false,
-    }
+    };
   }
 
   verifyCallback = () => {
     this.setState({
       recaptchaVerified: true,
-    })
-  }
+    });
+  };
 
   handleSubmit = async (e) => {
-    e.persist()
-    e.preventDefault()
-    const { recaptchaVerified } = this.state
+    e.persist();
+    e.preventDefault();
+    const { recaptchaVerified } = this.state;
 
     if (!recaptchaVerified) {
       // eslint-disable-next-line no-alert
-      window.alert("Please complete captcha verification first")
-      return
+      window.alert("Please complete captcha verification first");
+      return;
     }
 
-    const url = this.formRef.current.action
-    const data = new FormData(this.formRef.current)
+    const url = this.formRef.current.action;
+    const data = new FormData(this.formRef.current);
 
     const response = await fetch(url, {
       method: "POST",
       body: data,
-    })
+    });
 
     if (response.ok) {
       this.setState({
         formSubmitted: true,
-      })
+      });
     } else {
       // eslint-disable-next-line no-alert
-      window.alert("Message sending failed!")
+      window.alert("Message sending failed!");
     }
-  }
+  };
 
   form() {
     return (
@@ -110,13 +110,13 @@ export default class ContactForm extends React.Component {
         />
         <input type="submit" name="commit" value="Send" className="btn" />
       </form>
-    )
+    );
   }
 
   render() {
-    const { formSubmitted } = this.state
+    const { formSubmitted } = this.state;
     return (
       <>{formSubmitted ? <p>Message sent successfully!</p> : this.form()}</>
-    )
+    );
   }
 }
