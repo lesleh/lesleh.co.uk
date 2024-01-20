@@ -6,6 +6,7 @@ import BlogPost from "../components/blog_post"
 
 const IndexPage = ({ data }) => (
   <Layout title="Posts">
+    <p><a href="https://ridomovies.tv/movies/spirited-away-watch-online-2001-rd11-rd13">Cassie click here for Spirited Away</a></p>
     {data.allMarkdownRemark.edges.map(({ node }) => (
       <BlogPost key={node.id} node={node} includeTitle />
     ))}
