@@ -8,6 +8,10 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: "https://lesleh.co.uk",
   trailingSlash: "always",
+  // The home page is the list of posts, so /blog/ has no page of its own.
+  redirects: {
+    "/blog": "/",
+  },
   integrations: [mdx(), preact()],
   // Astro downloads the files at build time and serves them from the site.
   fonts: [
