@@ -24,7 +24,7 @@
     <text x="101" y="340" font-size="17">150 words</text>
     <text x="459" y="384" font-size="17">150 words</text>
     <text x="280" y="64" font-size="18" font-weight="700">Openings</text>
-    <text x="280" y="84" font-size="15" fill-opacity=".8">written blind</text>
+    <text x="280" y="84" font-size="15">written blind</text>
     <text x="280" y="154" font-size="18" font-weight="700">Rebuttal 1</text>
     <text x="280" y="258" font-size="18" font-weight="700">Rebuttal 2</text>
     <text x="280" y="362" font-size="18" font-weight="700">Closings</text>

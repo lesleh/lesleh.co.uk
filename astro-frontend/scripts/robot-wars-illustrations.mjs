@@ -128,7 +128,7 @@ const oneRun = svg({
     <text x="459" y="28" font-size="20" font-weight="700" letter-spacing="2">CON</text>
     ${speeches.map((s) => s.text).join("\n    ")}
     <text x="280" y="64" font-size="18" font-weight="700">Openings</text>
-    <text x="280" y="84" font-size="15" fill-opacity=".8">written blind</text>
+    <text x="280" y="84" font-size="15">written blind</text>
     <text x="280" y="154" font-size="18" font-weight="700">Rebuttal 1</text>
     <text x="280" y="258" font-size="18" font-weight="700">Rebuttal 2</text>
     <text x="280" y="362" font-size="18" font-weight="700">Closings</text>
@@ -148,7 +148,7 @@ const pointless = svg({
   w: 640,
   h: 300,
   label:
-    "A dictionary open at the entry 'pointless, adjective: having no value at all', with 'at all' highlighted. A robot marked CON points at the highlight.",
+    "A dictionary open at the entry 'pointless, adjective: having no value at all', with 'at all' underlined. A robot marked CON points at the underline.",
   body: `
   <defs>
     ${head("rw-pointless-head")}
@@ -158,7 +158,7 @@ const pointless = svg({
   <path d="M240 62q90-16 200-4v204q-110-12-200 4Z" ${TINT}/>
   <path d="${lines(62, [94, 114, 134, 154, 174, 194, 214, 234], [150, 120, 156, 96, 140, 156, 110, 130])}" stroke-width="3" stroke-opacity=".35"/>
   <path d="${lines(262, [216, 236], [150, 104])}" stroke-width="3" stroke-opacity=".35"/>
-  <rect x="257" y="169" width="66" height="27" rx="3" fill="currentColor" fill-opacity=".3" stroke="none" transform="rotate(-2 290 183)"/>
+  <path d="M259 195h62" stroke-width="4" transform="rotate(-2 290 196)"/>
   <g transform="translate(550 96) scale(-1 1)">
     <use href="#rw-pointless-head"/>
     <rect x="-48" y="68" width="96" height="80" rx="14" ${TINT}/>
@@ -170,7 +170,7 @@ const pointless = svg({
   </g>
   <g fill="currentColor" stroke="none">
     <text x="262" y="104" font-size="30" font-weight="700">pointless</text>
-    <text x="262" y="128" font-size="16" font-style="italic" fill-opacity=".8">adjective</text>
+    <text x="262" y="128" font-size="16" font-style="italic">adjective</text>
     <text x="262" y="162" font-size="20">Having no value</text>
     <text x="262" y="188" font-size="20">at all.</text>
     <text x="550" y="212" font-size="20" font-weight="700" letter-spacing="2" text-anchor="middle">CON</text>
@@ -191,7 +191,7 @@ const card = (x, angle, title, detail, stamp) => {
     <g fill="currentColor" stroke="none" text-anchor="middle">
       <text x="${cx}" y="62" font-size="18" font-weight="700">${title[0]}</text>
       <text x="${cx}" y="84" font-size="18" font-weight="700">${title[1]}</text>
-      <text x="${cx}" y="112" font-size="16" fill-opacity=".85">${detail}</text>
+      <text x="${cx}" y="112" font-size="16">${detail}</text>
     </g>
   </g>`;
 };
@@ -223,13 +223,13 @@ const breakEven = svg({
     ${bar(112, 1)}
     ${bar(176, 2.5)}
     <text x="10" y="30" font-size="21" font-weight="700">Average time lost per commit</text>
-    <text x="10" y="56" font-size="17" fill-opacity=".85">if the slow checks fail on 1 commit in 4,</text>
-    <text x="10" y="78" font-size="17" fill-opacity=".85">and each failure costs 10 minutes</text>
+    <text x="10" y="56" font-size="17">if the slow checks fail on 1 commit in 4,</text>
+    <text x="10" y="78" font-size="17">and each failure costs 10 minutes</text>
     <g text-anchor="end">
       <text x="166" y="122" font-size="18">With the hook</text>
-      <text x="166" y="142" font-size="15" fill-opacity=".8">every commit waits</text>
+      <text x="166" y="142" font-size="15">every commit waits</text>
       <text x="166" y="186" font-size="18">Without the hook</text>
-      <text x="166" y="206" font-size="15" fill-opacity=".8">a quarter of 10 minutes</text>
+      <text x="166" y="206" font-size="15">a quarter of 10 minutes</text>
     </g>
     <text x="290" y="130" font-size="18" font-weight="700">1 min</text>
     <text x="440" y="194" font-size="18" font-weight="700">2.5 min</text>

@@ -25,7 +25,7 @@
   @media (prefers-color-scheme: dark) {
     :root {
       --color-primary: #2a2a2e;
-      --color-primary-inverse: #af1440;
+      --color-primary-inverse: #f58aa3;
     }
   }
 
