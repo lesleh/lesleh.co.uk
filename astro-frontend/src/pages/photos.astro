@@ -2,9 +2,11 @@
 import { Image } from "astro:assets";
 import MainLayout from "../layouts/main.astro";
 
-const photos = await Astro.glob("../content/photos/*.jpg").then((photos) =>
-  photos.map((photo) => photo.default),
-);
+const photos = Object.values(
+  import.meta.glob<{ default: ImageMetadata }>("../content/photos/*.jpg", {
+    eager: true,
+  }),
+).map((photo) => photo.default);
 ---
 
 <MainLayout title="Photos">
