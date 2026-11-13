@@ -15,7 +15,12 @@ export async function getStaticPaths() {
 }
 ---
 
-<MainLayout title={entry.data.title} description={entry.data.description}>
+<MainLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  image={entry.data.image}
+  type="article"
+>
   <Prose>
     <Content />
   </Prose>

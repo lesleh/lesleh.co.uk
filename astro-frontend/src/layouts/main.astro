@@ -1,5 +1,7 @@
 ---
 import "../stylesheets/global.css";
+import { getImage } from "astro:assets";
+import defaultImage from "../assets/leslie.png";
 import Nav from "../components/nav";
 import Header from "../components/header";
 import Icon from "../components/icon";
@@ -8,10 +10,21 @@ import { faCircleHalfStroke } from "@fortawesome/free-solid-svg-icons";
 
 export interface Props {
   title: string;
-  description?: string;
+  description?: string | undefined;
+  image?: ImageMetadata | undefined;
+  type?: "website" | "article";
 }
 
-const { title, description } = Astro.props;
+const SITE_NAME = "Lesleh.co.uk";
+const DEFAULT_DESCRIPTION =
+  "Leslie Hoare's personal site, with posts about things I've been tinkering with.";
+
+const { title, description, image, type = "website" } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+// A post's image is wide, so it gets the large card. The default is a square photo.
+const preview = await getImage({ src: image ?? defaultImage, format: "png" });
+const previewUrl = new URL(preview.src, Astro.site);
 ---
 
 <html lang="en" class="bg-primary font-sans text-primary-inverse">
@@ -19,8 +32,25 @@ const { title, description } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} - Lesleh.co.uk</title>
+    <title>{title} - {SITE_NAME}</title>
     {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content={description ?? DEFAULT_DESCRIPTION}
+    />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={previewUrl} />
+    <meta property="og:image:width" content={preview.attributes.width} />
+    <meta property="og:image:height" content={preview.attributes.height} />
+    <meta
+      name="twitter:card"
+      content={image ? "summary_large_image" : "summary"}
+    />
     <script is:inline>
       // Runs before the first paint so a saved theme does not flash.
       try {
