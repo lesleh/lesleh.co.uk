@@ -1,6 +1,6 @@
 # astro-frontend
 
-The Astro project for <https://lesleh.co.uk/>. The build output is plain HTML: a blog, a photos page and an about page.
+The Astro project for <https://lesleh.co.uk/>. The pages are plain HTML: a blog, a photos page, an about page and a contact page. One server route, `/api/contact/`, sends the messages from the contact form.
 
 The site uses:
 
@@ -55,9 +55,22 @@ pnpm preview
 
 Vercel deploys the site. There is no deploy script or workflow in this repository.
 
+The `@astrojs/vercel` adapter builds `/api/contact/` as a Vercel function. Every other page is static.
+
+## Contact form
+
+The contact form sends email through the [Resend](https://resend.com) HTTP API. Set these environment variables in Vercel, and in `.env` for local development:
+
+- `RESEND_API_KEY` is the Resend API key
+- `CONTACT_FROM_EMAIL` is the sender address, on a domain verified in Resend
+- `CONTACT_TO_EMAIL` is the address that receives the messages
+
+`.env.example` lists the same variables. If one is missing, the route replies with status 503 and the page says it cannot send messages.
+
 ## Layout
 
 - `src/pages/` holds the pages and the blog post route
+- `src/pages/api/contact.ts` holds the server route for the contact form
 - `src/content/blog/` holds the blog posts, as MDX files
 - `src/content/photos/` holds the images for the photos page
 - `src/layouts/` and `src/components/` hold the shared layout and the Preact components
