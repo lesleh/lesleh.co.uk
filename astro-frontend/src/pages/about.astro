@@ -1,5 +1,68 @@
 ---
+import { Image } from "astro:assets";
 import MainLayout from "../layouts/main.astro";
+import photo from "../assets/leslie.png";
 ---
 
-<MainLayout title="About">Coming soon.</MainLayout>
+<MainLayout
+  title="About"
+  description="I'm Leslie, a senior frontend engineer. This is where I write things up, and where I link to the other things I've made."
+>
+  <Image
+    class="float-right mb-2 ml-4 size-28 sm:size-40"
+    src={photo}
+    width={320}
+    height={320}
+    loading="eager"
+    alt="Leslie Hoare"
+  />
+  <p>
+    I'm Leslie, a senior frontend engineer. This site is where I write things up
+    when I've been tinkering with something. The posts so far are from 2019,
+    2023 and 2026, so don't hold your breath for the next one.
+  </p>
+
+  <h2>Playground</h2>
+  <p>
+    <a href="https://lesleh.uk/">lesleh.uk</a> is my scratchpad for web experiments.
+    It's mostly games, simulations and small AI things that run in the browser. A
+    few to start with:
+  </p>
+  <ul>
+    <li>
+      <a href="https://lesleh.uk/playgrounds/connect-four">Connect 4</a>, against
+      an AI that learned the game by playing itself
+    </li>
+    <li>
+      <a href="https://lesleh.uk/playgrounds/grokking">Grokking</a>, where a
+      neural network memorises sums, gets nowhere for thousands of steps, then
+      suddenly works it out
+    </li>
+    <li>
+      <a href="https://lesleh.uk/playgrounds/evolving-walkers"
+        >Evolving Walkers</a
+      >, where robots evolve their own brains until they can walk
+    </li>
+    <li>
+      <a href="https://lesleh.uk/playgrounds/lottery">Lottery Simulator</a>,
+      which runs a million UK Lotto draws so you can watch the house win
+    </li>
+  </ul>
+
+  <h2>Recipes</h2>
+  <p>
+    <a href="https://recipes.lesleh.co.uk/">recipes.lesleh.co.uk</a> is where I
+    keep the recipes I cook. It's mostly quick weeknight dinners, with the odd
+    thing like{" "}
+    <a href="https://recipes.lesleh.co.uk/recipes/rice-cooker-oyakodon"
+      >rice cooker oyakodon</a
+    >.
+  </p>
+
+  <h2>Code</h2>
+  <p>
+    My code is on <a href="https://github.com/lesleh">GitHub</a>, including{" "}
+    <a href="https://github.com/lesleh/lesleh.co.uk">the source for this site</a
+    >.
+  </p>
+</MainLayout>
