@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 264" width="100%" role="img" aria-label="Three rows, each with an arrow to a page. Safari 12.1, on macOS, shows the dark page. Firefox 67, beta, on macOS, shows the dark page. No support falls back to light, and shows the light page." fill="none" stroke="var(--illo-ink, #3b0d1a)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto;padding:3%;box-sizing:border-box;border-radius:12px;background:var(--illo-paper, #fbf1e4);max-width:30rem">
+<rect x="16" y="16" width="250" height="64" rx="12" fill="var(--illo-blue, #8fd0f0)"/>
+  <path d="M278 48H316M308 40l8 8-8 8"/>
+  <rect x="330" y="16" width="134" height="64" rx="6" fill="var(--illo-fixed-night, #222)"/>
+  <g stroke="none"><rect x="342" y="28" width="67" height="10" rx="3" fill="var(--illo-fixed-crimson, #af1440)"/><rect x="342" y="46" width="110" height="5" rx="2.5" fill="var(--illo-fixed-crimson, #af1440)"/><rect x="342" y="58" width="66" height="5" rx="2.5" fill="var(--illo-fixed-crimson, #af1440)"/></g>
+  <rect x="16" y="100" width="250" height="64" rx="12" fill="var(--illo-gold, #ffd166)"/>
+  <path d="M278 132H316M308 124l8 8-8 8"/>
+  <rect x="330" y="100" width="134" height="64" rx="6" fill="var(--illo-fixed-night, #222)"/>
+  <g stroke="none"><rect x="342" y="112" width="67" height="10" rx="3" fill="var(--illo-fixed-crimson, #af1440)"/><rect x="342" y="130" width="110" height="5" rx="2.5" fill="var(--illo-fixed-crimson, #af1440)"/><rect x="342" y="142" width="66" height="5" rx="2.5" fill="var(--illo-fixed-crimson, #af1440)"/></g>
+  <rect x="16" y="184" width="250" height="64" rx="12" fill="var(--illo-shade, #ead9c4)"/>
+  <path d="M278 216H316M308 208l8 8-8 8"/>
+  <rect x="330" y="184" width="134" height="64" rx="6" fill="var(--illo-fixed-white, #fff)"/>
+  <g stroke="none"><rect x="342" y="196" width="67" height="10" rx="3" fill="var(--illo-fixed-crimson, #af1440)"/><rect x="342" y="214" width="110" height="5" rx="2.5" fill="var(--illo-fixed-night, #222)"/><rect x="342" y="226" width="66" height="5" rx="2.5" fill="var(--illo-fixed-night, #222)"/></g>
+  <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle" font-size="16">
+    <text x="141" y="44" font-weight="700">Safari 12.1</text>
+    <text x="141" y="66">on macOS</text>
+    <text x="141" y="128" font-weight="700">Firefox 67</text>
+    <text x="141" y="150">beta, on macOS</text>
+    <text x="141" y="212" font-weight="700">No support</text>
+    <text x="141" y="234">falls back to light</text>
+  </g>
+</svg>

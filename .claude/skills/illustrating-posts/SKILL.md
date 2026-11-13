@@ -54,6 +54,7 @@ Done when you have looked at every drawing in all three views, with no clipped o
   - `ACCENT` for the few marks that need emphasis, such as a stamp, an underline or the bars of a chart
 - Meaning: a comment at the top of the script says what blue, gold and pink stand for in that post.
 - New colours: a drawing that needs another colour adds an `--illo-*` variable to `astro-frontend/src/stylesheets/global.css` with `light-dark()`, and reads it with the kit's `colour()`. In dark mode the lines are light, so a dark fill is a deep version of the same hue.
+- Fixed colours: a drawing that shows a real colour, such as a swatch of a hex value from the post, adds an `--illo-fixed-*` variable with one plain hex value. It is the same in both themes, so put no text on it.
 - Fills: solid and opaque. A shape in front hides the one behind it, so draw from back to front.
 - Lines: one stroke width, 2.5, with round ends. Use 1 to 1.5 for fine detail.
 - Shapes: simple and geometric, with rounded corners. Tilt paper things such as cards, stamps and notes by a degree or two, so the drawing looks less rigid.

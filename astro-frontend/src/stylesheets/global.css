@@ -36,6 +36,11 @@
     --illo-gold: light-dark(#ffd166, #7d5b10);
     --illo-pink: light-dark(#f4a3b5, #9c3f57);
     --illo-accent: light-dark(#af1440, #f58aa3);
+
+    /* Fixed colours, the same in both themes, for a drawing that shows a real colour. */
+    --illo-fixed-white: #fff;
+    --illo-fixed-night: #222;
+    --illo-fixed-crimson: #af1440;
   }
 
   /* The theme button sets data-theme, which overrides the browser's preference. */
