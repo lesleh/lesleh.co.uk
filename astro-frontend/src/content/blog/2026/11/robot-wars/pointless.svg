@@ -31,7 +31,7 @@
   </g>
   <g fill="var(--illo-ink, #3b0d1a)" stroke="none">
     <text x="262" y="104" font-size="30" font-weight="700">pointless</text>
-    <text x="262" y="128" font-size="16" font-style="italic">adjective</text>
+    <text x="262" y="130" font-size="20" font-style="italic">adjective</text>
     <text x="262" y="162" font-size="20">Having no value</text>
     <text x="262" y="188" font-size="20">at all.</text>
     <text x="550" y="212" font-size="20" font-weight="700" letter-spacing="2" text-anchor="middle">CON</text>

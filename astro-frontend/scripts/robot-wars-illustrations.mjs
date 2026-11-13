@@ -1,26 +1,8 @@
 // Generates the robot-wars post illustrations. Edit this, not the SVGs.
 // Run from astro-frontend: node scripts/robot-wars-illustrations.mjs
-import { writeFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+import { ACCENT, BLUE, GOLD, INK, PINK, SHADE, SHADE_STRONG, SURFACE, svg, write } from "./illustration-kit.mjs";
 
-const OUT = fileURLToPath(new URL("../src/content/blog/2026/11/robot-wars", import.meta.url));
-
-// Theme colours from global.css. The fallback is the light value, for a file opened on its own.
-const PAPER = "var(--illo-paper, #fbf1e4)";
-const INK = "var(--illo-ink, #3b0d1a)";
-const SURFACE = "var(--illo-surface, #fff)";
-const SHADE = "var(--illo-shade, #ead9c4)";
-const SHADE_STRONG = "var(--illo-shade-strong, #d9c3a8)";
-const BLUE = "var(--illo-blue, #8fd0f0)";
-const GOLD = "var(--illo-gold, #ffd166)";
-const PINK = "var(--illo-pink, #f4a3b5)";
-const ACCENT = "var(--illo-accent, #af1440)";
-
-const svg = ({ w, h, label, maxWidth, body }) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="100%" role="img" aria-label="${label}" fill="none" stroke="${INK}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto;padding:3%;box-sizing:border-box;border-radius:12px;background:${PAPER}${maxWidth ? `;max-width:${maxWidth}` : ""}">
-${body.trim()}
-</svg>
-`;
+// In this post, blue is PRO, gold is CON and pink is the judge.
 
 // Robot head and neck in one colour, facing right, with the top of the head at 0,0.
 const head = (colour) => `<line x1="0" y1="-22" x2="0" y2="0"/>
@@ -90,8 +72,8 @@ const debate = svg({
     <rect x="250" y="194" width="140" height="136"/>
   </g>
   <g fill="${INK}" stroke="none" text-anchor="middle">
-    <text x="126" y="52" font-size="19">CI runs it anyway.</text>
-    <text x="514" y="52" font-size="19">Citation needed.</text>
+    <text x="126" y="52" font-size="20">CI runs it anyway.</text>
+    <text x="514" y="52" font-size="20">Citation needed.</text>
     <text x="140" y="292" font-size="26" font-weight="700" letter-spacing="2">PRO</text>
     <text x="500" y="292" font-size="26" font-weight="700" letter-spacing="2">CON</text>
     <text x="320" y="270" font-size="20" font-weight="700" letter-spacing="3">JUDGE</text>
@@ -109,7 +91,7 @@ const speech = (side, y, words) => {
       : bubble(x, y, w, h, 12, x + w - 34, x + w - 20, [x + w - 10, y + h + 10], GOLD);
   return {
     shape: tail,
-    text: `<text x="${x + w / 2}" y="${y + 24}" font-size="17">${words} words</text>`,
+    text: `<text x="${x + w / 2}" y="${y + 24}" font-size="18">${words} words</text>`,
   };
 };
 const speeches = [
@@ -141,16 +123,16 @@ const oneRun = svg({
     <text x="459" y="28" font-size="20" font-weight="700" letter-spacing="2">CON</text>
     ${speeches.map((s) => s.text).join("\n    ")}
     <text x="280" y="64" font-size="18" font-weight="700">Openings</text>
-    <text x="280" y="84" font-size="15">written blind</text>
+    <text x="280" y="86" font-size="18">written blind</text>
     <text x="280" y="154" font-size="18" font-weight="700">Rebuttal 1</text>
     <text x="280" y="258" font-size="18" font-weight="700">Rebuttal 2</text>
     <text x="280" y="362" font-size="18" font-weight="700">Closings</text>
     <text x="280" y="470" font-size="19" font-weight="700">Judge</text>
-    <text x="280" y="494" font-size="16">scores both sides and checks up to 3 facts</text>
+    <text x="280" y="494" font-size="18">scores both sides and checks up to 3 facts</text>
     <text x="280" y="572" font-size="19" font-weight="700">Stress test</text>
-    <text x="280" y="596" font-size="16">tries to break the winning case</text>
-    <text x="280" y="646" font-size="16">Then it all runs again with the sides swapped.</text>
-    <text x="280" y="670" font-size="16">If the winner changes, it's a draw.</text>
+    <text x="280" y="596" font-size="18">tries to break the winning case</text>
+    <text x="280" y="646" font-size="18">Then it all runs again with the sides swapped.</text>
+    <text x="280" y="670" font-size="18">If the winner changes, it's a draw.</text>
   </g>`,
 });
 
@@ -180,7 +162,7 @@ const pointless = svg({
   </g>
   <g fill="${INK}" stroke="none">
     <text x="262" y="104" font-size="30" font-weight="700">pointless</text>
-    <text x="262" y="128" font-size="16" font-style="italic">adjective</text>
+    <text x="262" y="130" font-size="20" font-style="italic">adjective</text>
     <text x="262" y="162" font-size="20">Having no value</text>
     <text x="262" y="188" font-size="20">at all.</text>
     <text x="550" y="212" font-size="20" font-weight="700" letter-spacing="2" text-anchor="middle">CON</text>
@@ -190,36 +172,40 @@ const pointless = svg({
 // 4. Round two: CON's sources after the judges checked them.
 const card = (x, angle, title, detail, stamp) => {
   const cx = x + 96;
-  return `<g transform="rotate(${angle} ${cx} 122)">
-    <rect x="${x}" y="24" width="192" height="196" rx="8" fill="${SURFACE}"/>
-    <path d="M${cx - 70} 128h140" stroke-width="1.5" stroke-opacity=".5"/>
-    <g transform="translate(${cx} 172) rotate(-9)" stroke="${ACCENT}">
-      <rect x="-84" y="-22" width="168" height="44" rx="4" stroke-width="3"/>
-      <rect x="-78" y="-16" width="156" height="32" rx="2" stroke-width="1.5"/>
-      <text y="6" font-size="16" font-weight="700" letter-spacing="1" fill="${ACCENT}" stroke="none" text-anchor="middle">${stamp}</text>
+  return `<g transform="rotate(${angle} ${cx} 128)">
+    <rect x="${x}" y="20" width="192" height="216" rx="8" fill="${SURFACE}"/>
+    <path d="M${cx - 70} 150h140" stroke-width="1.5" stroke-opacity=".5"/>
+    <g transform="translate(${cx} 192) rotate(-9)" stroke="${ACCENT}">
+      <rect x="-90" y="-23" width="180" height="46" rx="4" stroke-width="3"/>
+      <rect x="-84" y="-17" width="168" height="34" rx="2" stroke-width="1.5"/>
+      <text y="7" font-size="20" font-weight="700" fill="${ACCENT}" stroke="none" text-anchor="middle">${stamp}</text>
     </g>
-    <g fill="${INK}" stroke="none" text-anchor="middle">
-      <text x="${cx}" y="62" font-size="18" font-weight="700">${title[0]}</text>
-      <text x="${cx}" y="84" font-size="18" font-weight="700">${title[1]}</text>
-      <text x="${cx}" y="112" font-size="16">${detail}</text>
+    <g fill="${INK}" stroke="none" text-anchor="middle" font-size="20">
+      <text x="${cx}" y="56" font-weight="700">${title[0]}</text>
+      <text x="${cx}" y="80" font-weight="700">${title[1]}</text>
+      <text x="${cx}" y="110">${detail[0]}</text>
+      <text x="${cx}" y="134">${detail[1]}</text>
     </g>
   </g>`;
 };
 const evidence = svg({
   w: 640,
-  h: 240,
+  h: 256,
   label:
     "Three of CON's sources as index cards, each stamped by the judges. Parnin and Rugaber's interruptions study is stamped withdrawn. The Claude Code docs quote 'make it a hook' is stamped wrong hooks. Kerzazi, Khomh and Adams' 17.9% build breakage rate is stamped backfired.",
   body: `
-  ${card(16, -2, ["Parnin and", "Rugaber"], "interruptions study", "WITHDRAWN")}
-  ${card(224, 1.5, ["Claude Code", "docs"], "&quot;make it a hook&quot;", "WRONG HOOKS")}
-  ${card(432, -1, ["Kerzazi, Khomh", "and Adams"], "17.9% of builds break", "BACKFIRED")}`,
+  ${card(16, -2, ["Parnin and", "Rugaber"], ["interruptions", "study"], "WITHDRAWN")}
+  ${card(224, 1.5, ["Claude Code", "docs"], ["“make it", "a hook”"], "WRONG HOOKS")}
+  ${card(432, -1, ["Kerzazi, Khomh", "and Adams"], ["17.9% of", "builds break"], "BACKFIRED")}`,
 });
 
 // 5. The stress test that broke PRO's case in run 1.
+const BAR_START = 214;
+const PX_PER_MINUTE = 88;
 const bar = (y, minutes) => {
-  const end = 180 + minutes * 100;
-  return `<path fill="${ACCENT}" d="M180 ${y}H${end - 4}q4 0 4 4v16q0 4-4 4H180Z"/>`;
+  const end = BAR_START + minutes * PX_PER_MINUTE;
+  return `<path fill="${ACCENT}" d="M${BAR_START} ${y}H${end - 4}q4 0 4 4v16q0 4-4 4H${BAR_START}Z"/>
+    <text x="${end + 10}" y="${y + 18}" font-size="18" font-weight="700">${minutes} min</text>`;
 };
 const breakEven = svg({
   w: 520,
@@ -228,7 +214,7 @@ const breakEven = svg({
   label:
     "Bar chart of the average time lost per commit, if the slow checks fail on 1 commit in 4 and each failure costs 10 minutes. With the hook, 1 minute, because every commit waits. Without the hook, 2.5 minutes, a quarter of 10 minutes.",
   body: `
-  <path d="M180 100V214" stroke-width="1" stroke-opacity=".6"/>
+  <path d="M${BAR_START} 100V214" stroke-width="1" stroke-opacity=".6"/>
   <g fill="${INK}" stroke="none">
     ${bar(112, 1)}
     ${bar(176, 2.5)}
@@ -236,23 +222,18 @@ const breakEven = svg({
     <text x="10" y="56" font-size="17">if the slow checks fail on 1 commit in 4,</text>
     <text x="10" y="78" font-size="17">and each failure costs 10 minutes</text>
     <g text-anchor="end">
-      <text x="166" y="122" font-size="18">With the hook</text>
-      <text x="166" y="142" font-size="15">every commit waits</text>
-      <text x="166" y="186" font-size="18">Without the hook</text>
-      <text x="166" y="206" font-size="15">a quarter of 10 minutes</text>
+      <text x="${BAR_START - 14}" y="122" font-size="18">With the hook</text>
+      <text x="${BAR_START - 14}" y="143" font-size="17">every commit waits</text>
+      <text x="${BAR_START - 14}" y="186" font-size="18">Without the hook</text>
+      <text x="${BAR_START - 14}" y="207" font-size="17">a quarter of 10 minutes</text>
     </g>
-    <text x="290" y="130" font-size="18" font-weight="700">1 min</text>
-    <text x="440" y="194" font-size="18" font-weight="700">2.5 min</text>
   </g>`,
 });
 
-for (const [name, content] of Object.entries({
+write(new URL("../src/content/blog/2026/11/robot-wars", import.meta.url), {
   "debate.svg": debate,
   "one-run.svg": oneRun,
   "pointless.svg": pointless,
   "evidence.svg": evidence,
   "break-even.svg": breakEven,
-})) {
-  writeFileSync(`${OUT}/${name}`, content);
-}
-console.log("wrote 5 files to", OUT);
+});

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 272" width="100%" role="img" aria-label="The router's request, GET /nic/update, with three parts labelled. hostname= is ignored. myip= is the public IP. Authorization: Basic is username:password in base64." fill="none" stroke="var(--illo-ink, #3b0d1a)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto;padding:3%;box-sizing:border-box;border-radius:12px;background:var(--illo-paper, #fbf1e4)">
+<g transform="rotate(-0.6 260 136)">
+    <rect x="16" y="16" width="488" height="240" rx="8" fill="var(--illo-surface, #fff)"/>
+    <path d="M36 78H484" stroke-width="1.5" stroke-opacity=".5"/>
+    <rect x="36" y="98" width="196" height="36" rx="8" fill="var(--illo-shade, #ead9c4)"/>
+  <path d="M238 116H256" stroke-width="1.5"/>
+    <rect x="36" y="150" width="196" height="36" rx="8" fill="var(--illo-gold, #ffd166)"/>
+  <path d="M238 168H256" stroke-width="1.5"/>
+    <rect x="36" y="202" width="196" height="36" rx="8" fill="var(--illo-shade, #ead9c4)"/>
+  <path d="M238 220H256" stroke-width="1.5"/>
+    <g fill="var(--illo-ink, #3b0d1a)" stroke="none" font-size="17">
+      <text x="38" y="58" font-size="21" font-weight="700">GET /nic/update</text>
+      <text x="48" y="122">hostname=</text>
+    <text x="264" y="122">ignored</text>
+      <text x="48" y="174">myip=</text>
+    <text x="264" y="174">the public IP</text>
+      <text x="48" y="226">Authorization: Basic</text>
+    <text x="264" y="226">username:password in base64</text>
+    </g>
+  </g>
+</svg>

@@ -79,8 +79,8 @@
     <rect x="250" y="194" width="140" height="136"/>
   </g>
   <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle">
-    <text x="126" y="52" font-size="19">CI runs it anyway.</text>
-    <text x="514" y="52" font-size="19">Citation needed.</text>
+    <text x="126" y="52" font-size="20">CI runs it anyway.</text>
+    <text x="514" y="52" font-size="20">Citation needed.</text>
     <text x="140" y="292" font-size="26" font-weight="700" letter-spacing="2">PRO</text>
     <text x="500" y="292" font-size="26" font-weight="700" letter-spacing="2">CON</text>
     <text x="320" y="270" font-size="20" font-weight="700" letter-spacing="3">JUDGE</text>
