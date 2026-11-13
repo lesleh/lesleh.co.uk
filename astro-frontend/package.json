@@ -10,32 +10,21 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "5.0.0",
-    "astro": "3.0.12",
-    "autoprefixer": "10.4.15",
-    "canvas-confetti": "1.6.0",
-    "postcss": "8.4.29",
-    "sharp": "0.32.6",
-    "tailwindcss": "3.3.3"
+    "astro": "7.4.11",
+    "sharp": "0.35.5"
   },
   "dependencies": {
-    "@aduh95/preact-fontawesome": "^0.1.5",
-    "@astrojs/mdx": "^1.0.3",
-    "@astrojs/preact": "^3.0.0",
-    "@fortawesome/fontawesome-svg-core": "^6.4.2",
-    "@fortawesome/free-brands-svg-icons": "^6.4.2",
-    "@fortawesome/free-solid-svg-icons": "^6.4.2",
-    "@igor.dvlpr/astro-post-excerpt": "^2.0.3",
-    "preact": "^10.6.5",
-    "prismjs": "^1.29.0",
-    "react-helmet": "^6.1.0",
-    "sass": "^1.66.1"
+    "@astrojs/mdx": "^8.1.5",
+    "@astrojs/preact": "^6.1.5",
+    "@fortawesome/fontawesome-svg-core": "^7.3.1",
+    "@fortawesome/free-brands-svg-icons": "^7.3.1",
+    "@fortawesome/free-solid-svg-icons": "^7.3.1",
+    "preact": "^11.2.0",
+    "prismjs": "^1.30.0",
+    "sass": "^1.108.2"
   },
-  "packageManager": "pnpm@10.33.4",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "sharp"
-    ]
+  "packageManager": "pnpm@12.18.0",
+  "engines": {
+    "node": ">=22.23.4"
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from "preact";
-import { FontAwesomeIcon } from "@aduh95/preact-fontawesome";
+import Icon from "./icon";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Header = class extends Component {
@@ -23,7 +23,7 @@ const Header = class extends Component {
           aria-label="Main menu"
           onClick={this.handleHamburgerClicked}
         >
-          <FontAwesomeIcon icon={faBars} fixedWidth />
+          <Icon icon={faBars} fixedWidth />
         </button>
       </header>
     );
