@@ -51,11 +51,17 @@ const { title, description } = Astro.props;
     }
   </head>
   <body class="m-2 px-gutter text-body">
+    <a
+      href="#main"
+      class="sr-only rounded-sm bg-primary-inverse px-4 py-2 font-semibold text-primary no-underline focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-10 focus:outline-2 focus:outline-offset-2 focus:outline-primary-inverse"
+    >
+      Skip to main content
+    </a>
     <div
       class="mx-auto grid max-w-[60em] grid-cols-1 gap-2.5 sm:grid-cols-[1fr_3fr] sm:gap-x-7.5"
     >
       <Header client:idle />
-      <Nav />
+      <Nav currentPath={Astro.url.pathname} />
 
       <div
         class="flex items-center justify-between gap-4 sm:col-start-2 sm:row-start-1"
@@ -70,7 +76,10 @@ const { title, description } = Astro.props;
           <Icon icon={faCircleHalfStroke} />
         </button>
       </div>
-      <main class="overflow-x-auto sm:col-start-2 sm:row-span-2 sm:row-start-2">
+      <main
+        id="main"
+        tabindex="-1"
+        class="overflow-x-auto outline-none sm:col-start-2 sm:row-span-2 sm:row-start-2">
         <slot />
       </main>
       <footer class="text-center sm:col-start-2 sm:row-start-4">
