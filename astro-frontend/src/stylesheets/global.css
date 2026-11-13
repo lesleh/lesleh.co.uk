@@ -8,8 +8,9 @@
 @theme {
   --font-sans: "Nunito Sans", sans-serif;
 
-  --color-primary: #af1440;
-  --color-primary-inverse: #fff;
+  /* light-dark() picks a value from the color-scheme set in the base layer. */
+  --color-primary: light-dark(#af1440, #2a2a2e);
+  --color-primary-inverse: light-dark(#fff, #f58aa3);
 
   --breakpoint-sm: 36rem;
 
@@ -22,11 +23,17 @@
 }
 
 @layer base {
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --color-primary: #2a2a2e;
-      --color-primary-inverse: #f58aa3;
-    }
+  :root {
+    color-scheme: light dark;
+  }
+
+  /* The theme button sets data-theme, which overrides the browser's preference. */
+  :root[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
   }
 
   *,
