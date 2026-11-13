@@ -20,7 +20,17 @@ export default defineConfig({
   adapter: vercel(),
   env: {
     schema: {
-      RESEND_API_KEY: envField.string({
+      SES_ACCESS_KEY_ID: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+      SES_SECRET_ACCESS_KEY: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+      SES_REGION: envField.string({
         context: "server",
         access: "secret",
         optional: true,

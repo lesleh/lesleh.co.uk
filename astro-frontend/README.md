@@ -59,11 +59,14 @@ The `@astrojs/vercel` adapter builds `/api/contact/` as a Vercel function. Every
 
 ## Contact form
 
-The contact form sends email through the [Resend](https://resend.com) HTTP API. Set these environment variables in Vercel, and in `.env` for local development:
+The contact form sends email through the Amazon SES v2 API. `src/lib/ses.ts` signs the request, so there is no AWS SDK dependency. Set these environment variables in Vercel, and in `.env` for local development:
 
-- `RESEND_API_KEY` is the Resend API key
-- `CONTACT_FROM_EMAIL` is the sender address, on a domain verified in Resend
+- `SES_ACCESS_KEY_ID` and `SES_SECRET_ACCESS_KEY` are the access key of an IAM user that is only allowed the `ses:SendEmail` action
+- `SES_REGION` is the AWS region of the SES identity, for example `eu-west-2`
+- `CONTACT_FROM_EMAIL` is the sender address, a verified identity in SES or on a verified domain
 - `CONTACT_TO_EMAIL` is the address that receives the messages
+
+Vercel reserves the `AWS_` variable names, so the names start with `SES_`. While the SES account is in the sandbox, `CONTACT_TO_EMAIL` must be a verified address too.
 
 `.env.example` lists the same variables. If one is missing, the route replies with status 503 and the page says it cannot send messages.
 
