@@ -1,5 +1,5 @@
 ---
-import "../stylesheets/_index.scss";
+import "../stylesheets/global.css";
 import Nav from "../components/nav";
 import Header from "../components/header";
 import Icon from "../components/icon";
@@ -13,7 +13,7 @@ export interface Props {
 const { title, description } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="bg-primary font-sans text-primary-inverse">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -23,16 +23,22 @@ const { title, description } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
-  <body>
-    <div class="main-grid">
+  <body class="px-gutter text-body">
+    <div
+      class="mx-auto grid max-w-[60em] grid-cols-1 gap-2.5 sm:grid-cols-[1fr_3fr] sm:gap-x-7.5"
+    >
       <Header client:idle />
       <Nav />
 
-      <h1 class="page-title">{title}</h1>
-      <main class="site-main"><slot /></main>
-      <footer class="site-footer">
+      <h1 class="sm:col-start-2 sm:row-start-1">{title}</h1>
+      <main
+        class="overflow-x-auto sm:col-start-2 sm:row-span-2 sm:row-start-2 [&_:first-child]:mt-0"
+      >
+        <slot />
+      </main>
+      <footer class="text-center sm:col-start-2 sm:row-start-4">
         <a
-          class="github-link"
+          class="text-[1.5rem] text-primary-inverse opacity-50 hover:opacity-100 focus:opacity-100"
           href="https://github.com/lesleh/lesleh.co.uk/"
           title="View source on GitHub"
         >

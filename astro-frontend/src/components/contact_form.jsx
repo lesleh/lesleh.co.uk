@@ -1,6 +1,11 @@
 import React from "preact";
 import Reaptcha from "reaptcha";
 
+const controlClass =
+  "rounded-[3px] border-0 bg-primary-inverse px-3.75 py-2.5 text-[16px] text-primary focus:shadow-[0_0_4px_4px_rgb(255_255_255/0.5)] focus:outline-none";
+const fieldClass = `${controlClass} w-full font-sans`;
+const labelClass = "mb-1.25 block";
+
 export default class ContactForm extends React.Component {
   constructor() {
     super();
@@ -51,55 +56,55 @@ export default class ContactForm extends React.Component {
       <form
         ref={this.formRef}
         onSubmit={this.handleSubmit}
-        className="simple_form form"
+        className="max-w-[400px]"
         id="new_contact_message"
         action="https://fns.lesleh.co.uk/contact"
         acceptCharset="UTF-8"
         method="post"
       >
-        <div className="input string required contact_message_name">
-          <label className="string required" htmlFor="contact_message_name">
+        <div className="mb-2.5">
+          <label className={labelClass} htmlFor="contact_message_name">
             <abbr title="required">*</abbr> Name
           </label>
           <input
             required
-            className="string required"
+            className={fieldClass}
             type="text"
             name="name"
             id="contact_message_name"
           />
         </div>
-        <div className="input email required contact_message_email">
-          <label className="email required" htmlFor="contact_message_email">
+        <div className="mb-2.5">
+          <label className={labelClass} htmlFor="contact_message_email">
             <abbr title="required">*</abbr> Email
           </label>
           <input
             required
-            className="string email required"
+            className={fieldClass}
             type="email"
             name="email"
             id="contact_message_email"
           />
         </div>
-        <div className="input subject required contact_message_subject">
-          <label className="subject required" htmlFor="contact_message_subject">
+        <div className="mb-2.5">
+          <label className={labelClass} htmlFor="contact_message_subject">
             <abbr title="required">*</abbr> Subject
           </label>
           <input
             required
-            className="string subject required"
+            className={fieldClass}
             name="subject"
             id="contact_message_subject"
           />
         </div>
-        <div className="input text required contact_message_message">
-          <label className="text required" htmlFor="contact_message_message">
+        <div className="mb-2.5">
+          <label className={labelClass} htmlFor="contact_message_message">
             <abbr title="required">*</abbr> Message
           </label>
           <textarea
             required
             rows="10"
-            className="text required"
+            className={fieldClass}
             name="message"
             id="contact_message_message"
           />
@@ -107,8 +112,14 @@ export default class ContactForm extends React.Component {
         <Reaptcha
           sitekey="6Lf_HyoTAAAAADLFX3_kQLHLUMs-vtnLxleCxYgm"
           onVerify={this.verifyCallback}
+        className="mb-2.5"
         />
-        <input type="submit" name="commit" value="Send" className="btn" />
+        <input
+          type="submit"
+          name="commit"
+          value="Send"
+          className={`${controlClass} inline-block cursor-pointer hover:bg-[#ddd]`}
+        />
       </form>
     );
   }
