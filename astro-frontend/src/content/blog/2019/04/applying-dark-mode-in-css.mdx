@@ -4,9 +4,15 @@ description: Learn how to implement dark mode on your website using CSS custom p
 date: "2019-04-21"
 ---
 
+import SystemSetting from "./applying-dark-mode-in-css/system-setting.svg";
+import ColourSchemes from "./applying-dark-mode-in-css/colour-schemes.svg";
+import BrowserSupport from "./applying-dark-mode-in-css/browser-support.svg";
+
 With the introduction of macOS Mojave in 2018, you can select to have
 system-wide dark mode applied to the UI. Windows 10 also added a similar
 feature starting with the October 2018 system update.
+
+<SystemSetting />
 
 ## Creating a colour scheme with CSS custom properties
 
@@ -44,9 +50,13 @@ colours to a darker theme:
 }
 ```
 
+<ColourSchemes />
+
 ## Browser support
 
 The CSS required to support this is currently only implemented on macOS, and is
 only available in Safari 12.1, and in Firefox 67 (beta as of writing). On
 systems/browsers without support, it will fallback to using the light colour
 scheme.
+
+<BrowserSupport />
