@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" width="100%" role="img" aria-label="Three of CON's sources as index cards, each stamped by the judges. Parnin and Rugaber's interruptions study is stamped withdrawn. The Claude Code docs quote 'make it a hook' is stamped wrong hooks. Kerzazi, Khomh and Adams' 17.9% build breakage rate is stamped backfired." fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto">
+<g transform="rotate(-2 112 122)">
+    <rect x="16" y="24" width="192" height="196" rx="8" fill="currentColor" fill-opacity=".08"/>
+    <path d="M42 128h140" stroke-width="1.5" stroke-opacity=".5"/>
+    <g transform="translate(112 172) rotate(-9)">
+      <rect x="-84" y="-22" width="168" height="44" rx="4" stroke-width="3"/>
+      <rect x="-78" y="-16" width="156" height="32" rx="2" stroke-width="1.5"/>
+      <text y="6" font-size="16" font-weight="700" letter-spacing="1" fill="currentColor" stroke="none" text-anchor="middle">WITHDRAWN</text>
+    </g>
+    <g fill="currentColor" stroke="none" text-anchor="middle">
+      <text x="112" y="62" font-size="18" font-weight="700">Parnin and</text>
+      <text x="112" y="84" font-size="18" font-weight="700">Rugaber</text>
+      <text x="112" y="112" font-size="16" fill-opacity=".85">interruptions study</text>
+    </g>
+  </g>
+  <g transform="rotate(1.5 320 122)">
+    <rect x="224" y="24" width="192" height="196" rx="8" fill="currentColor" fill-opacity=".08"/>
+    <path d="M250 128h140" stroke-width="1.5" stroke-opacity=".5"/>
+    <g transform="translate(320 172) rotate(-9)">
+      <rect x="-84" y="-22" width="168" height="44" rx="4" stroke-width="3"/>
+      <rect x="-78" y="-16" width="156" height="32" rx="2" stroke-width="1.5"/>
+      <text y="6" font-size="16" font-weight="700" letter-spacing="1" fill="currentColor" stroke="none" text-anchor="middle">WRONG HOOKS</text>
+    </g>
+    <g fill="currentColor" stroke="none" text-anchor="middle">
+      <text x="320" y="62" font-size="18" font-weight="700">Claude Code</text>
+      <text x="320" y="84" font-size="18" font-weight="700">docs</text>
+      <text x="320" y="112" font-size="16" fill-opacity=".85">&quot;make it a hook&quot;</text>
+    </g>
+  </g>
+  <g transform="rotate(-1 528 122)">
+    <rect x="432" y="24" width="192" height="196" rx="8" fill="currentColor" fill-opacity=".08"/>
+    <path d="M458 128h140" stroke-width="1.5" stroke-opacity=".5"/>
+    <g transform="translate(528 172) rotate(-9)">
+      <rect x="-84" y="-22" width="168" height="44" rx="4" stroke-width="3"/>
+      <rect x="-78" y="-16" width="156" height="32" rx="2" stroke-width="1.5"/>
+      <text y="6" font-size="16" font-weight="700" letter-spacing="1" fill="currentColor" stroke="none" text-anchor="middle">BACKFIRED</text>
+    </g>
+    <g fill="currentColor" stroke="none" text-anchor="middle">
+      <text x="528" y="62" font-size="18" font-weight="700">Kerzazi, Khomh</text>
+      <text x="528" y="84" font-size="18" font-weight="700">and Adams</text>
+      <text x="528" y="112" font-size="16" fill-opacity=".85">17.9% of builds break</text>
+    </g>
+  </g>
+</svg>
