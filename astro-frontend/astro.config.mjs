@@ -7,6 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://lesleh.co.uk",
   trailingSlash: "always",
   integrations: [mdx(), preact()],
   // Pages stay static. The adapter is for the one route that opts out of prerendering.
