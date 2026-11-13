@@ -10,7 +10,7 @@
     <g fill="currentColor" stroke="none" text-anchor="middle">
       <text x="112" y="62" font-size="18" font-weight="700">Parnin and</text>
       <text x="112" y="84" font-size="18" font-weight="700">Rugaber</text>
-      <text x="112" y="112" font-size="16" fill-opacity=".85">interruptions study</text>
+      <text x="112" y="112" font-size="16">interruptions study</text>
     </g>
   </g>
   <g transform="rotate(1.5 320 122)">
@@ -24,7 +24,7 @@
     <g fill="currentColor" stroke="none" text-anchor="middle">
       <text x="320" y="62" font-size="18" font-weight="700">Claude Code</text>
       <text x="320" y="84" font-size="18" font-weight="700">docs</text>
-      <text x="320" y="112" font-size="16" fill-opacity=".85">&quot;make it a hook&quot;</text>
+      <text x="320" y="112" font-size="16">&quot;make it a hook&quot;</text>
     </g>
   </g>
   <g transform="rotate(-1 528 122)">
@@ -38,7 +38,7 @@
     <g fill="currentColor" stroke="none" text-anchor="middle">
       <text x="528" y="62" font-size="18" font-weight="700">Kerzazi, Khomh</text>
       <text x="528" y="84" font-size="18" font-weight="700">and Adams</text>
-      <text x="528" y="112" font-size="16" fill-opacity=".85">17.9% of builds break</text>
+      <text x="528" y="112" font-size="16">17.9% of builds break</text>
     </g>
   </g>
 </svg>

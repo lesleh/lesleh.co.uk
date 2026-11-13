@@ -4,13 +4,13 @@
     <path d="M180 112H276q4 0 4 4v16q0 4-4 4H180Z"/>
     <path d="M180 176H426q4 0 4 4v16q0 4-4 4H180Z"/>
     <text x="10" y="30" font-size="21" font-weight="700">Average time lost per commit</text>
-    <text x="10" y="56" font-size="17" fill-opacity=".85">if the slow checks fail on 1 commit in 4,</text>
-    <text x="10" y="78" font-size="17" fill-opacity=".85">and each failure costs 10 minutes</text>
+    <text x="10" y="56" font-size="17">if the slow checks fail on 1 commit in 4,</text>
+    <text x="10" y="78" font-size="17">and each failure costs 10 minutes</text>
     <g text-anchor="end">
       <text x="166" y="122" font-size="18">With the hook</text>
-      <text x="166" y="142" font-size="15" fill-opacity=".8">every commit waits</text>
+      <text x="166" y="142" font-size="15">every commit waits</text>
       <text x="166" y="186" font-size="18">Without the hook</text>
-      <text x="166" y="206" font-size="15" fill-opacity=".8">a quarter of 10 minutes</text>
+      <text x="166" y="206" font-size="15">a quarter of 10 minutes</text>
     </g>
     <text x="290" y="130" font-size="18" font-weight="700">1 min</text>
     <text x="440" y="194" font-size="18" font-weight="700">2.5 min</text>
