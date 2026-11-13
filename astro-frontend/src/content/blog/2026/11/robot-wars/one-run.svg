@@ -15,24 +15,24 @@
   <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle">
     <text x="101" y="28" font-size="20" font-weight="700" letter-spacing="2">PRO</text>
     <text x="459" y="28" font-size="20" font-weight="700" letter-spacing="2">CON</text>
-    <text x="101" y="72" font-size="17">400 words</text>
-    <text x="459" y="72" font-size="17">400 words</text>
-    <text x="101" y="132" font-size="17">300 words</text>
-    <text x="459" y="176" font-size="17">300 words</text>
-    <text x="101" y="236" font-size="17">300 words</text>
-    <text x="459" y="280" font-size="17">300 words</text>
-    <text x="101" y="340" font-size="17">150 words</text>
-    <text x="459" y="384" font-size="17">150 words</text>
+    <text x="101" y="72" font-size="18">400 words</text>
+    <text x="459" y="72" font-size="18">400 words</text>
+    <text x="101" y="132" font-size="18">300 words</text>
+    <text x="459" y="176" font-size="18">300 words</text>
+    <text x="101" y="236" font-size="18">300 words</text>
+    <text x="459" y="280" font-size="18">300 words</text>
+    <text x="101" y="340" font-size="18">150 words</text>
+    <text x="459" y="384" font-size="18">150 words</text>
     <text x="280" y="64" font-size="18" font-weight="700">Openings</text>
-    <text x="280" y="84" font-size="15">written blind</text>
+    <text x="280" y="86" font-size="18">written blind</text>
     <text x="280" y="154" font-size="18" font-weight="700">Rebuttal 1</text>
     <text x="280" y="258" font-size="18" font-weight="700">Rebuttal 2</text>
     <text x="280" y="362" font-size="18" font-weight="700">Closings</text>
     <text x="280" y="470" font-size="19" font-weight="700">Judge</text>
-    <text x="280" y="494" font-size="16">scores both sides and checks up to 3 facts</text>
+    <text x="280" y="494" font-size="18">scores both sides and checks up to 3 facts</text>
     <text x="280" y="572" font-size="19" font-weight="700">Stress test</text>
-    <text x="280" y="596" font-size="16">tries to break the winning case</text>
-    <text x="280" y="646" font-size="16">Then it all runs again with the sides swapped.</text>
-    <text x="280" y="670" font-size="16">If the winner changes, it's a draw.</text>
+    <text x="280" y="596" font-size="18">tries to break the winning case</text>
+    <text x="280" y="646" font-size="18">Then it all runs again with the sides swapped.</text>
+    <text x="280" y="670" font-size="18">If the winner changes, it's a draw.</text>
   </g>
 </svg>

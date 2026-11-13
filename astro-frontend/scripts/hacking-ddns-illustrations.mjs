@@ -1,26 +1,8 @@
 // Generates the hacking-ddns post illustrations. Edit this, not the SVGs.
 // Run from astro-frontend: node scripts/hacking-ddns-illustrations.mjs
-import { mkdirSync, writeFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+import { BLUE, GOLD, INK, PINK, SHADE, SHADE_STRONG, SURFACE, ACCENT, svg, write } from "./illustration-kit.mjs";
 
-const OUT = fileURLToPath(new URL("../src/content/blog/2023/02/hacking-ddns", import.meta.url));
-
-// Theme colours from global.css. The fallback is the light value, for a file opened on its own.
-const PAPER = "var(--illo-paper, #fbf1e4)";
-const INK = "var(--illo-ink, #3b0d1a)";
-const SURFACE = "var(--illo-surface, #fff)";
-const SHADE = "var(--illo-shade, #ead9c4)";
-const SHADE_STRONG = "var(--illo-shade-strong, #d9c3a8)";
-const BLUE = "var(--illo-blue, #8fd0f0)"; // the home network
-const GOLD = "var(--illo-gold, #ffd166)"; // the function
-const PINK = "var(--illo-pink, #f4a3b5)"; // DNS
-const ACCENT = "var(--illo-accent, #af1440)";
-
-const svg = ({ w, h, label, maxWidth, body }) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="100%" role="img" aria-label="${label}" fill="none" stroke="${INK}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto;padding:3%;box-sizing:border-box;border-radius:12px;background:${PAPER}${maxWidth ? `;max-width:${maxWidth}` : ""}">
-${body.trim()}
-</svg>
-`;
+// In this post, blue is the home network, gold is the function and pink is DNS.
 
 const box = (x, y, w, h, colour, rx = 12) =>
   `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${colour}"/>`;
@@ -156,13 +138,9 @@ const path = svg({
   </g>`,
 });
 
-mkdirSync(OUT, { recursive: true });
-for (const [name, content] of Object.entries({
+write(new URL("../src/content/blog/2023/02/hacking-ddns", import.meta.url), {
   "name-and-address.svg": nameAndAddress,
   "request.svg": request,
   "handler.svg": handler,
   "path.svg": path,
-})) {
-  writeFileSync(`${OUT}/${name}`, content);
-}
-console.log("wrote 4 files to", OUT);
+});

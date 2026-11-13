@@ -1,44 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" width="100%" role="img" aria-label="Three of CON's sources as index cards, each stamped by the judges. Parnin and Rugaber's interruptions study is stamped withdrawn. The Claude Code docs quote 'make it a hook' is stamped wrong hooks. Kerzazi, Khomh and Adams' 17.9% build breakage rate is stamped backfired." fill="none" stroke="var(--illo-ink, #3b0d1a)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto;padding:3%;box-sizing:border-box;border-radius:12px;background:var(--illo-paper, #fbf1e4)">
-<g transform="rotate(-2 112 122)">
-    <rect x="16" y="24" width="192" height="196" rx="8" fill="var(--illo-surface, #fff)"/>
-    <path d="M42 128h140" stroke-width="1.5" stroke-opacity=".5"/>
-    <g transform="translate(112 172) rotate(-9)" stroke="var(--illo-accent, #af1440)">
-      <rect x="-84" y="-22" width="168" height="44" rx="4" stroke-width="3"/>
-      <rect x="-78" y="-16" width="156" height="32" rx="2" stroke-width="1.5"/>
-      <text y="6" font-size="16" font-weight="700" letter-spacing="1" fill="var(--illo-accent, #af1440)" stroke="none" text-anchor="middle">WITHDRAWN</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 256" width="100%" role="img" aria-label="Three of CON's sources as index cards, each stamped by the judges. Parnin and Rugaber's interruptions study is stamped withdrawn. The Claude Code docs quote 'make it a hook' is stamped wrong hooks. Kerzazi, Khomh and Adams' 17.9% build breakage rate is stamped backfired." fill="none" stroke="var(--illo-ink, #3b0d1a)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto;padding:3%;box-sizing:border-box;border-radius:12px;background:var(--illo-paper, #fbf1e4)">
+<g transform="rotate(-2 112 128)">
+    <rect x="16" y="20" width="192" height="216" rx="8" fill="var(--illo-surface, #fff)"/>
+    <path d="M42 150h140" stroke-width="1.5" stroke-opacity=".5"/>
+    <g transform="translate(112 192) rotate(-9)" stroke="var(--illo-accent, #af1440)">
+      <rect x="-90" y="-23" width="180" height="46" rx="4" stroke-width="3"/>
+      <rect x="-84" y="-17" width="168" height="34" rx="2" stroke-width="1.5"/>
+      <text y="7" font-size="20" font-weight="700" fill="var(--illo-accent, #af1440)" stroke="none" text-anchor="middle">WITHDRAWN</text>
     </g>
-    <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle">
-      <text x="112" y="62" font-size="18" font-weight="700">Parnin and</text>
-      <text x="112" y="84" font-size="18" font-weight="700">Rugaber</text>
-      <text x="112" y="112" font-size="16">interruptions study</text>
-    </g>
-  </g>
-  <g transform="rotate(1.5 320 122)">
-    <rect x="224" y="24" width="192" height="196" rx="8" fill="var(--illo-surface, #fff)"/>
-    <path d="M250 128h140" stroke-width="1.5" stroke-opacity=".5"/>
-    <g transform="translate(320 172) rotate(-9)" stroke="var(--illo-accent, #af1440)">
-      <rect x="-84" y="-22" width="168" height="44" rx="4" stroke-width="3"/>
-      <rect x="-78" y="-16" width="156" height="32" rx="2" stroke-width="1.5"/>
-      <text y="6" font-size="16" font-weight="700" letter-spacing="1" fill="var(--illo-accent, #af1440)" stroke="none" text-anchor="middle">WRONG HOOKS</text>
-    </g>
-    <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle">
-      <text x="320" y="62" font-size="18" font-weight="700">Claude Code</text>
-      <text x="320" y="84" font-size="18" font-weight="700">docs</text>
-      <text x="320" y="112" font-size="16">&quot;make it a hook&quot;</text>
+    <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle" font-size="20">
+      <text x="112" y="56" font-weight="700">Parnin and</text>
+      <text x="112" y="80" font-weight="700">Rugaber</text>
+      <text x="112" y="110">interruptions</text>
+      <text x="112" y="134">study</text>
     </g>
   </g>
-  <g transform="rotate(-1 528 122)">
-    <rect x="432" y="24" width="192" height="196" rx="8" fill="var(--illo-surface, #fff)"/>
-    <path d="M458 128h140" stroke-width="1.5" stroke-opacity=".5"/>
-    <g transform="translate(528 172) rotate(-9)" stroke="var(--illo-accent, #af1440)">
-      <rect x="-84" y="-22" width="168" height="44" rx="4" stroke-width="3"/>
-      <rect x="-78" y="-16" width="156" height="32" rx="2" stroke-width="1.5"/>
-      <text y="6" font-size="16" font-weight="700" letter-spacing="1" fill="var(--illo-accent, #af1440)" stroke="none" text-anchor="middle">BACKFIRED</text>
+  <g transform="rotate(1.5 320 128)">
+    <rect x="224" y="20" width="192" height="216" rx="8" fill="var(--illo-surface, #fff)"/>
+    <path d="M250 150h140" stroke-width="1.5" stroke-opacity=".5"/>
+    <g transform="translate(320 192) rotate(-9)" stroke="var(--illo-accent, #af1440)">
+      <rect x="-90" y="-23" width="180" height="46" rx="4" stroke-width="3"/>
+      <rect x="-84" y="-17" width="168" height="34" rx="2" stroke-width="1.5"/>
+      <text y="7" font-size="20" font-weight="700" fill="var(--illo-accent, #af1440)" stroke="none" text-anchor="middle">WRONG HOOKS</text>
     </g>
-    <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle">
-      <text x="528" y="62" font-size="18" font-weight="700">Kerzazi, Khomh</text>
-      <text x="528" y="84" font-size="18" font-weight="700">and Adams</text>
-      <text x="528" y="112" font-size="16">17.9% of builds break</text>
+    <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle" font-size="20">
+      <text x="320" y="56" font-weight="700">Claude Code</text>
+      <text x="320" y="80" font-weight="700">docs</text>
+      <text x="320" y="110">“make it</text>
+      <text x="320" y="134">a hook”</text>
+    </g>
+  </g>
+  <g transform="rotate(-1 528 128)">
+    <rect x="432" y="20" width="192" height="216" rx="8" fill="var(--illo-surface, #fff)"/>
+    <path d="M458 150h140" stroke-width="1.5" stroke-opacity=".5"/>
+    <g transform="translate(528 192) rotate(-9)" stroke="var(--illo-accent, #af1440)">
+      <rect x="-90" y="-23" width="180" height="46" rx="4" stroke-width="3"/>
+      <rect x="-84" y="-17" width="168" height="34" rx="2" stroke-width="1.5"/>
+      <text y="7" font-size="20" font-weight="700" fill="var(--illo-accent, #af1440)" stroke="none" text-anchor="middle">BACKFIRED</text>
+    </g>
+    <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle" font-size="20">
+      <text x="528" y="56" font-weight="700">Kerzazi, Khomh</text>
+      <text x="528" y="80" font-weight="700">and Adams</text>
+      <text x="528" y="110">17.9% of</text>
+      <text x="528" y="134">builds break</text>
     </g>
   </g>
 </svg>
