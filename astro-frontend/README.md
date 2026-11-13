@@ -27,6 +27,16 @@ Start the development server:
 pnpm dev
 ```
 
+## Check
+
+Type check the Astro files:
+
+```bash
+pnpm check
+```
+
+GitHub Actions runs this check and the build on every pull request and on every push to `master`.
+
 ## Build
 
 Build the site into `dist/`:

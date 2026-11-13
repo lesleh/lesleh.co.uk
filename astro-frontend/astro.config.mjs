@@ -7,6 +7,7 @@ import contentSecurityPolicy from "./integrations/content-security-policy.mjs";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://lesleh.co.uk",
   trailingSlash: "always",
   integrations: [mdx(), preact(), contentSecurityPolicy()],
   vite: {
