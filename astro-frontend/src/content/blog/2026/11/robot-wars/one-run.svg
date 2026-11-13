@@ -1,18 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 690" width="100%" role="img" aria-label="One run of the debate. PRO and CON write 400-word openings at the same time, without seeing each other's. They then take turns through two rounds of 300-word rebuttals and a 150-word closing. A judge scores both sides and checks up to 3 facts, then a stress test tries to break the winning case. The whole run happens again with the sides swapped, and if the winner changes, it's a draw." fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto;max-width:34rem">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 690" width="100%" role="img" aria-label="One run of the debate. PRO and CON write 400-word openings at the same time, without seeing each other's. They then take turns through two rounds of 300-word rebuttals and a 150-word closing. A judge scores both sides and checks up to 3 facts, then a stress test tries to break the winning case. The whole run happens again with the sides swapped, and if the winner changes, it's a draw." fill="none" stroke="var(--illo-ink, #3b0d1a)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto;padding:3%;box-sizing:border-box;border-radius:12px;background:var(--illo-paper, #fbf1e4);max-width:34rem">
 <path d="M60 38H142M418 38H500" stroke-width="1.5"/>
-  <path d="M28 48H174q12 0 12 12v12q0 12-12 12H50L26 94L36 84H28q-12 0-12-12v-12q0-12 12-12Z"/>
-  <path d="M386 48H532q12 0 12 12v12q0 12-12 12H524L534 94L510 84H386q-12 0-12-12v-12q0-12 12-12Z"/>
-  <path d="M28 108H174q12 0 12 12v12q0 12-12 12H50L26 154L36 144H28q-12 0-12-12v-12q0-12 12-12Z"/>
-  <path d="M386 152H532q12 0 12 12v12q0 12-12 12H524L534 198L510 188H386q-12 0-12-12v-12q0-12 12-12Z"/>
-  <path d="M28 212H174q12 0 12 12v12q0 12-12 12H50L26 258L36 248H28q-12 0-12-12v-12q0-12 12-12Z"/>
-  <path d="M386 256H532q12 0 12 12v12q0 12-12 12H524L534 302L510 292H386q-12 0-12-12v-12q0-12 12-12Z"/>
-  <path d="M28 316H174q12 0 12 12v12q0 12-12 12H50L26 362L36 352H28q-12 0-12-12v-12q0-12 12-12Z"/>
-  <path d="M386 360H532q12 0 12 12v12q0 12-12 12H524L534 406L510 396H386q-12 0-12-12v-12q0-12 12-12Z"/>
+  <path fill="var(--illo-blue, #8fd0f0)" d="M28 48H174q12 0 12 12v12q0 12-12 12H50L26 94L36 84H28q-12 0-12-12v-12q0-12 12-12Z"/>
+  <path fill="var(--illo-gold, #ffd166)" d="M386 48H532q12 0 12 12v12q0 12-12 12H524L534 94L510 84H386q-12 0-12-12v-12q0-12 12-12Z"/>
+  <path fill="var(--illo-blue, #8fd0f0)" d="M28 108H174q12 0 12 12v12q0 12-12 12H50L26 154L36 144H28q-12 0-12-12v-12q0-12 12-12Z"/>
+  <path fill="var(--illo-gold, #ffd166)" d="M386 152H532q12 0 12 12v12q0 12-12 12H524L534 198L510 188H386q-12 0-12-12v-12q0-12 12-12Z"/>
+  <path fill="var(--illo-blue, #8fd0f0)" d="M28 212H174q12 0 12 12v12q0 12-12 12H50L26 258L36 248H28q-12 0-12-12v-12q0-12 12-12Z"/>
+  <path fill="var(--illo-gold, #ffd166)" d="M386 256H532q12 0 12 12v12q0 12-12 12H524L534 302L510 292H386q-12 0-12-12v-12q0-12 12-12Z"/>
+  <path fill="var(--illo-blue, #8fd0f0)" d="M28 316H174q12 0 12 12v12q0 12-12 12H50L26 362L36 352H28q-12 0-12-12v-12q0-12 12-12Z"/>
+  <path fill="var(--illo-gold, #ffd166)" d="M386 360H532q12 0 12 12v12q0 12-12 12H524L534 406L510 396H386q-12 0-12-12v-12q0-12 12-12Z"/>
   <path d="M280 414V438M273 430l7 8 7-8"/>
-  <rect x="16" y="444" width="528" height="66" rx="12" fill="currentColor" fill-opacity=".12"/>
+  <rect x="16" y="444" width="528" height="66" rx="12" fill="var(--illo-pink, #f4a3b5)"/>
   <path d="M280 516V540M273 532l7 8 7-8"/>
-  <rect x="16" y="546" width="528" height="66" rx="12" fill="currentColor" fill-opacity=".12"/>
-  <g fill="currentColor" stroke="none" text-anchor="middle">
+  <rect x="16" y="546" width="528" height="66" rx="12" fill="var(--illo-shade, #ead9c4)"/>
+  <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle">
     <text x="101" y="28" font-size="20" font-weight="700" letter-spacing="2">PRO</text>
     <text x="459" y="28" font-size="20" font-weight="700" letter-spacing="2">CON</text>
     <text x="101" y="72" font-size="17">400 words</text>
