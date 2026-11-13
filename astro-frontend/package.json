@@ -8,7 +8,8 @@
     "build": "astro build",
     "check": "astro check",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "csp:update": "CSP_UPDATE=1 astro build"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.12",

@@ -4,6 +4,7 @@ import mdx from "@astrojs/mdx";
 import preact from "@astrojs/preact";
 import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
+import contentSecurityPolicy from "./integrations/content-security-policy.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,7 +14,7 @@ export default defineConfig({
   redirects: {
     "/blog": "/",
   },
-  integrations: [mdx(), preact()],
+  integrations: [mdx(), preact(), contentSecurityPolicy()],
   // Pages stay static. The adapter is for the one route that opts out of prerendering.
   adapter: vercel(),
   env: {
