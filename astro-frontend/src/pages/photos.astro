@@ -1,12 +1,42 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
+import {
+  faChevronLeft,
+  faChevronRight,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import MainLayout from "../layouts/main.astro";
+import Icon from "../components/icon";
 
-const photos = Object.values(
+const dateFormat = new Intl.DateTimeFormat("en-GB", {
+  dateStyle: "long",
+  timeZone: "UTC",
+});
+
+// Each file name starts with the date of the photo, for example 2013-11-03.
+const photoDate = (path: string) => {
+  const match = path.match(/(\d{4}-\d{2}-\d{2})[^/]*$/);
+  return match ? dateFormat.format(new Date(`${match[1]}T00:00:00Z`)) : null;
+};
+
+const files = Object.entries(
   import.meta.glob<{ default: ImageMetadata }>("../content/photos/*.jpg", {
     eager: true,
   }),
-).map((photo) => photo.default);
+);
+
+const photos = await Promise.all(
+  files.map(async ([path, file], i) => {
+    const date = photoDate(path);
+    const position = `${i + 1} of ${files.length}`;
+    return {
+      thumbnail: file.default,
+      full: await getImage({ src: file.default }),
+      caption: date ? `${position}, ${date}` : position,
+      alt: date ? `Photo taken on ${date}` : `Photo ${position}`,
+    };
+  }),
+);
 ---
 
 <MainLayout title="Photos">
@@ -16,12 +46,18 @@ const photos = Object.values(
     {
       photos.map((photo, i) => (
         <a
-          href="#"
+          href={photo.full.src}
           class="block h-auto w-full focus:shadow-[0_0_0_3px_white] focus:outline-none"
+          aria-label={`View photo ${photo.caption}`}
+          data-photo
+          data-alt={photo.alt}
+          data-caption={photo.caption}
+          data-width={photo.full.attributes.width}
+          data-height={photo.full.attributes.height}
         >
           <Image
             class="block h-auto w-full"
-            src={photo}
+            src={photo.thumbnail}
             width={145 * 2}
             height={145 * 2}
             loading={i < 8 ? "eager" : "lazy"}
@@ -31,4 +67,311 @@ const photos = Object.values(
       ))
     }
   </div>
+
+  <dialog id="lightbox" class="lightbox" aria-label="Photo viewer">
+    <button
+      type="button"
+      class="lightbox-button lightbox-close"
+      aria-label="Close photo viewer"
+      data-close
+    >
+      <Icon icon={faXmark} />
+    </button>
+    <button
+      type="button"
+      class="lightbox-button lightbox-step lightbox-previous"
+      aria-label="Previous photo"
+      data-step="-1"
+    >
+      <Icon icon={faChevronLeft} />
+    </button>
+    <button
+      type="button"
+      class="lightbox-button lightbox-step lightbox-next"
+      aria-label="Next photo"
+      data-step="1"
+    >
+      <Icon icon={faChevronRight} />
+    </button>
+    <figure class="lightbox-figure">
+      <img class="lightbox-image" alt="" />
+      <figcaption class="lightbox-caption" aria-live="polite"></figcaption>
+    </figure>
+  </dialog>
 </MainLayout>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>("#lightbox");
+  const image = dialog?.querySelector<HTMLImageElement>(".lightbox-image");
+  const caption = dialog?.querySelector<HTMLElement>(".lightbox-caption");
+  const links = [
+    ...document.querySelectorAll<HTMLAnchorElement>("a[data-photo]"),
+  ];
+
+  if (dialog && image && caption && links.length > 0) {
+    const previous = dialog.querySelector<HTMLButtonElement>('[data-step="-1"]');
+    const next = dialog.querySelector<HTMLButtonElement>('[data-step="1"]');
+    const close = dialog.querySelector<HTMLButtonElement>("[data-close]");
+    let current = 0;
+
+    const preload = (index: number) => {
+      const link = links[index];
+      if (link) new Image().src = link.href;
+    };
+
+    const show = (index: number) => {
+      const link = links[index];
+      if (!link) return;
+      current = index;
+
+      // The photo stays hidden until it loads, so the last photo does not flash.
+      image.dataset.loading = "";
+      image.width = Number(link.dataset.width);
+      image.height = Number(link.dataset.height);
+      image.alt = link.dataset.alt ?? "";
+      image.src = link.href;
+      caption.textContent = link.dataset.caption ?? "";
+
+      const isFirst = index === 0;
+      const isLast = index === links.length - 1;
+      // A hidden button cannot keep the focus, so move it to the close button.
+      if (
+        (isFirst && document.activeElement === previous) ||
+        (isLast && document.activeElement === next)
+      ) {
+        close?.focus();
+      }
+      if (previous) previous.hidden = isFirst;
+      if (next) next.hidden = isLast;
+
+      preload(index - 1);
+      preload(index + 1);
+    };
+
+    const step = (change: number) => show(current + change);
+
+    const showLoaded = () => delete image.dataset.loading;
+    image.addEventListener("load", showLoaded);
+    image.addEventListener("error", showLoaded);
+
+    links.forEach((link, index) => {
+      link.addEventListener("click", (event) => {
+        // A click with a modifier key opens the photo in a new tab, as normal.
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+          return;
+        }
+        event.preventDefault();
+        show(index);
+        dialog.showModal();
+      });
+    });
+
+    dialog.addEventListener("click", (event) => {
+      const target = event.target as Element;
+      const button = target.closest<HTMLButtonElement>("button");
+      if (button?.dataset.step) {
+        step(Number(button.dataset.step));
+      } else if (button || target !== image) {
+        dialog.close();
+      }
+    });
+
+    dialog.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") step(-1);
+      if (event.key === "ArrowRight") step(1);
+    });
+
+    // A swipe to the left shows the next photo, as in a phone's photo app.
+    let swipeStart: number | null = null;
+    dialog.addEventListener(
+      "touchstart",
+      (event) => {
+        swipeStart =
+          event.touches.length === 1 ? event.touches[0]!.clientX : null;
+      },
+      { passive: true },
+    );
+    dialog.addEventListener("touchend", (event) => {
+      if (swipeStart === null) return;
+      const distance = event.changedTouches[0]!.clientX - swipeStart;
+      swipeStart = null;
+      if (Math.abs(distance) > 50) step(distance < 0 ? 1 : -1);
+    });
+
+    dialog.addEventListener("close", () => {
+      links[current]?.focus();
+    });
+  }
+</script>
+
+<style>
+  :global(html:has(.lightbox[open])) {
+    overflow: hidden;
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    opacity: 0;
+    transition:
+      opacity 0.2s ease-out,
+      display 0.2s allow-discrete,
+      overlay 0.2s allow-discrete;
+  }
+
+  .lightbox[open] {
+    display: grid;
+    place-items: center;
+    opacity: 1;
+  }
+
+  .lightbox::backdrop {
+    background: rgb(0 0 0 / 0);
+    transition:
+      background-color 0.2s ease-out,
+      display 0.2s allow-discrete,
+      overlay 0.2s allow-discrete;
+  }
+
+  .lightbox[open]::backdrop {
+    background: rgb(0 0 0 / 0.9);
+  }
+
+  .lightbox-figure {
+    display: grid;
+    justify-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 1rem;
+    transition: scale 0.2s ease-out;
+  }
+
+  .lightbox:not([open]) .lightbox-figure {
+    scale: 0.96;
+  }
+
+  @starting-style {
+    .lightbox[open] {
+      opacity: 0;
+    }
+
+    .lightbox[open]::backdrop {
+      background: rgb(0 0 0 / 0);
+    }
+
+    .lightbox[open] .lightbox-figure {
+      scale: 0.96;
+    }
+  }
+
+  .lightbox-image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: calc(100dvh - 5rem);
+    transition: opacity 0.15s ease-out;
+  }
+
+  .lightbox-image[data-loading] {
+    opacity: 0;
+    transition: none;
+  }
+
+  .lightbox-caption {
+    min-height: 1.5em;
+    font-size: 0.875rem;
+  }
+
+  .lightbox-button {
+    position: absolute;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 1.75rem;
+    cursor: pointer;
+  }
+
+  .lightbox-button[hidden] {
+    display: none;
+  }
+
+  /* The icon sits on a dark disc so that it shows over a light photo. */
+  .lightbox-button :global(svg) {
+    box-sizing: content-box;
+    width: 1em;
+    height: 1em;
+    padding: 0.4em;
+    border-radius: 50%;
+    background: rgb(0 0 0 / 0.5);
+  }
+
+  .lightbox-button:focus-visible {
+    outline: none;
+  }
+
+  .lightbox-button:focus-visible :global(svg) {
+    outline: 3px solid #fff;
+  }
+
+  .lightbox-close {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  /* Each arrow button is a strip down one side, so it is easy to reach. */
+  .lightbox-step {
+    top: 4rem;
+    bottom: 4rem;
+    width: min(20vw, 8rem);
+  }
+
+  .lightbox-previous {
+    left: 0;
+  }
+
+  .lightbox-next {
+    right: 0;
+  }
+
+  /* With a mouse the arrows show on hover. A touch screen always shows them. */
+  @media (hover: hover) {
+    .lightbox-step :global(svg) {
+      opacity: 0;
+      transition: opacity 0.15s ease-out;
+    }
+
+    .lightbox-step:hover :global(svg),
+    .lightbox-step:focus-visible :global(svg) {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lightbox,
+    .lightbox::backdrop,
+    .lightbox-figure,
+    .lightbox-image,
+    .lightbox-step :global(svg) {
+      transition: none;
+    }
+
+    .lightbox-figure {
+      scale: none !important;
+    }
+  }
+</style>
