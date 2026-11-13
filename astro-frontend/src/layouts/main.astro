@@ -37,6 +37,12 @@ const { title, description } = Astro.props;
       cssVariable="--font-nunito-sans"
       preload={[{ style: "normal", subset: "latin" }]}
     />
+    {
+      // Vercel serves this script, so it only exists on a deployed build.
+      import.meta.env.PROD && (
+        <script is:inline defer src="/_vercel/insights/script.js" />
+      )
+    }
   </head>
   <body class="m-2 px-gutter text-body">
     <div
