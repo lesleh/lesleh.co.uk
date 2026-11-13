@@ -6,6 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://lesleh.co.uk",
   trailingSlash: "always",
   // The home page is the list of posts, so /blog/ has no page of its own.
   redirects: {

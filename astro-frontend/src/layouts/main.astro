@@ -8,7 +8,7 @@ import { faCircleHalfStroke } from "@fortawesome/free-solid-svg-icons";
 
 export interface Props {
   title: string;
-  description?: string;
+  description?: string | undefined;
 }
 
 const { title, description } = Astro.props;
@@ -19,6 +19,12 @@ const { title, description } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Lesleh.co.uk"
+      href="/rss.xml"
+    />
     <title>{title} - Lesleh.co.uk</title>
     {description && <meta name="description" content={description} />}
     <script is:inline>
@@ -34,6 +40,12 @@ const { title, description } = Astro.props;
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {
+      // Vercel serves this script, so it only exists on a deployed build.
+      import.meta.env.PROD && (
+        <script is:inline defer src="/_vercel/insights/script.js" />
+      )
+    }
   </head>
   <body class="m-2 px-gutter text-body">
     <div
