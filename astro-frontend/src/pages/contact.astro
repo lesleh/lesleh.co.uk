@@ -1,5 +1,256 @@
 ---
 import MainLayout from "../layouts/main.astro";
+
+const fieldClass =
+  "mt-1 block w-full rounded-sm border border-primary-inverse bg-transparent px-3 py-2 text-primary-inverse aria-invalid:border-l-8";
+const errorClass = "mt-1 font-bold";
 ---
 
-<MainLayout title="Contact">Coming soon.</MainLayout>
+<MainLayout
+  title="Contact"
+  description="Send me a message with the contact form."
+>
+  <div class="max-w-[36em]">
+    <p id="contact-intro">
+      Send me a message with this form. I'll reply to the email address you
+      give.
+    </p>
+
+    <noscript>
+      <p class="mt-4 border-l-8 border-primary-inverse py-2 pl-4">
+        This form needs JavaScript. Turn it on in your browser, then reload the
+        page.
+      </p>
+    </noscript>
+
+    <div
+      id="contact-status"
+      class="mt-4 border-l-8 border-primary-inverse py-2 pl-4 font-bold empty:hidden"
+      tabindex="-1"
+      aria-live="polite"
+    >
+    </div>
+
+    <form id="contact-form" class="mt-4 grid gap-4" novalidate>
+      <div>
+        <label for="contact-name">Name</label>
+        <input
+          id="contact-name"
+          class={fieldClass}
+          name="name"
+          type="text"
+          autocomplete="name"
+          maxlength="100"
+          required
+          aria-describedby="contact-name-error"
+        />
+        <p id="contact-name-error" class={errorClass} hidden></p>
+      </div>
+
+      <div>
+        <label for="contact-email">Email address</label>
+        <input
+          id="contact-email"
+          class={fieldClass}
+          name="email"
+          type="email"
+          autocomplete="email"
+          spellcheck="false"
+          maxlength="254"
+          required
+          aria-describedby="contact-email-error"
+        />
+        <p id="contact-email-error" class={errorClass} hidden></p>
+      </div>
+
+      <div>
+        <label for="contact-message">Message</label>
+        <textarea
+          id="contact-message"
+          class={fieldClass}
+          name="message"
+          rows="8"
+          maxlength="5000"
+          required
+          aria-describedby="contact-message-error"></textarea>
+        <p id="contact-message-error" class={errorClass} hidden></p>
+      </div>
+
+      {/* A trap for bots. People cannot see or reach this field. */}
+      <div class="hidden" aria-hidden="true">
+        <label for="contact-website">Leave this field empty</label>
+        <input
+          id="contact-website"
+          name="website"
+          type="text"
+          tabindex="-1"
+          autocomplete="off"
+        />
+      </div>
+
+      <div>
+        <button
+          id="contact-submit"
+          type="submit"
+          class="cursor-pointer rounded-sm border border-primary-inverse bg-primary-inverse px-4 py-2 font-bold text-primary aria-disabled:cursor-not-allowed aria-disabled:opacity-60"
+        >
+          Send message
+        </button>
+      </div>
+    </form>
+  </div>
+</MainLayout>
+
+<script>
+  type Field = "name" | "email" | "message";
+
+  interface Reply {
+    ok?: boolean;
+    code?: string;
+    message?: string;
+    token?: string;
+    errors?: Partial<Record<Field, string>>;
+  }
+
+  const ENDPOINT = "/api/contact/";
+  const FIELDS: Field[] = ["name", "email", "message"];
+  const UNAVAILABLE =
+    "Sorry, the contact form cannot send messages right now. Try again later.";
+  const NETWORK_ERROR =
+    "Your message was not sent. Check your connection and try again.";
+
+  const form = document.querySelector<HTMLFormElement>("#contact-form");
+  const status = document.querySelector<HTMLElement>("#contact-status");
+  const button = document.querySelector<HTMLButtonElement>("#contact-submit");
+  const intro = document.querySelector<HTMLElement>("#contact-intro");
+
+  if (form && status && button) {
+    let token: string | undefined;
+    let sending = false;
+
+    const control = (field: Field) =>
+      form.querySelector<HTMLInputElement | HTMLTextAreaElement>(
+        `[name="${field}"]`,
+      );
+
+    const setBusy = (busy: boolean) => {
+      sending = busy;
+      // aria-disabled keeps the keyboard focus on the button while the form sends.
+      button.setAttribute("aria-disabled", String(busy));
+      button.textContent = busy ? "Sending..." : "Send message";
+    };
+
+    const showStatus = (message: string, moveFocus = false) => {
+      status.textContent = message;
+      if (moveFocus) status.focus();
+    };
+
+    const showFieldErrors = (errors: Partial<Record<Field, string>>) => {
+      let firstInvalid: HTMLElement | undefined;
+      for (const field of FIELDS) {
+        const input = control(field);
+        const error = document.getElementById(`contact-${field}-error`);
+        if (!input || !error) continue;
+        const message = errors[field];
+        if (message) {
+          input.setAttribute("aria-invalid", "true");
+          error.textContent = `Error: ${message}`;
+          error.hidden = false;
+          firstInvalid ??= input;
+        } else {
+          input.removeAttribute("aria-invalid");
+          error.textContent = "";
+          error.hidden = true;
+        }
+      }
+      return firstInvalid;
+    };
+
+    const readReply = async (response: Response): Promise<Reply> => {
+      try {
+        return (await response.json()) as Reply;
+      } catch {
+        return {};
+      }
+    };
+
+    // The server needs the token to check how long the page was open before the submit.
+    const loadToken = async () => {
+      try {
+        const response = await fetch(ENDPOINT, {
+          headers: { Accept: "application/json" },
+        });
+        const reply = await readReply(response);
+        if (response.ok && reply.token) {
+          token = reply.token;
+          return true;
+        }
+      } catch {
+        // The message below covers a network failure too.
+      }
+      return false;
+    };
+
+    const closeForm = (message: string, moveFocus: boolean) => {
+      form.hidden = true;
+      if (intro) intro.hidden = true;
+      showStatus(message, moveFocus);
+    };
+
+    const tokenLoaded = loadToken();
+    void tokenLoaded.then((loaded) => {
+      if (!loaded) closeForm(UNAVAILABLE, false);
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (sending) return;
+
+      setBusy(true);
+      showStatus("");
+
+      try {
+        if (!(await tokenLoaded) || !token) {
+          closeForm(UNAVAILABLE, true);
+          return;
+        }
+
+        const data = new FormData(form);
+        const value = (name: string) => String(data.get(name) ?? "");
+        const response = await fetch(ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: value("name"),
+            email: value("email"),
+            message: value("message"),
+            website: value("website"),
+            token,
+          }),
+        });
+        const reply = await readReply(response);
+        if (reply.token) token = reply.token;
+
+        if (response.ok && reply.ok) {
+          closeForm("Thank you. Your message has been sent.", true);
+          return;
+        }
+        if (reply.code === "not_configured") {
+          closeForm(UNAVAILABLE, true);
+          return;
+        }
+
+        const firstInvalid = showFieldErrors(reply.errors ?? {});
+        showStatus(reply.message ?? NETWORK_ERROR, !firstInvalid);
+        firstInvalid?.focus();
+      } catch {
+        showStatus(NETWORK_ERROR, true);
+      } finally {
+        setBusy(false);
+      }
+    });
+  }
+</script>
