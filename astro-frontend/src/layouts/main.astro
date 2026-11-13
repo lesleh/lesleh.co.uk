@@ -32,6 +32,12 @@ const previewUrl = new URL(preview.src, Astro.site);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={SITE_NAME}
+      href="/rss.xml"
+    />
     <title>{title} - {SITE_NAME}</title>
     {description && <meta name="description" content={description} />}
     <link rel="canonical" href={canonical} />
