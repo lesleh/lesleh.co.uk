@@ -187,9 +187,6 @@ importers:
       preact:
         specifier: ^11.2.0
         version: 11.2.0(preact-render-to-string@6.8.2)
-      prismjs:
-        specifier: ^1.30.0
-        version: 1.30.0
       tailwindcss:
         specifier: ^4.3.5
         version: 4.3.5
