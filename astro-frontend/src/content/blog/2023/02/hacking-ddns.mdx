@@ -4,11 +4,18 @@ description: Learn how to hack the DynDNS protocol to update a custom DNS record
 date: "2023-02-11"
 ---
 
+import Handler from "./hacking-ddns/handler.svg";
+import NameAndAddress from "./hacking-ddns/name-and-address.svg";
+import Path from "./hacking-ddns/path.svg";
+import Request from "./hacking-ddns/request.svg";
+
 I recently discovered that my router supports the DynDNS protocol. However, I was disappointed to find out that the DynDNS service costs $55 per year just to keep a DNS record updated. Nevertheless, I discovered that it's possible to change the host that the router connects to.
 
 Dynamic Domain Name System (DDNS) is a service that allows users to associate a hostname with a dynamic IP address, allowing users to access a device connected to the Internet using a domain name instead of an IP address. DDNS is useful because most Internet Service Providers (ISPs) assign dynamic IP addresses to their customers, which can change over time. This makes it difficult to connect to a device using its IP address, as the address may change and cause connection issues. DDNS solves this problem by providing a way to associate a hostname with a dynamic IP address, so users can connect to their device using the hostname, which remains constant even if the IP address changes.
 
 In my specific case, I have a small web server running on a Raspberry Pi which I'd like to expose using a friendly DNS name.
+
+<NameAndAddress />
 
 ## Figuring out the protocol
 
@@ -36,6 +43,8 @@ Authorization: Basic am9objptY2NsYW5l
 ```
 
 The authorisation header is a base64 encoded string in the format `username:password`. The `hostname` query string parameter includes the configured hostname for the DNS entry we're setting. We can safely ignore this. The `myip` parameter is the detected public IP address, which we'll be updating the DNS record to.
+
+<Request />
 
 ## Creating a service to update Route53
 
@@ -75,6 +84,8 @@ custom:
 ```
 
 For the actual function code, I wrote a couple of functions, one to read the existing value for the DNS record, and one to write a new value. This may be a premature optimisation but it allows me to check if the value actually needs updating before doing the update, since in most cases the IP won't have changed since the last run.
+
+<Handler />
 
 ```js
 const route53 = require("@aws-sdk/client-route-53");
@@ -167,3 +178,5 @@ The serverless framework handles creating the Cloudformation stack necessary for
 ## Enabling HTTP access for API Gateway
 
 By default, API Gateway only permits access through HTTPS. However, the dyndns protocol utilized by the router does not seem to be compatible with HTTPS. To overcome this limitation, a Cloudfront distribution was set up and directed towards the API Gateway. For proper functionality, it is necessary to configure Cloudfront to transmit the hostname/myip query string parameters. This is because, by default, Cloudfront will not pass on any query string parameters to the underlying server. To guarantee that our requests are successfully transmitted, it is advisable to disable caching as well.
+
+<Path />

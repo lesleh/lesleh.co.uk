@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 250" width="100%" role="img" aria-label="A name tag reading home.lesleh.co.uk points at a Raspberry Pi. The name stays the same. Above the Raspberry Pi, a card reading 'old IP' is crossed out, next to a card reading 'new IP'. The IP changes." fill="none" stroke="var(--illo-ink, #3b0d1a)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto;padding:3%;box-sizing:border-box;border-radius:12px;background:var(--illo-paper, #fbf1e4)">
+<g transform="rotate(-2 116 120)">
+    <rect x="16" y="96" width="204" height="48" rx="8" fill="var(--illo-pink, #f4a3b5)"/>
+    <circle cx="33" cy="120" r="4" fill="var(--illo-surface, #fff)" stroke-width="1.5"/>
+  </g>
+  <path d="M236 120H368M360 112l8 8-8 8"/>
+  <rect x="388" y="84" width="150" height="92" rx="8" fill="var(--illo-blue, #8fd0f0)"/>
+  <g fill="var(--illo-surface, #fff)" stroke-width="1.5">
+    <circle cx="400" cy="97" r="3"/>
+    <circle cx="526" cy="97" r="3"/>
+    <circle cx="400" cy="164" r="3"/>
+    <circle cx="526" cy="164" r="3"/>
+  </g>
+  <rect x="432" y="114" width="38" height="38" rx="3" fill="var(--illo-surface, #fff)"/>
+  <g fill="var(--illo-shade-strong, #d9c3a8)">
+    <rect x="518" y="110" width="28" height="18" rx="2"/>
+    <rect x="518" y="136" width="28" height="18" rx="2"/>
+  </g>
+  <g fill="var(--illo-ink, #3b0d1a)" stroke="none"><circle cx="420" cy="97" r="1.5"/><circle cx="430" cy="97" r="1.5"/><circle cx="440" cy="97" r="1.5"/><circle cx="450" cy="97" r="1.5"/><circle cx="460" cy="97" r="1.5"/><circle cx="470" cy="97" r="1.5"/><circle cx="480" cy="97" r="1.5"/><circle cx="490" cy="97" r="1.5"/><circle cx="500" cy="97" r="1.5"/></g>
+  <g transform="rotate(-3 422 40)"><rect x="384" y="22" width="76" height="36" rx="6" fill="var(--illo-surface, #fff)"/></g>
+  <g transform="rotate(2 512 40)"><rect x="474" y="22" width="76" height="36" rx="6" fill="var(--illo-surface, #fff)"/></g>
+  <path d="M512 62V82" stroke-width="1.5"/>
+  <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle" font-size="18">
+    <text x="126" y="126" font-weight="700" transform="rotate(-2 116 120)">home.lesleh.co.uk</text>
+    <text x="118" y="182">The name stays</text>
+    <text x="118" y="206">the same.</text>
+    <text x="422" y="46" transform="rotate(-3 422 40)">old IP</text>
+    <text x="512" y="46" font-weight="700" transform="rotate(2 512 40)">new IP</text>
+    <text x="463" y="206" font-weight="700">Raspberry Pi</text>
+    <text x="463" y="230">The IP changes.</text>
+  </g>
+  <path d="M390 43L454 37" stroke="var(--illo-accent, #af1440)" stroke-width="3"/>
+</svg>
