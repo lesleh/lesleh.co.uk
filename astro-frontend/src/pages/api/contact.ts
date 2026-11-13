@@ -2,8 +2,11 @@ import type { APIRoute } from "astro";
 import {
   CONTACT_FROM_EMAIL,
   CONTACT_TO_EMAIL,
-  RESEND_API_KEY,
+  SES_ACCESS_KEY_ID,
+  SES_REGION,
+  SES_SECRET_ACCESS_KEY,
 } from "astro:env/server";
+import { sendEmail, type AwsCredentials } from "../../lib/ses";
 
 // The only route the server renders. Every other page is static.
 export const prerender = false;
@@ -15,11 +18,13 @@ const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 254;
 const MAX_MESSAGE_LENGTH = 5000;
 const EMAIL_PATTERN = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
+// The region becomes part of the host name of the request.
+const REGION_PATTERN = /^[a-z]{2}(-[a-z]+)+-\d$/;
 
 type Field = "name" | "email" | "message";
 
 interface MailSettings {
-  apiKey: string;
+  credentials: AwsCredentials;
   from: string;
   to: string;
 }
@@ -41,11 +46,22 @@ const notConfigured = () =>
   });
 
 const mailSettings = (): MailSettings | undefined => {
-  if (!RESEND_API_KEY || !CONTACT_FROM_EMAIL || !CONTACT_TO_EMAIL) {
+  if (
+    !SES_ACCESS_KEY_ID ||
+    !SES_SECRET_ACCESS_KEY ||
+    !SES_REGION ||
+    !REGION_PATTERN.test(SES_REGION) ||
+    !CONTACT_FROM_EMAIL ||
+    !CONTACT_TO_EMAIL
+  ) {
     return undefined;
   }
   return {
-    apiKey: RESEND_API_KEY,
+    credentials: {
+      accessKeyId: SES_ACCESS_KEY_ID,
+      secretAccessKey: SES_SECRET_ACCESS_KEY,
+      region: SES_REGION,
+    },
     from: CONTACT_FROM_EMAIL,
     to: CONTACT_TO_EMAIL,
   };
@@ -63,10 +79,10 @@ const fromHex = (hex: string) =>
     ? Uint8Array.from(hex.match(/../g) ?? [], (pair) => parseInt(pair, 16))
     : undefined;
 
-const signingKey = (apiKey: string) =>
+const signingKey = (secret: string) =>
   crypto.subtle.importKey(
     "raw",
-    new TextEncoder().encode(apiKey),
+    new TextEncoder().encode(secret),
     { name: "HMAC", hash: "SHA-256" },
     false,
     ["sign", "verify"],
@@ -76,17 +92,17 @@ const signedText = (issuedAt: number) =>
   new TextEncoder().encode(`contact-form:${issuedAt}`);
 
 // The token records when the page loaded. The signature stops a sender changing the time.
-const createToken = async (apiKey: string) => {
+const createToken = async (secret: string) => {
   const issuedAt = nowInSeconds();
   const signature = await crypto.subtle.sign(
     "HMAC",
-    await signingKey(apiKey),
+    await signingKey(secret),
     signedText(issuedAt),
   );
   return `${issuedAt}.${toHex(signature)}`;
 };
 
-const tokenAgeInSeconds = async (token: unknown, apiKey: string) => {
+const tokenAgeInSeconds = async (token: unknown, secret: string) => {
   if (typeof token !== "string") return undefined;
   const [issuedAtText = "", signatureHex = ""] = token.split(".");
   const issuedAt = Number(issuedAtText);
@@ -95,7 +111,7 @@ const tokenAgeInSeconds = async (token: unknown, apiKey: string) => {
 
   const valid = await crypto.subtle.verify(
     "HMAC",
-    await signingKey(apiKey),
+    await signingKey(secret),
     signature,
     signedText(issuedAt),
   );
@@ -107,7 +123,7 @@ const text = (value: unknown) => (typeof value === "string" ? value.trim() : "")
 export const GET: APIRoute = async () => {
   const settings = mailSettings();
   if (!settings) return notConfigured();
-  return json(200, { ok: true, token: await createToken(settings.apiKey) });
+  return json(200, { ok: true, token: await createToken(settings.credentials.secretAccessKey) });
 };
 
 export const POST: APIRoute = async ({ request }) => {
@@ -163,13 +179,13 @@ export const POST: APIRoute = async ({ request }) => {
     });
   }
 
-  const age = await tokenAgeInSeconds(data["token"], settings.apiKey);
+  const age = await tokenAgeInSeconds(data["token"], settings.credentials.secretAccessKey);
   if (age === undefined || age < 0 || age > MAX_TOKEN_AGE_SECONDS) {
     return json(400, {
       ok: false,
       code: "expired",
       message: "The form expired. Select Send message again.",
-      token: await createToken(settings.apiKey),
+      token: await createToken(settings.credentials.secretAccessKey),
     });
   }
   if (age < MIN_SECONDS_BEFORE_SUBMIT) {
@@ -182,29 +198,24 @@ export const POST: APIRoute = async ({ request }) => {
 
   let sent = false;
   try {
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${settings.apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    const response = await sendEmail(
+      {
         from: settings.from,
-        to: [settings.to],
-        reply_to: email,
+        to: settings.to,
+        replyTo: email,
         subject: `Contact form: ${name}`,
         text: `From: ${name} <${email}>\n\n${message}`,
-      }),
-      signal: AbortSignal.timeout(10_000),
-    });
+      },
+      settings.credentials,
+    );
     sent = response.ok;
     if (!sent) {
       console.error(
-        `Resend rejected the contact email: ${response.status} ${await response.text()}`,
+        `Amazon SES rejected the contact email: ${response.status} ${await response.text()}`,
       );
     }
   } catch (error) {
-    console.error("The request to Resend failed", error);
+    console.error("The request to Amazon SES failed", error);
   }
 
   if (!sent) {
