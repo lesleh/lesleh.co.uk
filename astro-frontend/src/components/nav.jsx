@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from "@aduh95/preact-fontawesome";
+import Icon from "./icon";
 import {
   faHome,
   faUserCircle,
@@ -33,7 +33,7 @@ const Nav = () => (
   <ul className="site-nav">
     {menuItems.map((menuItem) => (
       <a key={menuItem.link} href={menuItem.link} activeClassName="active">
-        {menuItem.title} <FontAwesomeIcon icon={menuItem.icon} fixedWidth />
+        {menuItem.title} <Icon icon={menuItem.icon} fixedWidth />
       </a>
     ))}
   </ul>

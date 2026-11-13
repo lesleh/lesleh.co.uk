@@ -2,7 +2,7 @@
 import "../stylesheets/_index.scss";
 import Nav from "../components/nav";
 import Header from "../components/header";
-import { FontAwesomeIcon } from "@aduh95/preact-fontawesome";
+import Icon from "../components/icon";
 import { faGithubAlt } from "@fortawesome/free-brands-svg-icons";
 
 export interface Props {
@@ -36,7 +36,7 @@ const { title, description } = Astro.props;
           href="https://github.com/lesleh/lesleh.co.uk/"
           title="View source on GitHub"
         >
-          <FontAwesomeIcon icon={faGithubAlt} />
+          <Icon icon={faGithubAlt} />
         </a>
       </footer>
     </div>
