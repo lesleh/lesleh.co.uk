@@ -2,11 +2,11 @@
 <rect x="16" y="16" width="250" height="64" rx="12" fill="var(--illo-blue, #8fd0f0)"/>
   <path d="M278 48H316M308 40l8 8-8 8"/>
   <rect x="330" y="16" width="134" height="64" rx="6" fill="var(--illo-fixed-night, #222)"/>
-  <g stroke="none"><rect x="342" y="28" width="67" height="10" rx="3" fill="var(--illo-fixed-crimson, #af1440)"/><rect x="342" y="46" width="110" height="5" rx="2.5" fill="var(--illo-fixed-crimson, #af1440)"/><rect x="342" y="58" width="66" height="5" rx="2.5" fill="var(--illo-fixed-crimson, #af1440)"/></g>
+  <g stroke="none"><rect x="342" y="28" width="67" height="10" rx="3" fill="var(--illo-fixed-crimson, #af1440)"/><rect x="342" y="46" width="110" height="5" rx="2.5" fill="var(--illo-fixed-white, #fff)"/><rect x="342" y="58" width="66" height="5" rx="2.5" fill="var(--illo-fixed-white, #fff)"/></g>
   <rect x="16" y="100" width="250" height="64" rx="12" fill="var(--illo-gold, #ffd166)"/>
   <path d="M278 132H316M308 124l8 8-8 8"/>
   <rect x="330" y="100" width="134" height="64" rx="6" fill="var(--illo-fixed-night, #222)"/>
-  <g stroke="none"><rect x="342" y="112" width="67" height="10" rx="3" fill="var(--illo-fixed-crimson, #af1440)"/><rect x="342" y="130" width="110" height="5" rx="2.5" fill="var(--illo-fixed-crimson, #af1440)"/><rect x="342" y="142" width="66" height="5" rx="2.5" fill="var(--illo-fixed-crimson, #af1440)"/></g>
+  <g stroke="none"><rect x="342" y="112" width="67" height="10" rx="3" fill="var(--illo-fixed-crimson, #af1440)"/><rect x="342" y="130" width="110" height="5" rx="2.5" fill="var(--illo-fixed-white, #fff)"/><rect x="342" y="142" width="66" height="5" rx="2.5" fill="var(--illo-fixed-white, #fff)"/></g>
   <rect x="16" y="184" width="250" height="64" rx="12" fill="var(--illo-shade, #ead9c4)"/>
   <path d="M278 216H316M308 208l8 8-8 8"/>
   <rect x="330" y="184" width="134" height="64" rx="6" fill="var(--illo-fixed-white, #fff)"/>

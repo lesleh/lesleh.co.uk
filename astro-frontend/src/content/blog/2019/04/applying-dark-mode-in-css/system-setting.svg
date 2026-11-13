@@ -4,7 +4,7 @@
     <rect x="140" y="32" width="110" height="70" rx="6" fill="var(--illo-fixed-white, #fff)"/>
   <g stroke="none"><rect x="152" y="44" width="55" height="10" rx="3" fill="var(--illo-fixed-crimson, #af1440)"/><rect x="152" y="62" width="86" height="5" rx="2.5" fill="var(--illo-fixed-night, #222)"/><rect x="152" y="74" width="86" height="5" rx="2.5" fill="var(--illo-fixed-night, #222)"/><rect x="152" y="86" width="51.6" height="5" rx="2.5" fill="var(--illo-fixed-night, #222)"/></g>
     <rect x="270" y="32" width="110" height="70" rx="6" fill="var(--illo-fixed-night, #222)"/>
-  <g stroke="none"><rect x="282" y="44" width="55" height="10" rx="3" fill="var(--illo-fixed-crimson, #af1440)"/><rect x="282" y="62" width="86" height="5" rx="2.5" fill="var(--illo-fixed-crimson, #af1440)"/><rect x="282" y="74" width="86" height="5" rx="2.5" fill="var(--illo-fixed-crimson, #af1440)"/><rect x="282" y="86" width="51.6" height="5" rx="2.5" fill="var(--illo-fixed-crimson, #af1440)"/></g>
+  <g stroke="none"><rect x="282" y="44" width="55" height="10" rx="3" fill="var(--illo-fixed-crimson, #af1440)"/><rect x="282" y="62" width="86" height="5" rx="2.5" fill="var(--illo-fixed-white, #fff)"/><rect x="282" y="74" width="86" height="5" rx="2.5" fill="var(--illo-fixed-white, #fff)"/><rect x="282" y="86" width="51.6" height="5" rx="2.5" fill="var(--illo-fixed-white, #fff)"/></g>
     <rect x="263" y="25" width="124" height="84" rx="11" stroke="var(--illo-accent, #af1440)" stroke-width="3"/>
     <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle" font-size="17">
       <text x="195" y="134">Light</text>
