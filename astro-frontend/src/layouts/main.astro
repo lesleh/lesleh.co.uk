@@ -4,6 +4,7 @@ import Nav from "../components/nav";
 import Header from "../components/header";
 import Icon from "../components/icon";
 import { faGithubAlt } from "@fortawesome/free-brands-svg-icons";
+import { faCircleHalfStroke } from "@fortawesome/free-solid-svg-icons";
 
 export interface Props {
   title: string;
@@ -20,6 +21,17 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} - Lesleh.co.uk</title>
     {description && <meta name="description" content={description} />}
+    <script is:inline>
+      // Runs before the first paint so a saved theme does not flash.
+      try {
+        const theme = localStorage.getItem("theme");
+        if (theme === "light" || theme === "dark") {
+          document.documentElement.dataset.theme = theme;
+        }
+      } catch {
+        // Storage is blocked, so the site follows the browser's preference.
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
@@ -30,7 +42,19 @@ const { title, description } = Astro.props;
       <Header client:idle />
       <Nav />
 
-      <h1 class="sm:col-start-2 sm:row-start-1">{title}</h1>
+      <div
+        class="flex items-center justify-between gap-4 sm:col-start-2 sm:row-start-1"
+      >
+        <h1>{title}</h1>
+        <button
+          id="theme-toggle"
+          type="button"
+          class="cursor-pointer border-0 bg-transparent p-0 text-[1.5rem] text-primary-inverse opacity-75 hover:opacity-100 focus:opacity-100"
+          hidden
+        >
+          <Icon icon={faCircleHalfStroke} />
+        </button>
+      </div>
       <main
         class="overflow-x-auto sm:col-start-2 sm:row-span-2 sm:row-start-2 [&_:first-child]:mt-0"
       >
@@ -53,3 +77,40 @@ const { title, description } = Astro.props;
     />
   </body>
 </html>
+
+<script>
+  const root = document.documentElement;
+  const button = document.getElementById("theme-toggle");
+
+  const currentTheme = () =>
+    root.dataset.theme ??
+    (window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+
+  const otherTheme = () => (currentTheme() === "dark" ? "light" : "dark");
+
+  const updateLabel = () => {
+    const label = `Switch to ${otherTheme()} theme`;
+    button?.setAttribute("aria-label", label);
+    button?.setAttribute("title", label);
+  };
+
+  button?.addEventListener("click", () => {
+    const theme = otherTheme();
+    root.dataset.theme = theme;
+    try {
+      localStorage.setItem("theme", theme);
+    } catch {
+      // Storage is blocked, so the choice lasts for this page only.
+    }
+    updateLabel();
+  });
+
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", updateLabel);
+
+  updateLabel();
+  button?.removeAttribute("hidden");
+</script>
