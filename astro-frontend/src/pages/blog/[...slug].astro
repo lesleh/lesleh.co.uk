@@ -1,6 +1,7 @@
 ---
 import MainLayout from "../../layouts/main.astro";
 import Prose from "../../components/prose.astro";
+import PostDate from "../../components/post-date.astro";
 import { getCollection, render } from "astro:content";
 
 const { entry } = Astro.props;
@@ -21,6 +22,9 @@ export async function getStaticPaths() {
   image={entry.data.image}
   type="article"
 >
+  <p class="mb-4 opacity-75">
+    <PostDate date={entry.data.date} />
+  </p>
   <Prose>
     <Content />
   </Prose>
