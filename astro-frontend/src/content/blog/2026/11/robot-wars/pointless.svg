@@ -1,36 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="100%" role="img" aria-label="A dictionary open at the entry 'pointless, adjective: having no value at all', with 'at all' underlined. A robot marked CON points at the underline." fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto">
-<defs>
-    <g id="rw-pointless-head">
-      <line x1="0" y1="-22" x2="0" y2="0"/>
-      <circle cx="0" cy="-27" r="5" fill="currentColor"/>
-      <rect x="-46" y="18" width="8" height="22" rx="3"/>
-      <rect x="38" y="18" width="8" height="22" rx="3"/>
-      <rect x="-38" y="0" width="76" height="58" rx="12" fill="currentColor" fill-opacity=".12"/>
-      <circle cx="-15" cy="24" r="9"/>
-      <circle cx="15" cy="24" r="9"/>
-      <circle cx="-11" cy="24" r="4" fill="currentColor" stroke="none"/>
-      <circle cx="19" cy="24" r="4" fill="currentColor" stroke="none"/>
-      <rect x="-16" y="40" width="32" height="9" rx="2"/>
-      <path d="M-8 40v9M0 40v9M8 40v9" stroke-width="1.5"/>
-      <path d="M-8 58v10M8 58v10"/>
-    </g>
-  </defs>
-  <path d="M30 66V274q110-12 210 4q100-16 210-4V66"/>
-  <path d="M240 62q-90-16-200-4v204q110-12 200 4Z" fill="currentColor" fill-opacity=".12"/>
-  <path d="M240 62q90-16 200-4v204q-110-12-200 4Z" fill="currentColor" fill-opacity=".12"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="100%" role="img" aria-label="A dictionary open at the entry 'pointless, adjective: having no value at all', with 'at all' underlined. A robot marked CON points at the underline." fill="none" stroke="var(--illo-ink, #3b0d1a)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto;padding:3%;box-sizing:border-box;border-radius:12px;background:var(--illo-paper, #fbf1e4)">
+<path d="M30 66V274q110-12 210 4q100-16 210-4V66"/>
+  <path d="M240 62q-90-16-200-4v204q110-12 200 4Z" fill="var(--illo-surface, #fff)"/>
+  <path d="M240 62q90-16 200-4v204q-110-12-200 4Z" fill="var(--illo-surface, #fff)"/>
   <path d="M62 94h150M62 114h120M62 134h156M62 154h96M62 174h140M62 194h156M62 214h110M62 234h130" stroke-width="3" stroke-opacity=".35"/>
   <path d="M262 216h150M262 236h104" stroke-width="3" stroke-opacity=".35"/>
-  <path d="M259 195h62" stroke-width="4" transform="rotate(-2 290 196)"/>
+  <path d="M259 195h62" stroke="var(--illo-accent, #af1440)" stroke-width="4" transform="rotate(-2 290 196)"/>
   <g transform="translate(550 96) scale(-1 1)">
-    <use href="#rw-pointless-head"/>
-    <rect x="-48" y="68" width="96" height="80" rx="14" fill="currentColor" fill-opacity=".12"/>
+    <line x1="0" y1="-22" x2="0" y2="0"/>
+    <circle cx="0" cy="-27" r="5" fill="var(--illo-accent, #af1440)"/>
+    <g fill="var(--illo-gold, #ffd166)">
+      <rect x="-46" y="18" width="8" height="22" rx="3"/>
+      <rect x="38" y="18" width="8" height="22" rx="3"/>
+      <rect x="-38" y="0" width="76" height="58" rx="12"/>
+    </g>
+    <g fill="var(--illo-surface, #fff)">
+      <circle cx="-15" cy="24" r="9"/>
+      <circle cx="15" cy="24" r="9"/>
+      <rect x="-16" y="40" width="32" height="9" rx="2"/>
+    </g>
+    <circle cx="-11" cy="24" r="4" fill="var(--illo-ink, #3b0d1a)" stroke="none"/>
+    <circle cx="19" cy="24" r="4" fill="var(--illo-ink, #3b0d1a)" stroke="none"/>
+    <path d="M-8 40v9M0 40v9M8 40v9" stroke-width="1.5"/>
+    <path d="M-8 58v10M8 58v10"/>
+    <rect x="-48" y="68" width="96" height="80" rx="14" fill="var(--illo-gold, #ffd166)"/>
     <path d="M-20 148v28M20 148v28M-32 176h18M14 176h18"/>
     <path d="M48 80L80 90L196 86"/>
-    <circle cx="80" cy="90" r="4" fill="currentColor"/>
-    <circle cx="203" cy="86" r="7" fill="currentColor" fill-opacity=".12"/>
+    <circle cx="80" cy="90" r="4" fill="var(--illo-ink, #3b0d1a)"/>
+    <circle cx="203" cy="86" r="7" fill="var(--illo-gold, #ffd166)"/>
     <path d="M210 86h12" stroke-width="4"/>
   </g>
-  <g fill="currentColor" stroke="none">
+  <g fill="var(--illo-ink, #3b0d1a)" stroke="none">
     <text x="262" y="104" font-size="30" font-weight="700">pointless</text>
     <text x="262" y="128" font-size="16" font-style="italic">adjective</text>
     <text x="262" y="162" font-size="20">Having no value</text>

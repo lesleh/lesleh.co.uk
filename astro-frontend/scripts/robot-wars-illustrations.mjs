@@ -5,36 +5,48 @@ import { fileURLToPath } from "node:url";
 
 const OUT = fileURLToPath(new URL("../src/content/blog/2026/11/robot-wars", import.meta.url));
 
-const TINT = 'fill="currentColor" fill-opacity=".12"';
+// Theme colours from global.css. The fallback is the light value, for a file opened on its own.
+const PAPER = "var(--illo-paper, #fbf1e4)";
+const INK = "var(--illo-ink, #3b0d1a)";
+const SURFACE = "var(--illo-surface, #fff)";
+const SHADE = "var(--illo-shade, #ead9c4)";
+const SHADE_STRONG = "var(--illo-shade-strong, #d9c3a8)";
+const BLUE = "var(--illo-blue, #8fd0f0)";
+const GOLD = "var(--illo-gold, #ffd166)";
+const PINK = "var(--illo-pink, #f4a3b5)";
+const ACCENT = "var(--illo-accent, #af1440)";
 
 const svg = ({ w, h, label, maxWidth, body }) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="100%" role="img" aria-label="${label}" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto${maxWidth ? `;max-width:${maxWidth}` : ""}">
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="100%" role="img" aria-label="${label}" fill="none" stroke="${INK}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto;padding:3%;box-sizing:border-box;border-radius:12px;background:${PAPER}${maxWidth ? `;max-width:${maxWidth}` : ""}">
 ${body.trim()}
 </svg>
 `;
 
-// Robot head and neck, facing right, with the top of the head at 0,0.
-const head = (id) => `<g id="${id}">
-      <line x1="0" y1="-22" x2="0" y2="0"/>
-      <circle cx="0" cy="-27" r="5" fill="currentColor"/>
+// Robot head and neck in one colour, facing right, with the top of the head at 0,0.
+const head = (colour) => `<line x1="0" y1="-22" x2="0" y2="0"/>
+    <circle cx="0" cy="-27" r="5" fill="${ACCENT}"/>
+    <g fill="${colour}">
       <rect x="-46" y="18" width="8" height="22" rx="3"/>
       <rect x="38" y="18" width="8" height="22" rx="3"/>
-      <rect x="-38" y="0" width="76" height="58" rx="12" ${TINT}/>
+      <rect x="-38" y="0" width="76" height="58" rx="12"/>
+    </g>
+    <g fill="${SURFACE}">
       <circle cx="-15" cy="24" r="9"/>
       <circle cx="15" cy="24" r="9"/>
-      <circle cx="-11" cy="24" r="4" fill="currentColor" stroke="none"/>
-      <circle cx="19" cy="24" r="4" fill="currentColor" stroke="none"/>
       <rect x="-16" y="40" width="32" height="9" rx="2"/>
-      <path d="M-8 40v9M0 40v9M8 40v9" stroke-width="1.5"/>
-      <path d="M-8 58v10M8 58v10"/>
-    </g>`;
+    </g>
+    <circle cx="-11" cy="24" r="4" fill="${INK}" stroke="none"/>
+    <circle cx="19" cy="24" r="4" fill="${INK}" stroke="none"/>
+    <path d="M-8 40v9M0 40v9M8 40v9" stroke-width="1.5"/>
+    <path d="M-8 58v10M8 58v10"/>`;
 
 // Shoulders down to y, open at the bottom so a desk can hide the rest.
-const shoulders = (y) => `<path d="M-48 ${y}V82q0-14 14-14h68q14 0 14 14v${y - 82}" ${TINT}/>`;
+const shoulders = (y, colour) =>
+  `<path d="M-48 ${y}V82q0-14 14-14h68q14 0 14 14v${y - 82}" fill="${colour}"/>`;
 
 // Speech bubble with a tail on the bottom edge, from base a to base b, pointing at tip.
-const bubble = (x, y, w, h, r, a, b, tip) =>
-  `<path d="M${x + r} ${y}H${x + w - r}q${r} 0 ${r} ${r}v${h - 2 * r}q0 ${r}-${r} ${r}H${b}L${tip[0]} ${tip[1]}L${a} ${y + h}H${x + r}q-${r} 0-${r}-${r}v-${h - 2 * r}q0-${r} ${r}-${r}Z"/>`;
+const bubble = (x, y, w, h, r, a, b, tip, colour = SURFACE) =>
+  `<path fill="${colour}" d="M${x + r} ${y}H${x + w - r}q${r} 0 ${r} ${r}v${h - 2 * r}q0 ${r}-${r} ${r}H${b}L${tip[0]} ${tip[1]}L${a} ${y + h}H${x + r}q-${r} 0-${r}-${r}v-${h - 2 * r}q0-${r} ${r}-${r}Z"/>`;
 
 // 1. The debate itself.
 const debate = svg({
@@ -43,40 +55,41 @@ const debate = svg({
   label:
     "Two robots debate at lecterns marked PRO and CON. PRO says 'CI runs it anyway' and CON says 'Citation needed'. Between them, a judge robot behind a raised bench holds up a magnifying glass.",
   body: `
-  <defs>
-    ${head("rw-debate-head")}
-  </defs>
   <path d="M30 330H610"/>
   ${bubble(24, 20, 204, 50, 16, 108, 126, [132, 92])}
   ${bubble(412, 20, 204, 50, 16, 514, 532, [508, 92])}
   <g transform="translate(140 130)">
-    <use href="#rw-debate-head"/>
-    ${shoulders(95)}
+    ${head(BLUE)}
+    ${shoulders(95, BLUE)}
     <path d="M48 80q18 2 20 10"/>
-    <circle cx="68" cy="91" r="5" fill="currentColor"/>
+    <circle cx="68" cy="91" r="5" fill="${BLUE}"/>
   </g>
   <g transform="translate(500 130) scale(-1 1)">
-    <use href="#rw-debate-head"/>
-    ${shoulders(95)}
+    ${head(GOLD)}
+    ${shoulders(95, GOLD)}
     <path d="M48 80q18 2 20 10"/>
-    <circle cx="68" cy="91" r="5" fill="currentColor"/>
+    <circle cx="68" cy="91" r="5" fill="${GOLD}"/>
   </g>
   <g transform="translate(320 85)">
-    <use href="#rw-debate-head"/>
-    ${shoulders(95)}
+    ${head(PINK)}
+    ${shoulders(95, PINK)}
     <path d="M48 80q18-4 22-26"/>
-    <circle cx="70" cy="52" r="5" fill="currentColor"/>
+    <circle cx="70" cy="52" r="5" fill="${PINK}"/>
     <path d="M72 47l8-14" stroke-width="4"/>
-    <circle cx="88" cy="20" r="14" ${TINT}/>
+    <circle cx="88" cy="20" r="14" fill="${SURFACE}"/>
     <path d="M80 15a9 9 0 0 1 8-5" stroke-width="1.5"/>
   </g>
-  <rect x="70" y="225" width="140" height="12" rx="4" ${TINT}/>
-  <path d="M86 237H194L182 330H98Z" ${TINT}/>
-  <rect x="430" y="225" width="140" height="12" rx="4" ${TINT}/>
-  <path d="M446 237H554L542 330H458Z" ${TINT}/>
-  <rect x="236" y="180" width="168" height="14" rx="4" ${TINT}/>
-  <rect x="250" y="194" width="140" height="136" ${TINT}/>
-  <g fill="currentColor" stroke="none" text-anchor="middle">
+  <g fill="${SHADE_STRONG}">
+    <rect x="70" y="225" width="140" height="12" rx="4"/>
+    <rect x="430" y="225" width="140" height="12" rx="4"/>
+    <rect x="236" y="180" width="168" height="14" rx="4"/>
+  </g>
+  <g fill="${SHADE}">
+    <path d="M86 237H194L182 330H98Z"/>
+    <path d="M446 237H554L542 330H458Z"/>
+    <rect x="250" y="194" width="140" height="136"/>
+  </g>
+  <g fill="${INK}" stroke="none" text-anchor="middle">
     <text x="126" y="52" font-size="19">CI runs it anyway.</text>
     <text x="514" y="52" font-size="19">Citation needed.</text>
     <text x="140" y="292" font-size="26" font-weight="700" letter-spacing="2">PRO</text>
@@ -92,8 +105,8 @@ const speech = (side, y, words) => {
   const h = 36;
   const tail =
     side === "pro"
-      ? bubble(x, y, w, h, 12, x + 20, x + 34, [x + 10, y + h + 10])
-      : bubble(x, y, w, h, 12, x + w - 34, x + w - 20, [x + w - 10, y + h + 10]);
+      ? bubble(x, y, w, h, 12, x + 20, x + 34, [x + 10, y + h + 10], BLUE)
+      : bubble(x, y, w, h, 12, x + w - 34, x + w - 20, [x + w - 10, y + h + 10], GOLD);
   return {
     shape: tail,
     text: `<text x="${x + w / 2}" y="${y + 24}" font-size="17">${words} words</text>`,
@@ -120,10 +133,10 @@ const oneRun = svg({
   <path d="M60 38H142M418 38H500" stroke-width="1.5"/>
   ${speeches.map((s) => s.shape).join("\n  ")}
   ${arrow(414, 438)}
-  <rect x="16" y="444" width="528" height="66" rx="12" ${TINT}/>
+  <rect x="16" y="444" width="528" height="66" rx="12" fill="${PINK}"/>
   ${arrow(516, 540)}
-  <rect x="16" y="546" width="528" height="66" rx="12" ${TINT}/>
-  <g fill="currentColor" stroke="none" text-anchor="middle">
+  <rect x="16" y="546" width="528" height="66" rx="12" fill="${SHADE}"/>
+  <g fill="${INK}" stroke="none" text-anchor="middle">
     <text x="101" y="28" font-size="20" font-weight="700" letter-spacing="2">PRO</text>
     <text x="459" y="28" font-size="20" font-weight="700" letter-spacing="2">CON</text>
     ${speeches.map((s) => s.text).join("\n    ")}
@@ -150,25 +163,22 @@ const pointless = svg({
   label:
     "A dictionary open at the entry 'pointless, adjective: having no value at all', with 'at all' underlined. A robot marked CON points at the underline.",
   body: `
-  <defs>
-    ${head("rw-pointless-head")}
-  </defs>
   <path d="M30 66V274q110-12 210 4q100-16 210-4V66"/>
-  <path d="M240 62q-90-16-200-4v204q110-12 200 4Z" ${TINT}/>
-  <path d="M240 62q90-16 200-4v204q-110-12-200 4Z" ${TINT}/>
+  <path d="M240 62q-90-16-200-4v204q110-12 200 4Z" fill="${SURFACE}"/>
+  <path d="M240 62q90-16 200-4v204q-110-12-200 4Z" fill="${SURFACE}"/>
   <path d="${lines(62, [94, 114, 134, 154, 174, 194, 214, 234], [150, 120, 156, 96, 140, 156, 110, 130])}" stroke-width="3" stroke-opacity=".35"/>
   <path d="${lines(262, [216, 236], [150, 104])}" stroke-width="3" stroke-opacity=".35"/>
-  <path d="M259 195h62" stroke-width="4" transform="rotate(-2 290 196)"/>
+  <path d="M259 195h62" stroke="${ACCENT}" stroke-width="4" transform="rotate(-2 290 196)"/>
   <g transform="translate(550 96) scale(-1 1)">
-    <use href="#rw-pointless-head"/>
-    <rect x="-48" y="68" width="96" height="80" rx="14" ${TINT}/>
+    ${head(GOLD)}
+    <rect x="-48" y="68" width="96" height="80" rx="14" fill="${GOLD}"/>
     <path d="M-20 148v28M20 148v28M-32 176h18M14 176h18"/>
     <path d="M48 80L80 90L196 86"/>
-    <circle cx="80" cy="90" r="4" fill="currentColor"/>
-    <circle cx="203" cy="86" r="7" ${TINT}/>
+    <circle cx="80" cy="90" r="4" fill="${INK}"/>
+    <circle cx="203" cy="86" r="7" fill="${GOLD}"/>
     <path d="M210 86h12" stroke-width="4"/>
   </g>
-  <g fill="currentColor" stroke="none">
+  <g fill="${INK}" stroke="none">
     <text x="262" y="104" font-size="30" font-weight="700">pointless</text>
     <text x="262" y="128" font-size="16" font-style="italic">adjective</text>
     <text x="262" y="162" font-size="20">Having no value</text>
@@ -181,14 +191,14 @@ const pointless = svg({
 const card = (x, angle, title, detail, stamp) => {
   const cx = x + 96;
   return `<g transform="rotate(${angle} ${cx} 122)">
-    <rect x="${x}" y="24" width="192" height="196" rx="8" fill="currentColor" fill-opacity=".08"/>
+    <rect x="${x}" y="24" width="192" height="196" rx="8" fill="${SURFACE}"/>
     <path d="M${cx - 70} 128h140" stroke-width="1.5" stroke-opacity=".5"/>
-    <g transform="translate(${cx} 172) rotate(-9)">
+    <g transform="translate(${cx} 172) rotate(-9)" stroke="${ACCENT}">
       <rect x="-84" y="-22" width="168" height="44" rx="4" stroke-width="3"/>
       <rect x="-78" y="-16" width="156" height="32" rx="2" stroke-width="1.5"/>
-      <text y="6" font-size="16" font-weight="700" letter-spacing="1" fill="currentColor" stroke="none" text-anchor="middle">${stamp}</text>
+      <text y="6" font-size="16" font-weight="700" letter-spacing="1" fill="${ACCENT}" stroke="none" text-anchor="middle">${stamp}</text>
     </g>
-    <g fill="currentColor" stroke="none" text-anchor="middle">
+    <g fill="${INK}" stroke="none" text-anchor="middle">
       <text x="${cx}" y="62" font-size="18" font-weight="700">${title[0]}</text>
       <text x="${cx}" y="84" font-size="18" font-weight="700">${title[1]}</text>
       <text x="${cx}" y="112" font-size="16">${detail}</text>
@@ -209,7 +219,7 @@ const evidence = svg({
 // 5. The stress test that broke PRO's case in run 1.
 const bar = (y, minutes) => {
   const end = 180 + minutes * 100;
-  return `<path d="M180 ${y}H${end - 4}q4 0 4 4v16q0 4-4 4H180Z"/>`;
+  return `<path fill="${ACCENT}" d="M180 ${y}H${end - 4}q4 0 4 4v16q0 4-4 4H180Z"/>`;
 };
 const breakEven = svg({
   w: 520,
@@ -219,7 +229,7 @@ const breakEven = svg({
     "Bar chart of the average time lost per commit, if the slow checks fail on 1 commit in 4 and each failure costs 10 minutes. With the hook, 1 minute, because every commit waits. Without the hook, 2.5 minutes, a quarter of 10 minutes.",
   body: `
   <path d="M180 100V214" stroke-width="1" stroke-opacity=".6"/>
-  <g fill="currentColor" stroke="none">
+  <g fill="${INK}" stroke="none">
     ${bar(112, 1)}
     ${bar(176, 2.5)}
     <text x="10" y="30" font-size="21" font-weight="700">Average time lost per commit</text>

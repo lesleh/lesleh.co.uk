@@ -25,6 +25,17 @@
 @layer base {
   :root {
     color-scheme: light dark;
+
+    /* Palette for the post illustrations, which sit on their own paper panel. */
+    --illo-paper: light-dark(#fbf1e4, #1d1d20);
+    --illo-ink: light-dark(#3b0d1a, #f1e6d8);
+    --illo-surface: light-dark(#fff, #33333a);
+    --illo-shade: light-dark(#ead9c4, #3c3c44);
+    --illo-shade-strong: light-dark(#d9c3a8, #54545e);
+    --illo-blue: light-dark(#8fd0f0, #2a6a8c);
+    --illo-gold: light-dark(#ffd166, #7d5b10);
+    --illo-pink: light-dark(#f4a3b5, #9c3f57);
+    --illo-accent: light-dark(#af1440, #f58aa3);
   }
 
   /* The theme button sets data-theme, which overrides the browser's preference. */
