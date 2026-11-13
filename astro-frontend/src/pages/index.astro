@@ -1,27 +1,68 @@
 ---
 import MainLayout from "../layouts/main.astro";
-import Prose from "../components/prose.astro";
 import PostDate from "../components/post-date.astro";
 import { getCollection } from "astro:content";
 
 const allBlogPosts = await getCollection("blog");
 allBlogPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const otherSites = [
+  {
+    name: "Playground",
+    url: "https://lesleh.uk/",
+    summary: "Games, simulations and small AI things that run in the browser.",
+  },
+  {
+    name: "Recipes",
+    url: "https://recipes.lesleh.co.uk/",
+    summary: "The recipes I cook, mostly quick weeknight dinners.",
+  },
+];
 ---
 
 <MainLayout title="Home">
-  <Prose>
-    <ul>
+  <section aria-labelledby="posts-heading">
+    <h2 id="posts-heading" class="sr-only">Posts</h2>
+    <ul class="m-0 flex list-none flex-col gap-8 p-0">
       {
         allBlogPosts.map((blogPost) => (
           <li>
-            <a href={`/blog/${blogPost.id}/`}>{blogPost.data.title}</a>
-            <PostDate
-              date={blogPost.data.date}
-              class="block text-[0.875em] opacity-75"
-            />
+            <article>
+              <h3 class="text-[1.35em] leading-snug font-light">
+                <a class="underline" href={`/blog/${blogPost.id}/`}>
+                  {blogPost.data.title}
+                </a>
+              </h3>
+              <PostDate
+                date={blogPost.data.date}
+                class="mt-1 block text-[0.875em] opacity-75"
+              />
+              {blogPost.data.description && (
+                <p class="mt-2">{blogPost.data.description}</p>
+              )}
+            </article>
           </li>
         ))
       }
     </ul>
-  </Prose>
+  </section>
+
+  <section
+    aria-labelledby="elsewhere-heading"
+    class="mt-10 border-t border-primary-inverse/30 pt-6"
+  >
+    <h2 id="elsewhere-heading" class="text-[1.35em] font-light">Elsewhere</h2>
+    <ul class="m-0 mt-3 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2">
+      {
+        otherSites.map((site) => (
+          <li>
+            <a class="underline" href={site.url}>
+              {site.name}
+            </a>
+            <p class="mt-1 text-[0.875em]">{site.summary}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 </MainLayout>
