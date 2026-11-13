@@ -22,7 +22,6 @@
     "@tailwindcss/vite": "^4.3.5",
     "preact": "^11.2.0",
     "prismjs": "^1.30.0",
-    "sass": "^1.108.2",
     "tailwindcss": "^4.3.5"
   },
   "packageManager": "pnpm@12.18.0",

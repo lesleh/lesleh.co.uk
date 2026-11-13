@@ -190,9 +190,6 @@ importers:
       prismjs:
         specifier: ^1.30.0
         version: 1.30.0
-      sass:
-        specifier: ^1.108.2
-        version: 1.108.2
       tailwindcss:
         specifier: ^4.3.5
         version: 4.3.5
@@ -3118,7 +3115,8 @@ snapshots:
 
   http-cache-semantics@4.3.0: {}
 
-  immutable@5.1.10: {}
+  immutable@5.1.10:
+    optional: true
 
   iron-webcrypto@1.2.1: {}
 
@@ -3385,6 +3383,7 @@ snapshots:
       source-map-js: 1.2.2
     optionalDependencies:
       '@parcel/watcher': 2.6.0
+    optional: true
 
   satteri@0.11.7:
     dependencies:
