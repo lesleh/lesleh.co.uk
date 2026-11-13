@@ -10,12 +10,17 @@ const photos = Object.values(
 ---
 
 <MainLayout title="Photos">
-  <div class="gallery">
+  <div
+    class="grid grid-flow-dense grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-3.75"
+  >
     {
       photos.map((photo, i) => (
-        <a href="#" class="gallery__link">
+        <a
+          href="#"
+          class="block h-auto w-full focus:shadow-[0_0_0_3px_white] focus:outline-none"
+        >
           <Image
-            class="gallery__image"
+            class="block h-auto w-full"
             src={photo}
             width={145 * 2}
             height={145 * 2}
