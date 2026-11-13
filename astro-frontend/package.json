@@ -14,13 +14,12 @@
     "sharp": "0.35.5"
   },
   "dependencies": {
-    "@aduh95/preact-fontawesome": "^0.1.5",
     "@astrojs/mdx": "^8.1.5",
     "@astrojs/preact": "^6.1.5",
     "@fortawesome/fontawesome-svg-core": "^7.3.1",
     "@fortawesome/free-brands-svg-icons": "^7.3.1",
     "@fortawesome/free-solid-svg-icons": "^7.3.1",
-    "preact": "^10.6.5",
+    "preact": "^11.2.0",
     "prismjs": "^1.29.0",
     "sass": "^1.66.1"
   },
