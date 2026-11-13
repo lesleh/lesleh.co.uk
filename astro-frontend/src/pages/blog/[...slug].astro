@@ -1,5 +1,6 @@
 ---
 import MainLayout from "../../layouts/main.astro";
+import Prose from "../../components/prose.astro";
 import { getCollection, render } from "astro:content";
 
 const { entry } = Astro.props;
@@ -15,5 +16,7 @@ export async function getStaticPaths() {
 ---
 
 <MainLayout title={entry.data.title} description={entry.data.description}>
-  <Content />
+  <Prose>
+    <Content />
+  </Prose>
 </MainLayout>
