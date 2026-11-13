@@ -4,13 +4,23 @@ description: I got AI agents to debate whether slow pre-commit hooks are worth i
 date: "2026-11-13"
 ---
 
+import BreakEven from "./robot-wars/break-even.svg";
+import Debate from "./robot-wars/debate.svg";
+import Evidence from "./robot-wars/evidence.svg";
+import OneRun from "./robot-wars/one-run.svg";
+import Pointless from "./robot-wars/pointless.svg";
+
 I've thought for a while that slow pre-commit hooks are pointless if CI runs the same checks anyway. If a pull request can't merge until the checks pass, why make me wait over a minute every time I commit? I skip ours with `--no-verify` most of the time, which probably says enough.
 
 I didn't really want to argue about it with people, so I wrote a Claude Code skill that gets AI agents to argue about it for me. It's called [robot-wars](https://github.com/lesleh/skills/tree/main/skills/robot-wars). There are no flame pits, sadly.
 
+<Debate />
+
 ## How it works
 
 You give it a motion, something a team could decide on, and it sets up two sides. PRO argues for the motion and CON argues against it. Both debaters get the same short context, a list of facts about the situation, and so does the judge.
+
+<OneRun />
 
 Each debater writes an opening without seeing the other one's, then they take turns through two rounds of rebuttals and a closing. Every speech has a word limit. Every factual claim needs a source you can go and check, otherwise the debater has to label it as their own judgement. They can search the web for sources.
 
@@ -23,6 +33,8 @@ The whole thing runs twice with the sides swapped. If PRO wins the first run and
 The first motion was more or less what I'd typed, "pre-commit hooks that take over a minute are pointless if every check is enforced as a required status check on pull requests in CI". The context was two facts. The hook takes over a minute, and CI enforces every check it runs.
 
 CON won both runs, narrowly the first time (36 to 35), and it won on a definition. CON took "pointless" to mean no value at all, so it only needed to find one benefit, and PRO never argued with that. CON's benefits were that CI only builds the tip of a branch, so with merge commits or rebase-and-merge you can end up with untested commits on main, which makes `git bisect` less useful. And a secret you've pushed stays exposed even if the checks fail afterwards.
+
+<Pointless />
 
 The judges caught both sides getting things confidently wrong too. CON kept saying the hook is the one point that sees every commit as it's made. The judges pointed out that rebases and cherry-picks make new commits without running it, and that a plain hook checks your working tree, which can include changes you haven't staged. PRO didn't catch either.
 
@@ -38,6 +50,8 @@ I also reworded the motion to "pre-commit hooks that take over a minute per comm
 
 PRO won both runs, 39 to 31 and 40 to 28, mostly because CON's evidence didn't survive the judges checking it. CON quoted a study on interruptions (Parnin and Rugaber) to show that coming back to a red build is expensive, but the study only counted breaks of 15 minutes or more, so CON withdrew it. It quoted the Claude Code docs saying "if something has to happen every time, make it a hook", which sounds great until you read the rest of the sentence. That page is about Claude Code's own hooks, and git doesn't come into it. And the paper CON used for a 17.9% build breakage rate (Kerzazi, Khomh and Adams, 2014) names missing files as the most likely cause of a broken build, which is the one thing a check on your local working tree won't catch.
 
+<Evidence />
+
 PRO wasn't perfect either. It claimed dismissed approvals cost the same with or without the hook, which doesn't hold, since a red CI run and a fix push can dismiss approvals one extra time. CON didn't spot it.
 
 ## It's still fragile
@@ -45,6 +59,8 @@ PRO wasn't perfect either. It claimed dismissed approvals cost the same with or 
 The stress tests broke PRO's case in both runs, in different ways, and these are the bits I'd actually act on.
 
 The first one added a failure rate. If the slow checks fail on one commit in four, and getting back to a red build costs you ten minutes, that's about 2.5 minutes per commit without the hook against one minute with it. The hook wins.
+
+<BreakEven />
 
 The second one was about agents. If an agent ends its session as soon as a push succeeds, without looking at CI, a broken commit just sits there until a person finds it. For that agent, the slow hook is the only feedback it ever gets.
 
