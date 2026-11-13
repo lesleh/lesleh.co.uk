@@ -13,7 +13,7 @@ const Header = class extends Component {
   render() {
     return (
       <header className="text-center sm:col-start-1 sm:row-start-1 sm:text-end">
-        <h1>
+        <h1 className="text-title font-light">
           <span className="font-semibold">Lesleh</span>
           .co.uk
         </h1>

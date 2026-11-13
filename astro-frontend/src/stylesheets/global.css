@@ -1,9 +1,6 @@
-/* Preflight is left out so that blog post content keeps the browser's default styles. */
-@layer theme, base, components, utilities;
-
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/utilities.css" layer(utilities);
+@import "tailwindcss";
 @import "@fortawesome/fontawesome-svg-core/styles.css" layer(components);
+@plugin "@tailwindcss/typography";
 
 @theme {
   --font-sans: "Nunito Sans", sans-serif;
@@ -18,7 +15,6 @@
   --spacing-gutter: clamp(0.3125rem, calc(0.3125rem + 1.5625 * ((100vw - 20rem) / 42.5)), 1.875rem);
   --text-body: clamp(1rem, calc(1rem + 0.125 * ((100vw - 36rem) / 26.5)), 1.125rem);
   --text-title: clamp(1.625rem, calc(1.625rem + 0.875 * ((100vw - 36rem) / 26.5)), 2.5rem);
-  --text-heading: clamp(1.5rem, calc(1.5rem + 0.625 * ((100vw - 36rem) / 26.5)), 2.125rem);
   --text-nav: clamp(0.875rem, calc(0.875rem + 0.325 * ((100vw - 20rem) / 42.5)), 1.2rem);
 }
 
@@ -47,59 +43,30 @@
     color-scheme: dark;
   }
 
-  *,
-  ::before,
-  ::after {
-    box-sizing: border-box;
-  }
-
-  img {
-    max-width: 100%;
-  }
-
-  a {
-    color: var(--color-primary-inverse);
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: 300;
-    margin-block: 0.5em;
-  }
-
-  h1 {
-    margin: 0;
-    font-size: var(--text-title);
-  }
-
-  h2 {
-    font-size: var(--text-heading);
-  }
-
-  /* Monospace looks bigger than the body font at the same size. */
-  code {
-    font-size: 0.875em;
-  }
-
   /*
    * The syntax highlighter sets the colours of a code block inline. Its background
    * is too close to the dark page, so the dark theme uses the illustration paper.
    */
-  pre {
+  .astro-code {
     background-color: light-dark(#24292e, var(--illo-paper)) !important;
-    padding: calc(var(--spacing) * 4);
-    border-radius: var(--radius-lg);
-    overflow-x: auto;
-    font-size: 0.875rem;
-    line-height: 1.6;
-    tab-size: 2;
   }
+}
 
-  pre code {
-    font-size: inherit;
-  }
+/* The page has one text colour, so every part of the prose uses it. */
+@utility prose-theme {
+  --tw-prose-body: var(--color-primary-inverse);
+  --tw-prose-headings: var(--color-primary-inverse);
+  --tw-prose-lead: var(--color-primary-inverse);
+  --tw-prose-links: var(--color-primary-inverse);
+  --tw-prose-bold: var(--color-primary-inverse);
+  --tw-prose-counters: var(--color-primary-inverse);
+  --tw-prose-bullets: var(--color-primary-inverse);
+  --tw-prose-hr: var(--color-primary-inverse);
+  --tw-prose-quotes: var(--color-primary-inverse);
+  --tw-prose-quote-borders: var(--color-primary-inverse);
+  --tw-prose-captions: var(--color-primary-inverse);
+  --tw-prose-kbd: var(--color-primary-inverse);
+  --tw-prose-code: var(--color-primary-inverse);
+  --tw-prose-th-borders: var(--color-primary-inverse);
+  --tw-prose-td-borders: var(--color-primary-inverse);
 }

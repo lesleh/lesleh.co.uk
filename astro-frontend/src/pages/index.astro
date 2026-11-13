@@ -1,5 +1,6 @@
 ---
 import MainLayout from "../layouts/main.astro";
+import Prose from "../components/prose.astro";
 import { getCollection } from "astro:content";
 
 const allBlogPosts = await getCollection("blog");
@@ -7,13 +8,15 @@ allBlogPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <MainLayout title="Home">
-  <ul>
-    {
-      allBlogPosts.map((blogPost) => (
-        <li>
-          <a href={`/blog/${blogPost.id}/`}>{blogPost.data.title}</a>
-        </li>
-      ))
-    }
-  </ul>
+  <Prose>
+    <ul>
+      {
+        allBlogPosts.map((blogPost) => (
+          <li>
+            <a href={`/blog/${blogPost.id}/`}>{blogPost.data.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </Prose>
 </MainLayout>
