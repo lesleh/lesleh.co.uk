@@ -1,5 +1,5 @@
 // Renders a Font Awesome icon definition as an inline SVG.
-const Icon = ({ icon, fixedWidth = false, className }) => {
+const Icon = ({ icon, fixedWidth = false, className = "" }) => {
   const [width, height, , , paths] = icon.icon;
   const classes = ["svg-inline--fa", `fa-${icon.iconName}`];
   if (fixedWidth) classes.push("fa-fw");
