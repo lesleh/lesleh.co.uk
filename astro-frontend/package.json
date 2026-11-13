@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "csp:update": "CSP_UPDATE=1 astro build"
   },
   "devDependencies": {
     "astro": "7.4.11",
