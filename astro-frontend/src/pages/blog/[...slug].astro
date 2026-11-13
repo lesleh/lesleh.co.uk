@@ -16,7 +16,12 @@ export async function getStaticPaths() {
 }
 ---
 
-<MainLayout title={entry.data.title} description={entry.data.description}>
+<MainLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  image={entry.data.image}
+  type="article"
+>
   <p class="mb-4 opacity-75">
     <PostDate date={entry.data.date} />
   </p>
