@@ -5,7 +5,7 @@ date: "2026-11-13"
 
 I've thought for a while that slow pre-commit hooks are pointless if CI runs the same checks anyway. If a pull request can't merge until the checks pass, why make me wait over a minute every time I commit? I skip ours with `--no-verify` most of the time, which probably says enough.
 
-I didn't really want to argue about it with people, so I wrote a Claude Code skill that gets AI agents to argue about it for me. It's called robot-wars. There are no flame pits, sadly.
+I didn't really want to argue about it with people, so I wrote a Claude Code skill that gets AI agents to argue about it for me. It's called [robot-wars](https://github.com/lesleh/skills/tree/main/skills/robot-wars). There are no flame pits, sadly.
 
 ## How it works
 
