@@ -1,6 +1,6 @@
 ---
 import "../stylesheets/global.css";
-import { getImage } from "astro:assets";
+import { Font, getImage } from "astro:assets";
 import defaultImage from "../assets/leslie.png";
 import Nav from "../components/nav";
 import Header from "../components/header";
@@ -68,8 +68,10 @@ const previewUrl = new URL(preview.src, Astro.site);
         // Storage is blocked, so the site follows the browser's preference.
       }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <Font
+      cssVariable="--font-nunito-sans"
+      preload={[{ style: "normal", subset: "latin" }]}
+    />
     {
       // Vercel serves this script, so it only exists on a deployed build.
       import.meta.env.PROD && (
@@ -110,11 +112,6 @@ const previewUrl = new URL(preview.src, Astro.site);
         </a>
       </footer>
     </div>
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap"
-      rel="stylesheet"
-    />
   </body>
 </html>
 
