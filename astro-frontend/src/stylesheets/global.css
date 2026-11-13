@@ -2,9 +2,12 @@
 @import "@fortawesome/fontawesome-svg-core/styles.css" layer(components);
 @plugin "@tailwindcss/typography";
 
-@theme {
-  --font-sans: "Nunito Sans", sans-serif;
+/* The layout's <Font /> component sets --font-nunito-sans. */
+@theme inline {
+  --font-sans: var(--font-nunito-sans);
+}
 
+@theme {
   /* light-dark() picks a value from the color-scheme set in the base layer. */
   --color-primary: light-dark(#af1440, #2a2a2e);
   --color-primary-inverse: light-dark(#fff, #f58aa3);
