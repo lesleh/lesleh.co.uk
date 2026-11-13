@@ -22,7 +22,7 @@ const page = (x, y, w, h, { background, text, primary }) => {
   <g stroke="none"><rect x="${x + 12}" y="${y + 12}" width="${w * 0.5}" height="10" rx="3" fill="${primary}"/>${lines}</g>`;
 };
 const LIGHT = { background: WHITE, text: NIGHT, primary: CRIMSON };
-const DARK = { background: NIGHT, text: CRIMSON, primary: CRIMSON };
+const DARK = { background: NIGHT, text: WHITE, primary: CRIMSON };
 
 // 1. The system setting that the post starts from.
 const systemSetting = svg({
@@ -65,14 +65,14 @@ const property = (y, name, light, dark) => {
 };
 const properties = [
   property(184, "--color-background", [WHITE, "#fff"], [NIGHT, "#222"]),
-  property(228, "--color-text", [NIGHT, "#222"], [CRIMSON, "#af1440"]),
+  property(228, "--color-text", [NIGHT, "#222"], [WHITE, "#fff"]),
   property(272, "--color-primary", [CRIMSON, "#af1440"], [CRIMSON, "#af1440"]),
 ];
 const colourSchemes = svg({
   w: 560,
   h: 294,
   label:
-    "Same names, new values. A light page and a dark page, with the value of each custom property under them. --color-background is #fff in light and #222 in dark. --color-text is #222 in light and #af1440 in dark. --color-primary is #af1440 in both.",
+    "Same names, new values. A light page and a dark page, with the value of each custom property under them. --color-background is #fff in light and #222 in dark. --color-text is #222 in light and #fff in dark. --color-primary is #af1440 in both.",
   body: `
   ${page(236, 16, 140, 96, LIGHT)}
   ${page(396, 16, 140, 96, DARK)}
