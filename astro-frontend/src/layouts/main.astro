@@ -40,6 +40,12 @@ const { title, description } = Astro.props;
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {
+      // Vercel serves this script, so it only exists on a deployed build.
+      import.meta.env.PROD && (
+        <script is:inline defer src="/_vercel/insights/script.js" />
+      )
+    }
   </head>
   <body class="m-2 px-gutter text-body">
     <div
