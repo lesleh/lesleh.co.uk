@@ -27,10 +27,10 @@ importers:
         specifier: ^11.2.0
         version: 11.2.0(preact-render-to-string@6.8.3)
       prismjs:
-        specifier: ^1.29.0
+        specifier: ^1.30.0
         version: 1.30.0
       sass:
-        specifier: ^1.66.1
+        specifier: ^1.108.2
         version: 1.108.2
     devDependencies:
       astro:

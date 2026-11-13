@@ -20,8 +20,8 @@
     "@fortawesome/free-brands-svg-icons": "^7.3.1",
     "@fortawesome/free-solid-svg-icons": "^7.3.1",
     "preact": "^11.2.0",
-    "prismjs": "^1.29.0",
-    "sass": "^1.66.1"
+    "prismjs": "^1.30.0",
+    "sass": "^1.108.2"
   },
   "packageManager": "pnpm@10.33.4",
   "pnpm": {
