@@ -79,4 +79,27 @@
   h2 {
     font-size: var(--text-heading);
   }
+
+  /* Monospace looks bigger than the body font at the same size. */
+  code {
+    font-size: 0.875em;
+  }
+
+  /*
+   * The syntax highlighter sets the colours of a code block inline. Its background
+   * is too close to the dark page, so the dark theme uses the illustration paper.
+   */
+  pre {
+    background-color: light-dark(#24292e, var(--illo-paper)) !important;
+    padding: calc(var(--spacing) * 4);
+    border-radius: var(--radius-lg);
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    tab-size: 2;
+  }
+
+  pre code {
+    font-size: inherit;
+  }
 }
