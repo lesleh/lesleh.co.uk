@@ -8,7 +8,7 @@ import { faCircleHalfStroke } from "@fortawesome/free-solid-svg-icons";
 
 export interface Props {
   title: string;
-  description?: string;
+  description?: string | undefined;
 }
 
 const { title, description } = Astro.props;
