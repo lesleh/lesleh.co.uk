@@ -10,6 +10,11 @@ const palette = Object.fromEntries(
   ),
 );
 
+// Fixed colours are the same in both themes. They show a real colour from a post, and carry no text.
+const fixed = Object.fromEntries(
+  [...css.matchAll(/--illo-(fixed-[a-z-]+):\s*(#[0-9a-f]+);/gi)].map(([, name, hex]) => [name, hex]),
+);
+
 const luminance = (hex) => {
   const h = hex.length === 4 ? [...hex.slice(1)].map((c) => c + c).join("") : hex.slice(1);
   const [r, g, b] = [0, 2, 4]
@@ -44,8 +49,9 @@ for (const theme of ["light", "dark"]) {
 
 // A palette colour, with the light value as the fallback for a file opened on its own.
 export const colour = (name) => {
-  if (!palette[name]) throw new Error(`--illo-${name} is not in global.css`);
-  return `var(--illo-${name}, ${palette[name].light})`;
+  const fallback = fixed[name] ?? palette[name]?.light;
+  if (!fallback) throw new Error(`--illo-${name} is not in global.css`);
+  return `var(--illo-${name}, ${fallback})`;
 };
 
 export const PAPER = colour("paper");
