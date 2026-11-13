@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import mdx from "@astrojs/mdx";
 
 import preact from "@astrojs/preact";
@@ -9,6 +9,20 @@ export default defineConfig({
   site: "https://lesleh.co.uk",
   trailingSlash: "always",
   integrations: [mdx(), preact()],
+  // Astro downloads the files at build time and serves them from the site.
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: "Nunito Sans",
+      cssVariable: "--font-nunito-sans",
+      weights: ["200 1000"],
+      styles: ["normal", "italic"],
+      subsets: ["latin"],
+      formats: ["woff2"],
+      display: "swap",
+      fallbacks: ["sans-serif"],
+    },
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
