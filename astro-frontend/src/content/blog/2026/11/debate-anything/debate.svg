@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" width="100%" role="img" aria-label="Two robots debate at lecterns marked PRO and CON. PRO wears a Santa hat and says 'It's Christmas Eve.' CON says 'It opened in July.' Between them, a judge robot behind a raised bench holds up a magnifying glass." fill="none" stroke="var(--illo-ink, #3b0d1a)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto;padding:3%;box-sizing:border-box;border-radius:12px;background:var(--illo-paper, #fbf1e4)">
+<path fill="var(--illo-surface, #fff)" d="M40 20H212q16 0 16 16v18q0 16-16 16H126L132 94L108 70H40q-16 0-16-16v-18q0-16 16-16Z"/>
+  <path fill="var(--illo-surface, #fff)" d="M428 20H600q16 0 16 16v18q0 16-16 16H532L508 122L514 70H428q-16 0-16-16v-18q0-16 16-16Z"/>
+  <g transform="translate(0 30)">
+    <path d="M30 330H610"/>
+    <g transform="translate(140 130)">
+      <path d="M-30 -6Q-22 -46 16 -44Q30 -30 34 -6Z" fill="var(--illo-accent, #af1440)"/>
+    <circle cx="20" cy="-45" r="7" fill="var(--illo-surface, #fff)"/>
+    <rect x="-40" y="-10" width="80" height="14" rx="7" fill="var(--illo-surface, #fff)"/>
+    <g fill="var(--illo-blue, #8fd0f0)">
+      <rect x="-46" y="18" width="8" height="22" rx="3"/>
+      <rect x="38" y="18" width="8" height="22" rx="3"/>
+      <rect x="-38" y="0" width="76" height="58" rx="12"/>
+    </g>
+    <g fill="var(--illo-surface, #fff)">
+      <circle cx="-15" cy="24" r="9"/>
+      <circle cx="15" cy="24" r="9"/>
+      <rect x="-16" y="40" width="32" height="9" rx="2"/>
+    </g>
+    <circle cx="-11" cy="24" r="4" fill="var(--illo-ink, #3b0d1a)" stroke="none"/>
+    <circle cx="19" cy="24" r="4" fill="var(--illo-ink, #3b0d1a)" stroke="none"/>
+    <path d="M-8 40v9M0 40v9M8 40v9" stroke-width="1.5"/>
+    <path d="M-8 58v10M8 58v10"/>
+      <path d="M-48 95V82q0-14 14-14h68q14 0 14 14v13" fill="var(--illo-blue, #8fd0f0)"/>
+      <path d="M48 80q18 2 20 10"/>
+      <circle cx="68" cy="91" r="5" fill="var(--illo-blue, #8fd0f0)"/>
+    </g>
+    <g transform="translate(500 130) scale(-1 1)">
+      <line x1="0" y1="-22" x2="0" y2="0"/>
+    <circle cx="0" cy="-27" r="5" fill="var(--illo-accent, #af1440)"/>
+    <g fill="var(--illo-gold, #ffd166)">
+      <rect x="-46" y="18" width="8" height="22" rx="3"/>
+      <rect x="38" y="18" width="8" height="22" rx="3"/>
+      <rect x="-38" y="0" width="76" height="58" rx="12"/>
+    </g>
+    <g fill="var(--illo-surface, #fff)">
+      <circle cx="-15" cy="24" r="9"/>
+      <circle cx="15" cy="24" r="9"/>
+      <rect x="-16" y="40" width="32" height="9" rx="2"/>
+    </g>
+    <circle cx="-11" cy="24" r="4" fill="var(--illo-ink, #3b0d1a)" stroke="none"/>
+    <circle cx="19" cy="24" r="4" fill="var(--illo-ink, #3b0d1a)" stroke="none"/>
+    <path d="M-8 40v9M0 40v9M8 40v9" stroke-width="1.5"/>
+    <path d="M-8 58v10M8 58v10"/>
+      <path d="M-48 95V82q0-14 14-14h68q14 0 14 14v13" fill="var(--illo-gold, #ffd166)"/>
+      <path d="M48 80q18 2 20 10"/>
+      <circle cx="68" cy="91" r="5" fill="var(--illo-gold, #ffd166)"/>
+    </g>
+    <g transform="translate(320 85)">
+      <line x1="0" y1="-22" x2="0" y2="0"/>
+    <circle cx="0" cy="-27" r="5" fill="var(--illo-accent, #af1440)"/>
+    <g fill="var(--illo-pink, #f4a3b5)">
+      <rect x="-46" y="18" width="8" height="22" rx="3"/>
+      <rect x="38" y="18" width="8" height="22" rx="3"/>
+      <rect x="-38" y="0" width="76" height="58" rx="12"/>
+    </g>
+    <g fill="var(--illo-surface, #fff)">
+      <circle cx="-15" cy="24" r="9"/>
+      <circle cx="15" cy="24" r="9"/>
+      <rect x="-16" y="40" width="32" height="9" rx="2"/>
+    </g>
+    <circle cx="-11" cy="24" r="4" fill="var(--illo-ink, #3b0d1a)" stroke="none"/>
+    <circle cx="19" cy="24" r="4" fill="var(--illo-ink, #3b0d1a)" stroke="none"/>
+    <path d="M-8 40v9M0 40v9M8 40v9" stroke-width="1.5"/>
+    <path d="M-8 58v10M8 58v10"/>
+      <path d="M-48 95V82q0-14 14-14h68q14 0 14 14v13" fill="var(--illo-pink, #f4a3b5)"/>
+      <path d="M48 80q18-4 22-26"/>
+      <circle cx="70" cy="52" r="5" fill="var(--illo-pink, #f4a3b5)"/>
+      <path d="M72 47l8-14" stroke-width="4"/>
+      <circle cx="88" cy="20" r="14" fill="var(--illo-surface, #fff)"/>
+      <path d="M80 15a9 9 0 0 1 8-5" stroke-width="1.5"/>
+    </g>
+    <g fill="var(--illo-shade-strong, #d9c3a8)">
+      <rect x="70" y="225" width="140" height="12" rx="4"/>
+      <rect x="430" y="225" width="140" height="12" rx="4"/>
+      <rect x="236" y="180" width="168" height="14" rx="4"/>
+    </g>
+    <g fill="var(--illo-shade, #ead9c4)">
+      <path d="M86 237H194L182 330H98Z"/>
+      <path d="M446 237H554L542 330H458Z"/>
+      <rect x="250" y="194" width="140" height="136"/>
+    </g>
+    <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle">
+      <text x="140" y="292" font-size="26" font-weight="700" letter-spacing="2">PRO</text>
+      <text x="500" y="292" font-size="26" font-weight="700" letter-spacing="2">CON</text>
+      <text x="320" y="270" font-size="20" font-weight="700" letter-spacing="3">JUDGE</text>
+    </g>
+  </g>
+  <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle">
+    <text x="126" y="52" font-size="20">It's Christmas Eve.</text>
+    <text x="514" y="52" font-size="20">It opened in July.</text>
+  </g>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 284" width="100%" role="img" aria-label="Three claims as index cards, each stamped by the judge. CON: 'No Christmas films in summer', but its own list had one, stamped withdrawn. CON: 'The sequels prove it', which left out Die Hard 2, stamped incomplete. PRO: 'A poll is just it depends', but a poll is still evidence, stamped wrong." fill="none" stroke="var(--illo-ink, #3b0d1a)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto;padding:3%;box-sizing:border-box;border-radius:12px;background:var(--illo-paper, #fbf1e4)">
+<g transform="rotate(-2 112 142)">
+    <rect x="16" y="20" width="192" height="244" rx="8" fill="var(--illo-surface, #fff)"/>
+    <path d="M42 178h140" stroke-width="1.5" stroke-opacity=".5"/>
+    <g transform="translate(112 220) rotate(-9)" stroke="var(--illo-accent, #af1440)">
+      <rect x="-90" y="-23" width="180" height="46" rx="4" stroke-width="3"/>
+      <rect x="-84" y="-17" width="168" height="34" rx="2" stroke-width="1.5"/>
+      <text y="7" font-size="20" font-weight="700" fill="var(--illo-accent, #af1440)" stroke="none" text-anchor="middle">WITHDRAWN</text>
+    </g>
+    <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle" font-size="20">
+      <text x="112" y="52" font-weight="700" letter-spacing="2">CON</text>
+      <text x="112" y="84" font-weight="700">“No Christmas</text>
+      <text x="112" y="108" font-weight="700">films in summer”</text>
+      <text x="112" y="138">its own list</text>
+      <text x="112" y="162">had one</text>
+    </g>
+  </g>
+  <g transform="rotate(1.5 320 142)">
+    <rect x="224" y="20" width="192" height="244" rx="8" fill="var(--illo-surface, #fff)"/>
+    <path d="M250 178h140" stroke-width="1.5" stroke-opacity=".5"/>
+    <g transform="translate(320 220) rotate(-9)" stroke="var(--illo-accent, #af1440)">
+      <rect x="-90" y="-23" width="180" height="46" rx="4" stroke-width="3"/>
+      <rect x="-84" y="-17" width="168" height="34" rx="2" stroke-width="1.5"/>
+      <text y="7" font-size="20" font-weight="700" fill="var(--illo-accent, #af1440)" stroke="none" text-anchor="middle">INCOMPLETE</text>
+    </g>
+    <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle" font-size="20">
+      <text x="320" y="52" font-weight="700" letter-spacing="2">CON</text>
+      <text x="320" y="84" font-weight="700">“The sequels</text>
+      <text x="320" y="108" font-weight="700">prove it”</text>
+      <text x="320" y="138">left out</text>
+      <text x="320" y="162">Die Hard 2</text>
+    </g>
+  </g>
+  <g transform="rotate(-1 528 142)">
+    <rect x="432" y="20" width="192" height="244" rx="8" fill="var(--illo-surface, #fff)"/>
+    <path d="M458 178h140" stroke-width="1.5" stroke-opacity=".5"/>
+    <g transform="translate(528 220) rotate(-9)" stroke="var(--illo-accent, #af1440)">
+      <rect x="-90" y="-23" width="180" height="46" rx="4" stroke-width="3"/>
+      <rect x="-84" y="-17" width="168" height="34" rx="2" stroke-width="1.5"/>
+      <text y="7" font-size="20" font-weight="700" fill="var(--illo-accent, #af1440)" stroke="none" text-anchor="middle">WRONG</text>
+    </g>
+    <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle" font-size="20">
+      <text x="528" y="52" font-weight="700" letter-spacing="2">PRO</text>
+      <text x="528" y="84" font-weight="700">“A poll is just</text>
+      <text x="528" y="108" font-weight="700">it depends”</text>
+      <text x="528" y="138">a poll is</text>
+      <text x="528" y="162">still evidence</text>
+    </g>
+  </g>
+</svg>
