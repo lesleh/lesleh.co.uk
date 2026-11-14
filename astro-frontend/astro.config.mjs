@@ -47,18 +47,29 @@ export default defineConfig({
       }),
     },
   },
-  // Astro downloads the files at build time and serves them from the site.
+  // The files hold the weight axis only. The Fontsource provider serves a
+  // larger file with three more axes that the site does not use.
   fonts: [
     {
-      provider: fontProviders.fontsource(),
+      provider: fontProviders.local(),
       name: "Nunito Sans",
       cssVariable: "--font-nunito-sans",
-      weights: ["200 1000"],
-      styles: ["normal", "italic"],
-      subsets: ["latin"],
-      formats: ["woff2"],
       display: "swap",
       fallbacks: ["sans-serif"],
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/nunito-sans-latin-wght-normal.woff2"],
+            weight: "200 1000",
+            style: "normal",
+          },
+          {
+            src: ["./src/assets/fonts/nunito-sans-latin-wght-italic.woff2"],
+            weight: "200 1000",
+            style: "italic",
+          },
+        ],
+      },
     },
   ],
   vite: {
