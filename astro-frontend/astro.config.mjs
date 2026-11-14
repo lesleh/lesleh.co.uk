@@ -7,6 +7,17 @@ import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import contentSecurityPolicy from "./integrations/content-security-policy.mjs";
 
+// The highlighter's comment colour fails WCAG AA contrast on the code block
+// backgrounds, so comments use a lighter grey that passes.
+const readableComments = {
+  name: "readable-comments",
+  tokens(lines) {
+    for (const token of lines.flat()) {
+      if (token.color?.toLowerCase() === "#6a737d") token.color = "#8b949e";
+    }
+  },
+};
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://lesleh.co.uk",
@@ -16,6 +27,11 @@ export default defineConfig({
     "/blog": "/",
   },
   integrations: [mdx(), preact(), sitemap(), contentSecurityPolicy()],
+  markdown: {
+    shikiConfig: {
+      transformers: [readableComments],
+    },
+  },
   // Pages stay static. The adapter is for the one route that opts out of prerendering.
   adapter: vercel(),
   env: {
