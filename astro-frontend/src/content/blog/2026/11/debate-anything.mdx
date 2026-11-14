@@ -1,0 +1,96 @@
+---
+title: Making robots argue about Die Hard
+description: My debate skill works on any argument that keeps going round in circles, so I tried it on whether 'Die Hard' is a Christmas film. Here's how to set one up and how to read what comes out.
+date: "2026-11-14"
+image: ./debate-anything/debate.png
+---
+
+import Debate from "./debate-anything/debate.svg";
+import Flagged from "./debate-anything/flagged.svg";
+import Swap from "./debate-anything/swap.svg";
+import Tests from "./debate-anything/tests.svg";
+
+Yesterday I wrote about [making robots argue about my pre-commit hooks](/blog/2026/11/robot-wars/). Reading it back, it's mostly a post about hooks. The skill that ran the debates, [robot-wars](https://github.com/lesleh/skills/tree/main/skills/robot-wars), doesn't care about hooks though. It works on any argument that keeps going round in circles.
+
+So this time I picked an argument with no code in it at all, and went for the most important question I could think of. Is 'Die Hard' a Christmas film?
+
+<Debate />
+
+The first post covers how a debate runs. This one is about using it on your own argument.
+
+## Pick a motion
+
+A motion is one claim that somebody could act on, where both sides have a real case. It needs a decision behind it, otherwise winning doesn't mean anything. Mine was a household choosing a film for Christmas film night. If PRO wins, 'Die Hard' can be picked.
+
+In the first post I said to word motions around a trade-off, so nobody can win on a dictionary. This one breaks that rule completely, because the whole argument is about what "Christmas film" means. I kept it anyway, to see what would happen.
+
+## Tell it the facts
+
+Both debaters and the judge share one short list of facts. My first hooks debate was mostly wasted because that list left out the facts the argument turned on.
+
+So before it runs, the skill now sketches the strongest case for each side, works out which facts those cases need, and asks you about the ones you haven't given it. For 'Die Hard' it asked me four things.
+
+- What's the decision for?
+- Should I say what makes a film a Christmas film, or leave that open?
+- Is "it depends who you ask" allowed as an answer?
+- Does it matter what the people who made it intended?
+
+The second one is how it coped with the dictionary problem. It suggested leaving the definition open, but making each side state its own test, and having the judge score whether that test gives sensible answers for other films. So you can argue about the definition, but you can't pick one that only suits you.
+
+It also suggested ruling out "it depends", and counting the makers' intent as evidence but not the last word. I took all four suggestions.
+
+## What came out
+
+PRO won, 36 to 34. The funny part is that both sides came up with nearly the same test, without seeing each other's.
+
+<Tests />
+
+So they agreed on what a Christmas film is, and argued about whether 'Die Hard' is one. Most of the output is transcript. These are the three parts I'd read first.
+
+### The claims the judge flagged
+
+The judge can check up to three facts the debaters disagree on. This time they didn't disagree on any, but it still marks claims it knows are wrong, and it marked both sides.
+
+<Flagged />
+
+CON said studios don't open Christmas films in midsummer. 'Miracle on 34th Street' opened in June 1947, and it was on CON's own list of Christmas films. CON also said the sequels prove the formula doesn't need Christmas, and left out 'Die Hard 2', which is set on Christmas Eve. PRO didn't notice, but the judge did.
+
+PRO tried to dismiss a poll (62% said it isn't a Christmas film) as "it depends who you ask". The judge didn't accept that, because a survey is still evidence.
+
+### The arguments that survived
+
+The judge lists the arguments still standing at the end, and the assumption each one depends on. I think this is the most useful part, because it tells you what you'd have to believe to agree.
+
+PRO's best one is that the film ends with a couple getting back together and leaving to 'Let It Snow'. That depends on the marriage being the story. CON's best one is that it's a policeman against a thief and it ends with gunfire, which depends on the marriage being the subplot.
+
+So it comes down to which story you think 'Die Hard' is telling. I've had this argument in pubs for years and never got that far.
+
+### The stress test
+
+Another agent then takes the winning case apart. It adds a fact the context doesn't rule out, and checks whether the conclusion still holds.
+
+PRO's didn't. Suppose John McClane flies in for his daughter's birthday, on the night of an office party. The building is still nearly empty, and the heist and the reunion are the same. Then taking Christmas out doesn't stop the story, and 'Die Hard' fails PRO's own test. Nobody's calling it a birthday film.
+
+<Swap />
+
+The skill reports that as "won, but fragile".
+
+## What it won't tell you
+
+It won't tell you who's right. It's one judge's view of which side argued better, and a well-argued side can still be wrong. So I still know fuck all about whether it's a Christmas film. I do know what the argument is actually about now, which is more than the pub ever managed.
+
+I also ran it in quick mode, which is one run, so I can't rule out that PRO won because it spoke first. A full run does it twice with the sides swapped.
+
+And it's not cheap. The quick run used 11 agents and about 530,000 tokens, and a full run is about 20 agents and 900,000. It's too much for a small decision, and you could argue it's too much for a film night.
+
+## Try it
+
+The skill is open source, and it's [on GitHub](https://github.com/lesleh/skills/tree/main/skills/robot-wars). You can install it with:
+
+```sh
+npx skills add lesleh/skills -g --skill robot-wars
+```
+
+Then run `/robot-wars` with your motion, and add `quick` on the end for the cheaper version. It only works in Claude Code for now, because the debate runs on its Workflow tool.
+
+We're watching 'Die Hard', by the way. The robots said I could.

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 412" width="100%" role="img" aria-label="Two cards with nearly the same test for a Christmas film. PRO's test: 1. Necessity. Take Christmas out and the story doesn't happen. 2. Theme. It ends on something Christmas stories are about. CON's test: 1. Removal. Take Christmas out and the story collapses. 2. Resolution. Something Christmas stands for settles the conflict." fill="none" stroke="var(--illo-ink, #3b0d1a)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto;padding:3%;box-sizing:border-box;border-radius:12px;background:var(--illo-paper, #fbf1e4);max-width:34rem">
+<g transform="rotate(-1 260 104)">
+    <rect x="12" y="14" width="496" height="180" rx="10" fill="var(--illo-blue, #8fd0f0)"/>
+    <g fill="var(--illo-ink, #3b0d1a)" stroke="none">
+      <text x="34" y="52" font-size="22" font-weight="700" letter-spacing="1">PRO's test</text>
+      <text x="34" y="88" font-size="18" font-weight="700">1. Necessity</text>
+      <text x="34" y="112" font-size="18">Take Christmas out and the story doesn't happen.</text>
+      <text x="34" y="142" font-size="18" font-weight="700">2. Theme</text>
+      <text x="34" y="166" font-size="18">It ends on something Christmas stories are about.</text>
+    </g>
+  </g>
+  <g transform="rotate(1 260 308)">
+    <rect x="12" y="218" width="496" height="180" rx="10" fill="var(--illo-gold, #ffd166)"/>
+    <g fill="var(--illo-ink, #3b0d1a)" stroke="none">
+      <text x="34" y="256" font-size="22" font-weight="700" letter-spacing="1">CON's test</text>
+      <text x="34" y="292" font-size="18" font-weight="700">1. Removal</text>
+      <text x="34" y="316" font-size="18">Take Christmas out and the story collapses.</text>
+      <text x="34" y="346" font-size="18" font-weight="700">2. Resolution</text>
+      <text x="34" y="370" font-size="18">Something Christmas stands for settles the conflict.</text>
+    </g>
+  </g>
+</svg>
