@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { getCollection } from "astro:content";
+import { getPosts } from "../lib/posts";
 
 const TITLE = "Lesleh.co.uk";
 const DESCRIPTION = "Blog posts from Leslie Hoare.";
@@ -17,9 +17,7 @@ export const GET: APIRoute = async ({ site }) => {
     throw new Error("Set `site` in astro.config.mjs to build the RSS feed.");
   }
 
-  const posts = (await getCollection("blog")).sort(
-    (a, b) => b.data.date.getTime() - a.data.date.getTime(),
-  );
+  const posts = await getPosts();
 
   const items = posts.map((post) => {
     const link = escapeXml(new URL(`/blog/${post.id}/`, site).href);

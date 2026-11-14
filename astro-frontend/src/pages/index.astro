@@ -1,10 +1,10 @@
 ---
 import MainLayout from "../layouts/main.astro";
 import PostDate from "../components/post-date.astro";
-import { getCollection } from "astro:content";
+import DraftBadge from "../components/draft-badge.astro";
+import { getPosts } from "../lib/posts";
 
-const allBlogPosts = await getCollection("blog");
-allBlogPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const allBlogPosts = await getPosts();
 
 const otherSites = [
   {
@@ -33,10 +33,13 @@ const otherSites = [
                   {blogPost.data.title}
                 </a>
               </h3>
-              <PostDate
-                date={blogPost.data.date}
-                class="mt-1 block text-[0.875em] opacity-85"
-              />
+              <p class="mt-1 flex items-center gap-3">
+                <PostDate
+                  date={blogPost.data.date}
+                  class="text-[0.875em] opacity-85"
+                />
+                {blogPost.data.draft && <DraftBadge />}
+              </p>
               {blogPost.data.description && (
                 <p class="mt-2">{blogPost.data.description}</p>
               )}

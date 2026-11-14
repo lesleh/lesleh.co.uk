@@ -11,6 +11,8 @@ const blog = defineCollection({
       date: z.string().pipe(z.coerce.date()),
       // The preview image for a shared link. scripts/social-images.mjs renders it.
       image: image().optional(),
+      // A draft shows in local dev and on Vercel previews, and stays out of production.
+      draft: z.boolean().default(false),
     }),
 });
 

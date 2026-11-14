@@ -36,6 +36,12 @@ export default defineConfig({
   adapter: vercel(),
   env: {
     schema: {
+      // Vercel sets this at build time: "production", "preview" or "development".
+      VERCEL_ENV: envField.string({
+        context: "server",
+        access: "public",
+        optional: true,
+      }),
       SES_ACCESS_KEY_ID: envField.string({
         context: "server",
         access: "secret",
