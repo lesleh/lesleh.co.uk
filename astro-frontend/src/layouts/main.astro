@@ -74,7 +74,7 @@ const previewUrl = new URL(preview.src, Astro.site);
     </script>
     <Font
       cssVariable="--font-nunito-sans"
-      preload={[{ style: "normal", subset: "latin" }]}
+      preload={[{ style: "normal" }]}
     />
     {
       // Vercel serves this script, so it only exists on a deployed build.
