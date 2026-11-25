@@ -3,8 +3,12 @@ import MainLayout from "../layouts/main.astro";
 import PostDate from "../components/post-date.astro";
 import DraftBadge from "../components/draft-badge.astro";
 import { getPosts } from "../lib/posts";
+import { getIllustration } from "../lib/illustrations";
 
-const allBlogPosts = await getPosts();
+const posts = (await getPosts()).map((post) => ({
+  post,
+  Illustration: getIllustration(post),
+}));
 
 const otherSites = [
   {
@@ -25,24 +29,31 @@ const otherSites = [
     <h2 id="posts-heading" class="sr-only">Posts</h2>
     <ul class="m-0 flex list-none flex-col gap-8 p-0">
       {
-        allBlogPosts.map((blogPost) => (
+        posts.map(({ post, Illustration }) => (
           <li>
-            <article>
-              <h3 class="text-[1.35em] leading-snug font-light">
-                <a class="underline" href={`/blog/${blogPost.id}/`}>
-                  {blogPost.data.title}
+            <article class="grid grid-cols-1 gap-3 sm:grid-cols-[11rem_1fr] sm:items-start sm:gap-5">
+              {Illustration && (
+                <a href={`/blog/${post.id}/`} aria-hidden="true" tabindex="-1">
+                  <Illustration class="m-0! h-auto w-full" />
                 </a>
-              </h3>
-              <p class="mt-1 flex items-center gap-3">
-                <PostDate
-                  date={blogPost.data.date}
-                  class="text-[0.875em] opacity-85"
-                />
-                {blogPost.data.draft && <DraftBadge />}
-              </p>
-              {blogPost.data.description && (
-                <p class="mt-2">{blogPost.data.description}</p>
               )}
+              <div class="sm:col-start-2">
+                <h3 class="text-[1.35em] leading-snug font-light">
+                  <a class="underline" href={`/blog/${post.id}/`}>
+                    {post.data.title}
+                  </a>
+                </h3>
+                <p class="mt-1 flex items-center gap-3">
+                  <PostDate
+                    date={post.data.date}
+                    class="text-[0.875em] opacity-85"
+                  />
+                  {post.data.draft && <DraftBadge />}
+                </p>
+                {post.data.description && (
+                  <p class="mt-2">{post.data.description}</p>
+                )}
+              </div>
             </article>
           </li>
         ))
