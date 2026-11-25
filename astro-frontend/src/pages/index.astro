@@ -45,8 +45,8 @@ const otherSites = [
             <article
               class:list={[
                 "relative h-full rounded bg-(--illo-paper) p-3.5 pb-5.5 text-(--illo-ink)",
-                "shadow-[0_10px_22px_light-dark(rgb(59_13_26/0.35),rgb(0_0_0/0.6))]",
-                "before:absolute before:-top-3 before:left-1/2 before:h-6.5 before:w-28 before:-translate-x-1/2 before:-rotate-3 before:bg-(--illo-gold)/80 before:content-['']",
+                "shadow-[inset_0_1px_0_light-dark(transparent,rgb(255_255_255/0.06)),0_10px_22px_light-dark(rgb(59_13_26/0.35),rgb(0_0_0/0.6))]",
+                "before:absolute before:-top-3 before:left-1/2 before:h-6.5 before:w-28 before:-translate-x-1/2 before:-rotate-3 before:bg-tape before:content-['']",
                 tilts[index % tilts.length],
                 index === 0 &&
                   "lg:grid lg:grid-cols-[1.2fr_1fr] lg:items-center lg:gap-5.5",
@@ -90,12 +90,12 @@ const otherSites = [
     aria-labelledby="elsewhere-heading"
     class="mt-10 border-t border-primary-inverse/30 pt-6"
   >
-    <h2 id="elsewhere-heading" class="text-[1.35em] font-light">Elsewhere</h2>
+    <h2 id="elsewhere-heading" class="text-[1.35em] font-light text-accent">Elsewhere</h2>
     <ul class="m-0 mt-3 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2">
       {
         otherSites.map((site) => (
           <li>
-            <a class="underline" href={site.url}>
+            <a class="text-accent underline" href={site.url}>
               {site.name}
             </a>
             <p class="mt-1 text-[0.875em]">{site.summary}</p>

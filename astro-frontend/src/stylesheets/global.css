@@ -9,8 +9,12 @@
 
 @theme {
   /* light-dark() picks a value from the color-scheme set in the base layer. */
-  --color-primary: light-dark(#af1440, #2a2a2e);
-  --color-primary-inverse: light-dark(#fff, #f58aa3);
+  --color-primary: light-dark(#af1440, #231a1d);
+  --color-primary-inverse: light-dark(#fff, #f1e6d8);
+  /* Links, headings and the current page. White in light mode, so only dark mode shows it. */
+  --color-accent: light-dark(#fff, #f58aa3);
+  /* The tape on a home page card. The dark tape is translucent so the board shows through. */
+  --color-tape: light-dark(rgb(255 209 102 / 0.8), rgb(255 214 120 / 0.42));
 
   --breakpoint-sm: 36rem;
 
@@ -26,11 +30,11 @@
     color-scheme: light dark;
 
     /* Palette for the post illustrations, which sit on their own paper panel. */
-    --illo-paper: light-dark(#fbf1e4, #1d1d20);
+    --illo-paper: light-dark(#fbf1e4, #342a2e);
     --illo-ink: light-dark(#3b0d1a, #f1e6d8);
-    --illo-surface: light-dark(#fff, #33333a);
-    --illo-shade: light-dark(#ead9c4, #3c3c44);
-    --illo-shade-strong: light-dark(#d9c3a8, #54545e);
+    --illo-surface: light-dark(#fff, #463a3f);
+    --illo-shade: light-dark(#ead9c4, #4e4247);
+    --illo-shade-strong: light-dark(#d9c3a8, #685a60);
     --illo-blue: light-dark(#8fd0f0, #2a6a8c);
     --illo-gold: light-dark(#ffd166, #7d5b10);
     --illo-pink: light-dark(#f4a3b5, #9c3f57);
@@ -60,12 +64,12 @@
   }
 }
 
-/* The page has one text colour, so every part of the prose uses it. */
+/* Prose uses the page text colour, with the accent for headings and links. */
 @utility prose-theme {
   --tw-prose-body: var(--color-primary-inverse);
-  --tw-prose-headings: var(--color-primary-inverse);
+  --tw-prose-headings: var(--color-accent);
   --tw-prose-lead: var(--color-primary-inverse);
-  --tw-prose-links: var(--color-primary-inverse);
+  --tw-prose-links: var(--color-accent);
   --tw-prose-bold: var(--color-primary-inverse);
   --tw-prose-counters: var(--color-primary-inverse);
   --tw-prose-bullets: var(--color-primary-inverse);
