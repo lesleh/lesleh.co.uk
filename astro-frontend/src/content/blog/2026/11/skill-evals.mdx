@@ -2,8 +2,13 @@
 title: Testing a skill that won't stop asking questions
 description: I added evals to my Claude Code skills, starting with one that spends most of its time waiting for me to answer. The first full run found a real bug.
 date: "2026-11-25"
+image: ./skill-evals/interview.png
 draft: true
 ---
+
+import Interview from "./skill-evals/interview.svg";
+import OneCase from "./skill-evals/one-case.svg";
+import ScopeList from "./skill-evals/scope-list.svg";
 
 I keep a small repo of [Claude Code skills](https://github.com/lesleh/skills) that I use day to day. They get changed a lot, mostly after a run goes sideways and I tweak a sentence in the `SKILL.md`. Until last week the only way I had of checking a change was to use the skill again and see if it felt better.
 
@@ -31,6 +36,8 @@ append_system_prompt: |
 
 The dragon already says what answer it wants to hear for each question, so the run has something sensible to pick. The dragon ends up interviewing itself, and agreeing with every answer. Writing each answer out as "Answer (default)" turned out to be useful as well, because it gives the graders a line to anchor on.
 
+<Interview />
+
 ## What a case looks like
 
 Each case is a folder with a `prompt.md` and a `graders` folder. The prompt is just the slash command and the pitch.
@@ -53,11 +60,15 @@ pattern: '\*\*Q1\*\*.*\*\*Q2\*\*.*\*\*Q3\*\*'
 ---
 ```
 
+<OneCase />
+
 There are three cases at the moment. One is a sensible half-day pitch that should run start to finish. One is a three-week rewrite nobody asked for, which should end on a drop. The last one pitches a script the repo already has, to check the dragon asks about it before deciding anything.
 
 ## It found a bug straight away
 
 That last case failed on the first full run. I'd fixed this behaviour the day before, so the dragon did ask about the existing script. But its first scope list had already moved the pitch to Out, before the "pitcher" had said a word. The rule that a pitch starts as a drop was leaking into the scope list. It was a one-sentence fix in the skill, and the case passed 3 out of 3 runs after that.
+
+<ScopeList />
 
 ## Things that tripped me up
 
