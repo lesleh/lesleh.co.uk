@@ -1,0 +1,92 @@
+---
+title: Testing a skill that won't stop asking questions
+description: I added evals to my Claude Code skills, starting with one that spends most of its time waiting for me to answer. The first full run found a real bug.
+date: "2026-11-25"
+draft: true
+---
+
+I keep a small repo of [Claude Code skills](https://github.com/lesleh/skills) that I use day to day. They get changed a lot, mostly after a run goes sideways and I tweak a sentence in the `SKILL.md`. Until last week the only way I had of checking a change was to use the skill again and see if it felt better.
+
+So I added some evals with `claude plugin eval`. It runs a skill from a prompt, then grades the run with a set of checks you write. I started with [dragons-den](https://github.com/lesleh/skills/tree/main/skills/dragons-den), which is the newest skill.
+
+## The skill
+
+dragons-den has you pitch an idea to a dragon (as in the BBC show) who assumes your idea isn't worth anyone's time. It searches the repo, asks you up to three questions a round until the scope is pinned down, then gives a verdict of do, shrink, park or drop. A drop ends on "I'm out." It writes a scope doc either way.
+
+The catch is that most of the skill is waiting for you. An eval run is one prompt with nobody on the other end, so left to itself the dragon asks its first three questions and the run ends there.
+
+## Answering for the user
+
+The fix was to append a system prompt to every case that tells the run to answer its own questions.
+
+```yaml
+append_system_prompt: |
+  This session runs unattended. Nobody will read your questions, and ending
+  your turn ends the run. Wherever a skill would stop and wait for the user,
+  answer for them in the same reply and carry on. Use the answer the skill
+  says it wants to hear, or else its stated default, and write each one out as
+  "Answer (default): <answer>". End your turn only when the skill's last step
+  is done.
+```
+
+The dragon already says what answer it wants to hear for each question, so the run has something sensible to pick. The dragon ends up interviewing itself, and agreeing with every answer. Writing each answer out as "Answer (default)" turned out to be useful as well, because it gives the graders a line to anchor on.
+
+## What a case looks like
+
+Each case is a folder with a `prompt.md` and a `graders` folder. The prompt is just the slash command and the pitch.
+
+```text
+/skills:dragons-den Add a --dry-run flag to our release script, so I can see
+which packages it would publish before it publishes them. It should take me
+about half a day.
+```
+
+The dragon wants something to search, so two of the cases have a `scaffold.sh` that builds a tiny git repo in the run's workspace first. For this one it's a monorepo with two packages and a release script that publishes everything with no preview.
+
+The graders are small markdown files. This one checks the first round had three questions in it.
+
+```markdown
+---
+type: regex
+target: trace
+pattern: '\*\*Q1\*\*.*\*\*Q2\*\*.*\*\*Q3\*\*'
+---
+```
+
+There are three cases at the moment. One is a sensible half-day pitch that should run start to finish. One is a three-week rewrite nobody asked for, which should end on a drop. The last one pitches a script the repo already has, to check the dragon asks about it before deciding anything.
+
+## It found a bug straight away
+
+That last case failed on the first full run. I'd fixed this behaviour the day before, so the dragon did ask about the existing script. But its first scope list had already moved the pitch to Out, before the "pitcher" had said a word. The rule that a pitch starts as a drop was leaking into the scope list. It was a one-sentence fix in the skill, and the case passed 3 out of 3 runs after that.
+
+## Things that tripped me up
+
+The default judge for `llm` graders is Haiku, and it failed runs that were correct. I switched to `--judge-model sonnet` and narrowed the rubrics, which fixed it. I changed both at once though, so I don't know which one mattered.
+
+I trust the `regex` graders more than the `llm` ones now. The trace is JSONL, so newlines come through as `\n` and the patterns need to allow for that, but they give the same answer every time.
+
+The run can't write outside its own workspace. The skill normally writes its scope doc to my plans folder, so the appended prompt points it at `plans/` in the workspace and a `file_exists` grader looks for it there.
+
+`claude plugin eval` also needs a `plugin.json` to load the repo, even though the skills get installed with the skills CLI. The skills CLI ignores it, so it's harmless.
+
+And `--ablation none` skips the comparison run without the plugin loaded. With a slash command as the prompt that comparison doesn't tell you much.
+
+## Running it
+
+The full suite is three cases, three runs each, and costs about $1.75.
+
+```sh
+claude plugin eval . --ablation none --scaffold --allow-tools Write --judge-model sonnet --no-publish
+```
+
+That's not much, but it'd add up if it ran on every push, so I run it by hand before merging a change to the skill.
+
+## What it can't test (yet)
+
+Every pitcher in my test suite agrees with the dragon, because the default answers are the ones it wants to hear. So none of the cases can test someone who disagrees with a finding or overrules a verdict, and that's a fair chunk of the skill.
+
+I've since found `context.history_file` in the docs, which resumes a recorded conversation and makes the case's prompt the next turn. I think that'd let a case play the stubborn pitcher, but I haven't tried it yet.
+
+## Next
+
+I had a look at which of my other skills would be worth the same treatment. The one that reads my PR review comments back against the code is the best fit, since it only reads and never waits for me. The catch is that runs can't reach GitHub, so it'll need a fake `gh` that answers from a fixture repo.
