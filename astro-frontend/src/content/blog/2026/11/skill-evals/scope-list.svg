@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="100%" role="img" aria-label="The dragon's round-1 scope list, before anyone has answered. Before the fix, In is empty and the changelog date check is already Out, stamped too soon. After the fix, the changelog date check is In and nothing is Out, stamped as pitched." fill="none" stroke="var(--illo-ink, #3b0d1a)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto;padding:3%;box-sizing:border-box;border-radius:12px;background:var(--illo-paper, #fbf1e4)">
+<g transform="rotate(-1.5 164 170)">
+    <rect x="16" y="20" width="296" height="300" rx="8" fill="var(--illo-surface, #fff)"/>
+    <path d="M40 102h248" stroke-width="1.5" stroke-opacity=".5"/>
+    <g transform="translate(164 280) rotate(-7)" stroke="var(--illo-accent, #af1440)">
+      <rect x="-90" y="-23" width="180" height="46" rx="4" stroke-width="3"/>
+      <rect x="-84" y="-17" width="168" height="34" rx="2" stroke-width="1.5"/>
+      <text y="7" font-size="20" font-weight="700" fill="var(--illo-accent, #af1440)" stroke="none" text-anchor="middle">TOO SOON</text>
+    </g>
+    <g fill="var(--illo-ink, #3b0d1a)" stroke="none" font-size="20">
+      <text x="40" y="56" font-weight="700">Before the fix</text>
+      <text x="40" y="84">Round 1, no answers yet</text>
+      <text x="40" y="138" font-weight="700">In</text>
+      <text x="60" y="166">(nothing)</text>
+      <text x="40" y="204" font-weight="700">Out</text>
+      <text x="60" y="232">Changelog date check</text>
+    </g>
+  </g>
+  <g transform="rotate(1 476 170)">
+    <rect x="328" y="20" width="296" height="300" rx="8" fill="var(--illo-surface, #fff)"/>
+    <path d="M352 102h248" stroke-width="1.5" stroke-opacity=".5"/>
+    <g transform="translate(476 280) rotate(-7)" stroke="var(--illo-accent, #af1440)">
+      <rect x="-90" y="-23" width="180" height="46" rx="4" stroke-width="3"/>
+      <rect x="-84" y="-17" width="168" height="34" rx="2" stroke-width="1.5"/>
+      <text y="7" font-size="20" font-weight="700" fill="var(--illo-accent, #af1440)" stroke="none" text-anchor="middle">AS PITCHED</text>
+    </g>
+    <g fill="var(--illo-ink, #3b0d1a)" stroke="none" font-size="20">
+      <text x="352" y="56" font-weight="700">After the fix</text>
+      <text x="352" y="84">Round 1, no answers yet</text>
+      <text x="352" y="138" font-weight="700">In</text>
+      <text x="372" y="166">Changelog date check</text>
+      <text x="352" y="204" font-weight="700">Out</text>
+      <text x="372" y="232">(nothing)</text>
+    </g>
+  </g>
+</svg>

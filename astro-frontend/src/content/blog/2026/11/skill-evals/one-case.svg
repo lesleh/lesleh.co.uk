@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 640" width="100%" role="img" aria-label="How one eval case runs. scaffold.sh builds a tiny git repo, if the case has one. prompt.md holds the slash command and the pitch, and the appended system prompt answers for the user. One run of dragons-den asks its questions and answers them. It leaves a JSONL trace and a scope doc in plans/. The graders check them: regex and llm graders read the trace, and file_exists looks for the doc. Each case runs 3 times, and each run passes or fails." fill="none" stroke="var(--illo-ink, #3b0d1a)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:2rem auto;padding:3%;box-sizing:border-box;border-radius:12px;background:var(--illo-paper, #fbf1e4);max-width:34rem">
+<rect x="16" y="16" width="528" height="70" rx="12" fill="var(--illo-shade, #ead9c4)"/>
+  <path d="M280 92V116M273 108l7 8 7-8"/>
+  <rect x="16" y="122" width="250" height="96" rx="8" fill="var(--illo-blue, #8fd0f0)" transform="rotate(-1.5 141 170)"/>
+  <rect x="294" y="122" width="250" height="96" rx="8" fill="var(--illo-blue, #8fd0f0)" transform="rotate(1.5 419 170)"/>
+  <path d="M141 226V250M134 242l7 8 7-8"/>
+  <path d="M419 226V250M412 242l7 8 7-8"/>
+  <rect x="16" y="256" width="528" height="70" rx="12" fill="var(--illo-gold, #ffd166)"/>
+  <path d="M141 332V356M134 348l7 8 7-8"/>
+  <path d="M419 332V356M412 348l7 8 7-8"/>
+  <path fill="var(--illo-surface, #fff)" d="M42 362H228L246 380V408q0 6-6 6H42q-6 0-6-6V368q0-6 6-6Z"/><path d="M228 362V380H246" stroke-width="1.5"/>
+  <path fill="var(--illo-surface, #fff)" d="M320 362H506L524 380V408q0 6-6 6H320q-6 0-6-6V368q0-6 6-6Z"/><path d="M506 362V380H524" stroke-width="1.5"/>
+  <path d="M141 420V444M134 436l7 8 7-8"/>
+  <path d="M419 420V444M412 436l7 8 7-8"/>
+  <rect x="16" y="450" width="528" height="104" rx="12" fill="var(--illo-pink, #f4a3b5)"/>
+  <path d="M280 560V584M273 576l7 8 7-8"/>
+  <g fill="var(--illo-ink, #3b0d1a)" stroke="none" text-anchor="middle" font-size="18">
+    <text x="280" y="44" font-weight="700">scaffold.sh</text>
+    <text x="280" y="70">builds a tiny git repo, if the case has one</text>
+    <g transform="rotate(-1.5 141 170)">
+      <text x="141" y="152" font-weight="700">prompt.md</text>
+      <text x="141" y="178">the slash command</text>
+      <text x="141" y="202">and the pitch</text>
+    </g>
+    <g transform="rotate(1.5 419 170)">
+      <text x="419" y="152" font-weight="700">Appended prompt</text>
+      <text x="419" y="178">answers for</text>
+      <text x="419" y="202">the user</text>
+    </g>
+    <text x="280" y="284" font-weight="700">One run of dragons-den</text>
+    <text x="280" y="310">asks its questions and answers them</text>
+    <text x="141" y="394">JSONL trace</text>
+    <text x="419" y="394">plans/ scope doc</text>
+    <text x="280" y="480" font-weight="700">Graders</text>
+    <text x="280" y="506">regex and llm read the trace,</text>
+    <text x="280" y="530">file_exists looks for the doc</text>
+    <text x="280" y="614">Pass or fail, 3 runs a case</text>
+  </g>
+</svg>
