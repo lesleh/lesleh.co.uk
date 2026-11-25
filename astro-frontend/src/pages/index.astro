@@ -10,6 +10,15 @@ const posts = (await getPosts()).map((post) => ({
   Illustration: getIllustration(post),
 }));
 
+// Each card sits at a slight angle, like paper pinned to a board.
+const tilts = [
+  "-rotate-[1.2deg]",
+  "rotate-[0.9deg]",
+  "-rotate-[0.6deg]",
+  "rotate-[1.3deg]",
+  "-rotate-1",
+];
+
 const otherSites = [
   {
     name: "Playground",
@@ -27,18 +36,34 @@ const otherSites = [
 <MainLayout title="Home">
   <section aria-labelledby="posts-heading">
     <h2 id="posts-heading" class="sr-only">Posts</h2>
-    <ul class="m-0 flex list-none flex-col gap-8 p-0">
+    <ul
+      class="m-0 grid list-none grid-cols-1 gap-x-8 gap-y-10 px-1.5 pt-3.5 pb-2 lg:grid-cols-2"
+    >
       {
-        posts.map(({ post, Illustration }) => (
-          <li>
-            <article class="grid grid-cols-1 gap-3 sm:grid-cols-[11rem_1fr] sm:items-start sm:gap-5">
+        posts.map(({ post, Illustration }, index) => (
+          <li class:list={[index === 0 && "lg:col-span-2"]}>
+            <article
+              class:list={[
+                "relative h-full rounded bg-(--illo-paper) p-3.5 pb-5.5 text-(--illo-ink)",
+                "shadow-[0_10px_22px_light-dark(rgb(59_13_26/0.35),rgb(0_0_0/0.6))]",
+                "before:absolute before:-top-3 before:left-1/2 before:h-6.5 before:w-28 before:-translate-x-1/2 before:-rotate-3 before:bg-(--illo-gold)/80 before:content-['']",
+                tilts[index % tilts.length],
+                index === 0 &&
+                  "lg:grid lg:grid-cols-[1.2fr_1fr] lg:items-center lg:gap-5.5",
+              ]}
+            >
               {Illustration && (
                 <a href={`/blog/${post.id}/`} aria-hidden="true" tabindex="-1">
-                  <Illustration class="m-0! h-auto w-full" />
+                  <Illustration class="m-0! aspect-video h-auto w-full p-0!" />
                 </a>
               )}
-              <div class="sm:col-start-2">
-                <h3 class="text-[1.35em] leading-snug font-light">
+              <div>
+                <h3
+                  class:list={[
+                    "mt-2.5 leading-snug font-bold text-(--illo-accent)",
+                    index === 0 ? "text-[1.45em] lg:mt-0 lg:text-[1.8em]" : "text-[1.25em]",
+                  ]}
+                >
                   <a class="underline" href={`/blog/${post.id}/`}>
                     {post.data.title}
                   </a>
@@ -51,7 +76,7 @@ const otherSites = [
                   {post.data.draft && <DraftBadge />}
                 </p>
                 {post.data.description && (
-                  <p class="mt-2">{post.data.description}</p>
+                  <p class="mt-1.5 text-[0.9em]">{post.data.description}</p>
                 )}
               </div>
             </article>
