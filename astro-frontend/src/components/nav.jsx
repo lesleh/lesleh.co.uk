@@ -33,13 +33,13 @@ const menuItems = [
 const isCurrent = (link, currentPath) =>
   link === (currentPath.endsWith("/") ? currentPath : `${currentPath}/`);
 
-// On a small screen the closed menu is invisible, which also takes its links
-// out of the tab order. Visibility changes at once on open and after the slide on close.
+// On a small screen the closed menu is invisible, which takes its links out of the tab order.
+// Visibility changes at once on open and after the slide on close. Reduced motion has no slide.
 const Nav = ({ currentPath = "" }) => (
   <nav
     id="site-nav"
     aria-label="Main"
-    className="max-sm:invisible max-sm:fixed max-sm:inset-0 max-sm:z-2 max-sm:-translate-x-full max-sm:bg-primary max-sm:pt-12.5 max-sm:opacity-0 max-sm:[transition:translate_300ms,opacity_300ms,visibility_0s_300ms] max-sm:data-open:visible max-sm:data-open:[transition:translate_300ms,opacity_300ms,visibility_0s] max-sm:data-open:translate-x-0 max-sm:data-open:opacity-100 sm:col-start-1 sm:row-start-2"
+    className="max-sm:invisible max-sm:fixed max-sm:inset-0 max-sm:z-2 max-sm:-translate-x-full max-sm:bg-primary max-sm:pt-12.5 max-sm:opacity-0 max-sm:[transition:translate_300ms,opacity_300ms,visibility_0s_300ms] max-sm:data-open:visible max-sm:data-open:[transition:translate_300ms,opacity_300ms,visibility_0s] max-sm:data-open:translate-x-0 max-sm:data-open:opacity-100 max-sm:motion-reduce:transition-none! sm:col-start-1 sm:row-start-2"
   >
     <ul className="flex flex-col items-end max-sm:items-center">
       {menuItems.map((menuItem) => (
