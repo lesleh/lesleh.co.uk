@@ -7,13 +7,13 @@ const publicDir = new URL("../public/", import.meta.url);
 const svg = await readFile(new URL("favicon.svg", publicDir));
 
 const render = (size) =>
-  sharp(svg, { density: (72 * size) / 36 })
+  sharp(svg, { density: (72 * size) / 32 })
     .resize(size, size)
     .png()
     .toBuffer();
 
-// iOS shows transparent pixels as black, so the touch icon gets a white
-// background and a margin around the logo.
+// iOS shows transparent pixels as black, so the touch icon puts the key on
+// the paper colour of the post illustrations, with a margin around it.
 const touchSize = 180;
 const logoSize = 132;
 const margin = (touchSize - logoSize) / 2;
@@ -22,11 +22,11 @@ const touchIcon = await sharp({
     width: touchSize,
     height: touchSize,
     channels: 4,
-    background: "#fff",
+    background: "#fbf1e4",
   },
 })
   .composite([{ input: await render(logoSize), top: margin, left: margin }])
-  .flatten({ background: "#fff" })
+  .flatten({ background: "#fbf1e4" })
   .png()
   .toBuffer();
 await writeFile(new URL("apple-touch-icon.png", publicDir), touchIcon);
