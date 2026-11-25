@@ -19,6 +19,24 @@ const photoDate = (path: string) => {
   return match ? dateFormat.format(new Date(`${match[1]}T00:00:00Z`)) : null;
 };
 
+// A file name can end in _medium or _large for a bigger tile in the grid.
+const tileSizes = {
+  small: { span: 1, class: "" },
+  medium: { span: 2, class: "col-span-2 row-span-2" },
+  // A large tile spans 3 columns only when the grid is wide enough for 3.
+  large: {
+    span: 3,
+    class:
+      "col-span-2 row-span-2 @min-[390px]:col-span-3 @min-[390px]:row-span-3",
+  },
+};
+
+const tileSize = (path: string) => {
+  if (path.endsWith("_large.jpg")) return tileSizes.large;
+  if (path.endsWith("_medium.jpg")) return tileSizes.medium;
+  return tileSizes.small;
+};
+
 const files = Object.entries(
   import.meta.glob<{ default: ImageMetadata }>("../content/photos/*.jpg", {
     eager: true,
@@ -29,8 +47,12 @@ const photos = await Promise.all(
   files.map(async ([path, file], i) => {
     const date = photoDate(path);
     const position = `${i + 1} of ${files.length}`;
+    const size = tileSize(path);
     return {
       thumbnail: file.default,
+      // The thumbnail grows with the tile, but never beyond the photo itself.
+      thumbnailSize: Math.min(file.default.width, 145 * 2 * size.span),
+      tileClass: size.class,
       full: await getImage({ src: file.default }),
       caption: date ? `${position}, ${date}` : position,
       alt: date ? `Photo taken on ${date}` : `Photo ${position}`,
@@ -41,13 +63,16 @@ const photos = await Promise.all(
 
 <MainLayout title="Photos">
   <div
-    class="grid grid-flow-dense grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-3.75"
+    class="@container grid grid-flow-dense grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-3.75"
   >
     {
       photos.map((photo, i) => (
         <a
           href={photo.full.src}
-          class="block h-auto w-full focus:shadow-[0_0_0_3px_white] focus:outline-none"
+          class:list={[
+            "block h-auto w-full focus:shadow-[0_0_0_3px_white] focus:outline-none",
+            photo.tileClass,
+          ]}
           aria-label={`View photo ${photo.caption}`}
           data-photo
           data-alt={photo.alt}
@@ -58,8 +83,8 @@ const photos = await Promise.all(
           <Image
             class="block h-auto w-full"
             src={photo.thumbnail}
-            width={145 * 2}
-            height={145 * 2}
+            width={photo.thumbnailSize}
+            height={photo.thumbnailSize}
             loading={i < 8 ? "eager" : "lazy"}
             alt=""
           />

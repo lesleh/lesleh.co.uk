@@ -48,7 +48,7 @@ const Header = () => {
       <p className="text-title font-light">
         <a
           href="/"
-          className={`text-primary-inverse no-underline ${focusRing}`}
+          className={`text-accent no-underline ${focusRing}`}
         >
           <span className="font-semibold">Lesleh</span>
           .co.uk

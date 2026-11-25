@@ -49,7 +49,7 @@ const Nav = ({ currentPath = "" }) => (
             aria-current={
               isCurrent(menuItem.link, currentPath) ? "page" : undefined
             }
-            className="inline-block text-right text-nav font-light text-primary-inverse uppercase no-underline hover:font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-inverse aria-[current=page]:font-bold aria-[current=page]:underline aria-[current=page]:underline-offset-4 max-sm:text-center max-sm:text-[25px]"
+            className="inline-block text-right text-nav font-light text-primary-inverse uppercase no-underline hover:font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-inverse aria-[current=page]:font-bold aria-[current=page]:text-accent aria-[current=page]:underline aria-[current=page]:underline-offset-4 max-sm:text-center max-sm:text-[25px]"
           >
             {menuItem.title}{" "}
             <Icon icon={menuItem.icon} fixedWidth className="ml-[0.3em]" />
