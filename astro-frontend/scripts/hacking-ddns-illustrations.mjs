@@ -86,7 +86,7 @@ const handler = svg({
   h: 344,
   maxWidth: "30rem",
   label:
-    "How the function handles a request. It takes myip from the router and reads the current A record. Same IP? If yes, it does nothing and replies 'No change required'. If no, it does an UPSERT of the A record and replies 'Record updated'.",
+    "How the function handles a request. It checks the password and takes myip from the router, then reads the current A record. Same IP? If yes, it does nothing and replies 'No change required'. If no, it does an UPSERT of the A record and replies 'Record updated'.",
   body: `
   ${box(90, 16, 300, 48, BLUE)}
   ${down(240, 68, 90)}
@@ -98,7 +98,7 @@ const handler = svg({
   ${box(16, 256, 210, 72, SHADE)}
   ${box(254, 256, 210, 72, PINK)}
   <g fill="${INK}" stroke="none" text-anchor="middle" font-size="16">
-    <text x="240" y="46" font-size="17">myip from the router</text>
+    <text x="240" y="46" font-size="17">Check the password, take myip</text>
     <text x="240" y="124" font-size="17">Read the current A record</text>
     <text x="240" y="202" font-size="17" font-weight="700">Same IP?</text>
     <text x="134" y="186">yes</text>
@@ -119,7 +119,7 @@ const hop = (y, colour, name, notes = []) => ({
 });
 const hops = [
   hop(16, BLUE, "Router", ["HTTP only"]),
-  hop(100, SURFACE, "CloudFront", ["passes hostname and myip", "caching off"]),
+  hop(100, SURFACE, "CloudFront", ["passes hostname, myip", "and Authorization", "caching off"]),
   hop(184, SHADE, "API Gateway", ["HTTPS only"]),
   hop(268, GOLD, "Lambda"),
   hop(352, PINK, "Route53"),
@@ -129,7 +129,7 @@ const path = svg({
   h: 412,
   maxWidth: "30rem",
   label:
-    "The path of a request, from top to bottom. The router is HTTP only. CloudFront passes hostname and myip, with caching off. API Gateway is HTTPS only. Then Lambda, then Route53.",
+    "The path of a request, from top to bottom. The router is HTTP only. CloudFront passes hostname, myip and Authorization, with caching off. API Gateway is HTTPS only. Then Lambda, then Route53.",
   body: `
   ${hops.map((h) => h.shape).join("\n  ")}
   ${[64, 148, 232, 316].map((y) => down(116, y, y + 32)).join("\n  ")}

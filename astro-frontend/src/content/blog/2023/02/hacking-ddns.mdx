@@ -59,6 +59,9 @@ provider:
     HOSTED_ZONE_ID: ${self:custom.hostedZoneId}
     DOMAIN_NAME: ${self:custom.domainName}
     REGION: ${self:provider.region}
+    # The username and password set on the router
+    DDNS_USERNAME: ${ssm:/ddns/username}
+    DDNS_PASSWORD: ${ssm:/ddns/password}
 
   # Allow reading and writing of Route53 config
   iamRoleStatements:
@@ -84,7 +87,9 @@ custom:
 
 The path matches the one the router asks for, so as far as the router knows it's still talking to DynDNS.
 
-The function reads the current A record first, and only writes a new one if the IP's different. That's probably a premature optimisation, but the IP won't have changed on most runs, so most runs don't need to touch anything.
+The function checks the router's username and password first, otherwise anyone who found the URL could point my domain wherever they liked. Both come from SSM Parameter Store, which Serverless reads at deploy time.
+
+Then it reads the current A record, and only writes a new one if the IP's different. That's probably a premature optimisation, but the IP won't have changed on most runs, so most runs don't need to touch anything.
 
 <Handler />
 
@@ -136,6 +141,12 @@ async function updateRecord(hostedZoneId, recordName, ip) {
 }
 
 
+function isAuthorised(headers) {
+  const credentials = `${process.env.DDNS_USERNAME}:${process.env.DDNS_PASSWORD}`;
+  const expected = "Basic " + Buffer.from(credentials).toString("base64");
+  return headers.authorization === expected;
+}
+
 function response(statusCode, body) {
   return {
     statusCode,
@@ -144,6 +155,12 @@ function response(statusCode, body) {
 }
 
 module.exports.handler = async (event) => {
+  if (!isAuthorised(event.headers)) {
+    return response(401, {
+      message: "Unauthorised",
+    });
+  }
+
   const ip = event.queryStringParameters.myip;
 
   console.log("Updating IP to", ip);
@@ -180,7 +197,9 @@ Serverless turns all of that into a CloudFormation stack, including the role tha
 
 API Gateway only accepts HTTPS, and my router doesn't seem to send DynDNS updates over anything but plain HTTP. So I put CloudFront in front of API Gateway, since CloudFront will take a plain HTTP request and pass it on over HTTPS.
 
-CloudFront needs two changes for this to work. It doesn't forward query string parameters by default, so you have to tell it to pass on `hostname` and `myip`, otherwise the function never sees the IP. And you'll want caching off, or CloudFront can answer a repeat request itself without calling the function at all.
+CloudFront needs a few changes for this to work. It doesn't forward query string parameters by default, so you have to tell it to pass on `hostname` and `myip`, otherwise the function never sees the IP. It also drops the `Authorization` header unless an origin request policy forwards it, and without that every request fails the password check. And you'll want caching off, or CloudFront can answer a repeat request itself without calling the function at all.
+
+The router still sends the password over plain HTTP as far as CloudFront, so anyone in between can read it. I'd use a password you don't use anywhere else.
 
 <Path />
 
