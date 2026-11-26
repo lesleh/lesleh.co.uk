@@ -27,7 +27,6 @@ var server = http.createServer(function (req, res) {
   console.log("Request: " + req.url);
   console.log("Headers: " + JSON.stringify(req.headers));
   console.log("Method: " + req.method);
-  console.log("Body: " + req.body);
   console.log("---------------------------");
   res.end();
 });
